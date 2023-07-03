@@ -12,6 +12,7 @@ function prevStep(prev) {
     currentStep = prev;
 }
 
+
 $(document).ready(function () {
     // Function to review the entered information before submission
     function reviewForm() {
