@@ -17,174 +17,181 @@
 
                         <!-- Step 1: Personal Information -->
                         <div id="step1">
-                            <form>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="mdi mdi-account"></i></span>
-                                        </div>
-                                        <input class="form-control" type="text" id="firstname" name="firstname" placeholder="Enter your first name" required>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="mdi mdi-account"></i></span>
                                     </div>
+                                    <input class="form-control" type="text" id="firstname" name="firstname" placeholder="Enter your first name" required>
                                 </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="mdi mdi-account"></i></span>
-                                        </div>
-                                        <input class="form-control" type="text" id="middlename" name="middlename" placeholder="Enter your middle name" required>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="mdi mdi-account"></i></span>
                                     </div>
+                                    <input class="form-control" type="text" id="middlename" name="middlename" placeholder="Enter your middle name" required>
                                 </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="mdi mdi-account"></i></span>
-                                        </div>
-                                        <input class="form-control" type="text" id="lastname" name="lastname" placeholder="Enter your last name" required>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="mdi mdi-account"></i></span>
                                     </div>
+                                    <input class="form-control" type="text" id="lastname" name="lastname" placeholder="Enter your last name" required>
                                 </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="mdi mdi-email"></i></span>
-                                        </div>
-                                        <input class="form-control" type="email" id="emailaddress" name="email" required placeholder="Enter your email">
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="mdi mdi-email"></i></span>
                                     </div>
+                                    <input class="form-control" type="email" id="emailaddress" name="email" required placeholder="Enter your email">
                                 </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="mdi mdi-phone"></i></span>
-                                        </div>
-                                        <input class="form-control" type="tel" id="contactnumber" name="contactnum" required placeholder="Enter your contact number">
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="mdi mdi-phone"></i></span>
                                     </div>
+                                    <input class="form-control" type="tel" id="contactnumber" name="contactnum" required placeholder="Enter your contact number">
                                 </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
-                                        </div>
-                                        <input class="form-control" type="date" id="birthdate" name="dob" required>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
                                     </div>
+                                    <input class="form-control" type="date" id="birthdate" name="dob" required>
                                 </div>
-                                <div class="form-group">
-                                    <button class="btn btn-primary btn-block" id="next1">Next</button>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="mdi mdi-account"></i></span>
+                                    </div>
+                                    <!--use dropdown-->
+                                    <select class="custom-select form-control" id="gender" name="gender">
+                                        <option selected disabled hidden></option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="others">Others</option>
+                                    </select>
                                 </div>
-                            </form>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-block" id="next1">Next</button>
+                            </div>
                         </div>
                         <div class="line">
                             <hr>
                         </div>
                         <!-- Step 2: Academic Information -->
                         <div id="step2" style="display: none;">
-                            <form>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span>
-                                        </div>
-                                        <!--use dropdown-->
-                                        <select class="form-control custom-select" id="year" name="year">
-                                            <option value="first_year">First Year</option>
-                                            <option value="second_year">Second Year</option>
-                                            <option value="third_year">Third Year</option>
-                                            <option value="forth_year">Forth Year</option>
-                                            <option value="fifth_year">Fifth Year</option>
-                                        </select>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="mdi mdi-calendar-check"></i></span>
                                     </div>
+                                    <!--use dropdown-->
+                                    <select class="form-control custom-select" id="year" name="year">
+                                        <option value="first_year">First Year</option>
+                                        <option value="second_year">Second Year</option>
+                                        <option value="third_year">Third Year</option>
+                                        <option value="forth_year">Forth Year</option>
+                                        <option value="fifth_year">Fifth Year</option>
+                                    </select>
                                 </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="mdi mdi-account-group"></i></span>
-                                        </div>
-                                        <!--use dropdown-->
-                                        <select class="form-control custom-select" id="section" name="section">
-                                            <option value="section_a">Section A</option>
-                                            <option value="section_b">Section B</option>
-                                            <option value="section_c">Section C</option>
-                                            <option value="section_d">Section D</option>
-                                            <option value="section_e">Section E</option>
-                                        </select>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="mdi mdi-account-group"></i></span>
                                     </div>
+                                    <!--use dropdown-->
+                                    <select class="form-control custom-select" id="section" name="section">
+                                        <option value="section_a">Section A</option>
+                                        <option value="section_b">Section B</option>
+                                        <option value="section_c">Section C</option>
+                                        <option value="section_d">Section D</option>
+                                        <option value="section_e">Section E</option>
+                                    </select>
                                 </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="mdi mdi-book"></i></span>
-                                        </div>
-                                        <!--use dropdown-->
-                                        <select class="form-control custom-select" id="course" name="course">
-                                            <option value="bsit">BSIT</option>
-                                            <option value="bscs">BSCS</option>
-                                            <option value="bsis">BSIS</option>
-                                            <option value="bsba">BSBA</option>
-                                            <option value="bsed">BSED</option>
-                                        </select>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="mdi mdi-book"></i></span>
                                     </div>
+                                    <!--use dropdown-->
+                                    <select class="form-control custom-select" id="course" name="course">
+                                        <option value="bsit">BSIT</option>
+                                        <option value="bscs">BSCS</option>
+                                        <option value="bsis">BSIS</option>
+                                        <option value="bsba">BSBA</option>
+                                        <option value="bsed">BSED</option>
+                                    </select>
                                 </div>
-                                <button class="btn btn-primary float-right btn-block" id="next2">Next</button>
-                                <button class="btn btn-secondary float-left btn-block" id="prev2">Previous</button>
-                            </form>
+                            </div>
+                            <button class="btn btn-primary float-right btn-block" id="next2">Next</button>
+                            <button class="btn btn-secondary float-left btn-block" id="prev2">Previous</button>
                         </div>
 
                         <!-- Step 3: Account Information -->
                         <div id="step3" style="display: none;">
-                            <form>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="mdi mdi-account"></i></span>
-                                        </div>
-                                        <input class="form-control" type="text" id="username" name="username" placeholder="Enter your username" required>
+                            <div class="form-group">
+                                <h5 class="text-danger" id="message"></h5>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="mdi mdi-account"></i></span>
                                     </div>
+                                    <input class="form-control" type="text" id="username" name="username" placeholder="Enter your username" required>
                                 </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="mdi mdi-lock"></i></span>
-                                        </div>
-                                        <input class="form-control" type="password" id="password" name="password" required placeholder="Enter your password">
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="mdi mdi-lock"></i></span>
                                     </div>
+                                    <input class="form-control" type="password" id="password" name="password" required placeholder="Enter your password">
                                 </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="mdi mdi-lock"></i></span>
-                                        </div>
-                                        <input class="form-control" type="password" id="confirmpassword" name="confpassword" required placeholder="Confirm your password">
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="mdi mdi-lock"></i></span>
                                     </div>
+                                    <input class="form-control" type="password" id="confirmpassword" name="confpassword" required placeholder="Confirm your password">
                                 </div>
-                                <div class="form-group">
-                                    <button class="btn btn-primary float-right btn-block" id="next3">Next</button>
-                                    <button class="btn btn-primary float-left btn-block" id="prev3">Previous</button>
-                                </div>
-                            </form>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary float-right btn-block" id="next3">Next</button>
+                                <button class="btn btn-primary float-left btn-block" id="prev3">Previous</button>
+                            </div>
                         </div>
 
                         <!-- Step 4: Type of Account -->
                         <div id="step4" style="display: none;">
-                            <form>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="mdi mdi-account-group"></i></span>
-                                        </div>
-                                        <select class="form-control" id="accounttype" name="toa" required>
-                                            <option value="tutee">Tutee</option>
-                                            <option value="tutor">Tutor</option>
-                                        </select>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="mdi mdi-account-group"></i></span>
                                     </div>
+                                    <select class="form-control" id="accounttype" name="toa" required>
+                                        <option value="tutee">Tutee</option>
+                                        <option value="tutor">Tutor</option>
+                                    </select>
                                 </div>
-                                <div class="form-group">
-                                    <button class="btn btn-primary float-right btn-block" id="next4">Next</button>
-                                    <button class="btn btn-primary float-left btn-block" id="prev4">Previous</button>
-                                </div>
-                            </form>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary float-right btn-block" id="next4">Next</button>
+                                <button class="btn btn-primary float-left btn-block" id="prev4">Previous</button>
+                            </div>
                         </div>
 
                         <!-- Step 5: Review and Terms of Service -->
                         <div id="step5" style="display: none;">
-                            <form>
+                            <div class="form-group">
                                 <h5>Review Your Information:</h5>
                                 <p><strong>Name:</strong> <span id="reviewName"></span></p>
                                 <p><strong>Email:</strong> <span id="reviewEmail"></span></p>
@@ -202,8 +209,8 @@
                                     </div>
                                 </div>
                                 <button class="btn btn-primary float-left" id="prev5">Previous</button>
-                                <button class="btn btn-success float-right" type="submit">Sign Up</button>
-                            </form>
+                                <button class="btn btn-success float-right" id="submit">Sign Up</button>
+                            </div>
                         </div>
 
                         <div class="text-center">
@@ -230,7 +237,7 @@
 
                 <div class="row mt-3">
                     <div class="col-12 text-center">
-                        <p class="text-white-50">Already have an account? <a href="pages-login.html" class="text-white ml-1"><b>Log In</b></a></p>
+                        <p class="text-white-50">Already have an account? <a href="login.php" class="text-white ml-1"><b>Log In</b></a></p>
                     </div> <!-- end col -->
                 </div>
                 <!-- end row -->
