@@ -4,19 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcb8361f-51cb-483b-bfc2-967fc6b01eb0" name="Changes" comment="fixed registration page">
-      <change afterPath="$PROJECT_DIR$/server/register.php" afterDir="false" />
+    <list default="true" id="fcb8361f-51cb-483b-bfc2-967fc6b01eb0" name="Changes" comment="added server file for registraton">
+      <change afterPath="$PROJECT_DIR$/includes/login-footer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/script/login-page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/script/registration-page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/tablesaw.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/tablesaw.init.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/libs/ladda/ladda.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/libs/ladda/ladda.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/libs/ladda/spin.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/libs/ladda/spin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/libs/quill/quill.core.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/libs/quill/quill.core.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/libs/quill/quill.snow.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/libs/quill/quill.snow.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/includes/footer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/login_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/includes/login_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/registration_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/includes/registration_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/registration_page.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/registration_page.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/server/register.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,12 +30,14 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/includes/registration_page.html" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/script/registration.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/server/login.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/server/register.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.2" />
   <component name="ProjectId" id="2RyJJFFu5MsYtGOjgZJTC2yqJAV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -46,21 +46,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/CapstoneV1&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/xampp/htdocs/CapstoneV1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\CapstoneV1" />
@@ -86,6 +87,9 @@
       <workItem from="1689069538015" duration="7333000" />
       <workItem from="1689309145537" duration="1463000" />
       <workItem from="1689310664052" duration="56000" />
+      <workItem from="1689567891023" duration="382000" />
+      <workItem from="1689659663379" duration="182000" />
+      <workItem from="1689660138734" duration="3693000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1688426728924</created>
@@ -115,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688427126054</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added server file for registraton">
+      <created>1689568063529</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1689568063529</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,6 +147,7 @@
     <MESSAGE value="fixed the registration page" />
     <MESSAGE value="Initial commit" />
     <MESSAGE value="fixed registration page" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed registration page" />
+    <MESSAGE value="added server file for registraton" />
+    <option name="LAST_COMMIT_MESSAGE" value="added server file for registraton" />
   </component>
 </project>
