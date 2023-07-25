@@ -37,16 +37,32 @@ if (empty($username) || empty($password)) {
             // Redirect user to the appropriate directory based on account type
             switch ($cat_id) {
                 case '1':
-                    header('Location: tutee/');
+                    $response = array(
+                        'status' => 'success',
+                        'message' => 'Login successful.',
+                        'directory' => 'pages/tutee'
+                    );
                     break;
                 case '2':
-                    header('Location: tutor/');
+                    $response = array(
+                        'status' => 'success',
+                        'message' => 'Login successful.',
+                        'directory' => 'pages/tutor'
+                    );
                     break;
                 case '3':
-                    header('Location: moderator/');
+                    $response = array(
+                        'status' => 'success',
+                        'message' => 'Login successful.',
+                        'directory' => 'pages/moderator'
+                    );
                     break;
                 case '0':
-                    header('Location: admin/');
+                    $response = array(
+                        'status' => 'success',
+                        'message' => 'Login successful.',
+                        'directory' => 'pages/admin'
+                    );
                     break;
                 default:
                     $response = array(

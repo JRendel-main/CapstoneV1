@@ -25,8 +25,20 @@ $(document).ready(function() {
                 var responseData = JSON.parse(response);
 
                 if (responseData.status === "success") {
-                    // Redirect to the dashboard or desired page
-                    window.location.href = "dashboard.php";
+                    // get the diretory on reponseData and redirect the user to it
+                    // add swal and redirect
+                    Swal.fire({
+                        title: "Success",
+                        text: responseData.message,
+                        icon: "success",
+                        showCancelButton: false,
+                        confirmButtonColor: "#3085d6",
+                        confirmButtonText: "OK"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = responseData.directory;
+                        }
+                    });
                 } else {
                     showAlert("danger", responseData.message);
                 }
@@ -44,14 +56,14 @@ $(document).ready(function() {
         $(".card-body").prepend(alertHtml);
 
         // Disable the button
-        $(".btn-primary").prop("disabled", true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
+        $(".btn-primary").prop("disabled", true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
 
         // Remove the alert after 2 seconds
         setTimeout(function() {
             $(".alert").remove();
             // Enable the button
             $(".btn-primary").prop("disabled", false).html("Log In");
-        }, 2000);
+        }, 3000);
     }
 
 
