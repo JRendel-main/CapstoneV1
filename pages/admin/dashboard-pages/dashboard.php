@@ -97,8 +97,76 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="card-box">
+                        <h4 class="header-title mb-3">Top 5 performing Tutors this week</h4>
 
+                        <div class="table-responsive">
+                            <table class="table table-borderless table-hover table-centered m-0">
 
+                                <thead class="thead-light text-center">
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th colspan="2">Profile</th>
+                                        <th>Rank</th>
+                                        <th>Total Tutees</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    <tr>
+                                        <!-- Rank -->
+                                        <td>
+                                            <h5 class="m-0 font-weight-normal">1</h5>
+                                        </td>
+
+                                        <td style="width: 36px;">
+                                            <img src="../../assets/images/users/user-2.jpg" alt="contact-img"
+                                                title="contact-img" class="rounded-circle avatar-sm" />
+                                        </td>
+
+                                        <td>
+                                            <h5 class="m-0 font-weight-normal">Hinata</h5>
+                                            <p class="mb-0 text-muted"><small>Member Since 2017</small></p>
+                                        </td>
+
+                                        <td>
+                                            <p>Bronze</p>
+                                        </td>
+
+                                        <td>
+                                            <p>10</p>
+
+                                        </td>
+
+                                        <td>
+                                            <a href="javascript: void(0);"
+                                                class="btn btn-xs btn-secondary waves-effect">
+                                                <i class="mdi mdi-pencil"></i>
+                                            </a>
+                                            <a href="javascript: void(0);" class="btn btn-xs btn-danger waves-effect">
+                                                <i class="mdi mdi-close"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card-box" dir="ltr">
+                        <h4 class="header-title mb-3">Numbers of Users per Department</h4>
+                        <div id="morris-donut-example" style="height: 350px;" class="morris-chart"></div>
+                        <div class="text-center">
+                            <p class="text-muted font-15 font-family-secondary mb-0" id="department-list"></p>
+                        </div>
+                    </div> <!-- end card-box-->
+                </div>
+
+            </div>
         </div> <!-- container -->
 
     </div> <!-- content -->

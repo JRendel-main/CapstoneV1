@@ -111,5 +111,4 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="script/sidebar-info.js"></script>
 <script src="script/total-users.js"></script>
-</body>
 </html>

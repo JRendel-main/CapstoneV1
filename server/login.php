@@ -20,6 +20,7 @@ if (empty($username) || empty($password)) {
         $row = mysqli_fetch_assoc($result);
         $accountStatus = $row['acc_status'];
         $cat_id = $row['cat_id'];
+        $peer_id = $row['peer_id'];
 
         if ($accountStatus == 0) {
             $response = array(
@@ -72,11 +73,26 @@ if (empty($username) || empty($password)) {
                     break;
             }
         } elseif ($accountStatus == 2) {
+            $query1 = "SELECT reason FROM tbl_inactive_accounts WHERE peer_id = $peer_id";
+            $result1 = mysqli_query($conn, $query1);
+            $row1 = mysqli_fetch_assoc($result1);
+
             $response = array(
                 'status' => 'error',
-                'message' => 'Your account has been disabled by the admin. Please contact the admin for further assistance.'
+                'message' => 'Your account has been declined. Reason: <b>' . $row1['reason'] . '</b>'
             );
-        } else {
+
+        } elseif ($accountStatus == 3) {
+            $query1 = "SELECT reason FROM tbl_inactive_accounts WHERE peer_id = $peer_id";
+            $result1 = mysqli_query($conn, $query1);
+            $row1 = mysqli_fetch_assoc($result1);
+
+            $response = array(
+                'status' => 'error',
+                'message' => 'Your account has been deactivated. Reason: <b>' . $row1['reason'] . '</b>'
+            );
+        }
+        else {
             $response = array(
                 'status' => 'error',
                 'message' => 'Invalid account status. Please contact the admin for further assistance.'

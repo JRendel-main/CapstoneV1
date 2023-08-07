@@ -31,7 +31,7 @@
                         </li>
 
                         <li>
-                            <a href="javascript: void(0);">
+                            <a href="validation.php">
                                 <i class="fe-users"></i>
                                 <span> Validation </span>
                             </a>
