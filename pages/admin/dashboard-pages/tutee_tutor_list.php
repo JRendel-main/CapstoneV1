@@ -8,12 +8,12 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item">
-                                    <a href="javascript: void(0);">Admin Dashbaord</a>
+                                    <a href="javascript: void(0);">Tutor and Tutee List</a>
                                 </li>
-                                <li class="breadcrumb-item active">Approval Dashboard</li>
+                                <li class="breadcrumb-item active">Admin Dashboard</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Account Validation (Admin)</h4>
+                        <h4 class="page-title">User List (Admin)</h4>
                     </div>
                 </div>
             </div>
@@ -21,25 +21,23 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card-box">
-                        <table id="validation" class="stripe hover" style="width: 100%">
+                        <table id="user_list" class="stripe hover" style="width: 100%">
                             <thead>
                                 <tr>
+                                    <th>Type</th>
                                     <th>Fullname</th>
                                     <th>Department</th>
                                     <th>Year</th>
-                                    <th>COR</th>
                                     <th>Email</th>
                                     <th>Action</th>
                                 </tr>
+                            </thead>
                             <tbody>
-                                
                             </tbody>
                         </table>
-                    </div> <!-- end card-box -->
+                    </div>
                 </div> <!-- end col -->
             </div>
-
         </div>
     </div>
-</div>
 </div>

@@ -24,7 +24,7 @@
                         </li>   
 
                         <li>
-                            <a href="javascript: void(0);">
+                            <a href="list.php">
                                 <i class="fe-list"></i>
                                 <span> Tutor and Tutee List </span>
                             </a>
