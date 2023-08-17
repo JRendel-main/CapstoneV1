@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcb8361f-51cb-483b-bfc2-967fc6b01eb0" name="Changes" comment="added server file for registraton">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/jsgrid.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/jsgrid.init.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/login_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/includes/login_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/registration_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/includes/registration_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/admin/dashboard-pages/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/admin/dashboard-pages/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/admin/includes/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/admin/includes/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/admin/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/admin/includes/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/admin/includes/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/admin/includes/navbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/admin/includes/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/admin/includes/sidebar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/admin/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/moderator/includes/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/moderator/includes/navbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/tutee/includes/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/tutee/includes/navbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/tutor/includes/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/tutor/includes/navbar.php" afterDir="false" />
-    </list>
+    <list default="true" id="fcb8361f-51cb-483b-bfc2-967fc6b01eb0" name="Changes" comment="added server file for registraton" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -97,6 +83,7 @@
       <workItem from="1689660138734" duration="3693000" />
       <workItem from="1691396886490" duration="2964000" />
       <workItem from="1691404833077" duration="18000" />
+      <workItem from="1692185682260" duration="28000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1688426728924</created>

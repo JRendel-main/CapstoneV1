@@ -11,6 +11,7 @@ $(document).ready(function() {
       var contactNumber = $("#contactnumber").val();
       var birthdate = $("#birthdate").val();
       var gender = $("#gender").val();
+      var cor = $("#cor").val();
   
       if (firstName === "" || middleName === "" || lastName === "" || email === "" || contactNumber === "" || birthdate === "" || gender === "") {
         Swal.fire("Error", "Please fill in all the fields", "error");
@@ -32,7 +33,7 @@ $(document).ready(function() {
       var course = $("#course").val();
   
       if (year === null || section === null || course === null) {
-        Swal.fire("Error", "Please select all the options", "error");
+        Swal.fire("Error", "Please select an option for all the fields", "error");
         return;
       }
   
@@ -115,6 +116,22 @@ $(document).ready(function() {
       var course = $("#course option:selected").text();
       var username = $("#username").val();
       var accountType = $("#accounttype option:selected").text();
+      // get the file
+      var file = $("#cor").val();
+
+      // save the photo to folder and save the path to database
+      $.ajax({
+        type: "POST",
+        url: "server/upload.php",
+        data: { file: file },
+        success: function(response) {
+          var responseData = JSON.parse(response);
+        },
+        error: function(xhr, status, error) {
+          Swal.fire("Error", "An error occurred while uploading the file", "error");
+        }
+      });
+
   
       // Display the form field values
       $("#reviewName").text(firstName + " " + middleName + " " + lastName);
