@@ -57,10 +57,17 @@
                             <li>
                                 <a href="#">
                                     <i class="fe-calendar"></i>
-                                    <span> Schedule </span>
+                                    <span> Schedules </span>
                                     <span class="menu-arrow"></span>
                                 </a>
-                                
+                                <ul class="nav-second-level nav" aria-expanded="false">
+                                    <li>
+                                        <a href="schedule-list.php">Schedule List</a>
+                                    </li>
+                                    <li>
+                                        <a href="schedule-request.php">Request Schedules</a>
+                                    </li>
+                                </ul>
                             </li>
                             <!-- <li>
                                 <a href="javascript: void(0);">

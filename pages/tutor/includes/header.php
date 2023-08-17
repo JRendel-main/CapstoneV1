@@ -10,6 +10,7 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+        <link href="../../assets/libs/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
 
         <!-- App css -->
         <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
