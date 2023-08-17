@@ -10,12 +10,13 @@ $result = mysqli_query($conn, $query);
 $row = mysqli_fetch_assoc($result);
 $peer_id = $row['peer_id'];
 
-$query = "SELECT firstname,middlename,lastname FROM tbl_peerinfo WHERE peer_id = '$peer_id'";
+$query = "SELECT firstname,middlename,lastname,peer_id FROM tbl_peerinfo WHERE peer_id = '$peer_id'";
 $result = mysqli_query($conn, $query);
 $row = mysqli_fetch_assoc($result);
 $firstname = $row['firstname'];
 $middlename = $row['middlename'];
 $lastname = $row['lastname'];
+$peer_id = $row['peer_id'];
 
 // get the first letter on lastname
 $lastnameini = substr($lastname, 0, 1);
@@ -27,7 +28,8 @@ $fullname = $firstname . ' ' . $middlename . ' ' . $lastname;
 $data = array(
     'status' => 'success',
     'name' => $name,
-    'fullname' => $fullname
+    'fullname' => $fullname,
+    'peer_id' => $peer_id
 );
 echo json_encode($data);
 

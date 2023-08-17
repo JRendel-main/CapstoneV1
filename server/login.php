@@ -34,6 +34,7 @@ if (empty($username) || empty($password)) {
             // Set session variables
             $_SESSION['username'] = $username;
             $_SESSION['cat_id'] = $cat_id;
+            $_SESSION['peer_id'] = $peer_id;
 
             // Redirect user to the appropriate directory based on account type
             switch ($cat_id) {

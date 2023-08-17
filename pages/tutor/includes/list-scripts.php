@@ -1,68 +1,57 @@
 <!-- plugin js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.8/index.global.min.js'></script>
+<script src="../../assets/libs/moment/moment.min.js"></script>
+<script src="../../assets/libs/jquery-ui/jquery-ui.min.js"></script>
+<script src="../../assets/libs/fullcalendar/fullcalendar.min.js"></script>
+
+<!-- Calendar init -->
 <script>
     $(document).ready(function() {
-    // Initialize FullCalendar
-    var calendarEl = document.getElementById('calendar');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        selectable: true,
-        headerToolbar: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay'
-        },
-        events: [
-            // You can add your events here
-            {
-                id: '1',
-                title: 'New Theme Release',
-                start: '2023-08-15',
-                className: 'bg-success'
+        $('#calendar').fullCalendar({
+            // Set the initial view
+            defaultView: 'month',
+            editable: true,
+            droppable: true,
+            selectable: true,
+            selectHelper: true,
+            eventLimit: true,
+            eventDrop: function(event) {
+                if (!checkConflicts(event)) {
+                    updateEvent(event);
+                    $('#calendar').fullCalendar('refetchEvents');
+                }
             },
-            {
-                id: '2',
-                title: 'My Event',
-                start: '2023-08-20',
-                className: 'bg-info'
+            eventResize: function(event) {
+                if (!checkConflicts(event)) {
+                    updateEvent(event);
+                    $('#calendar').fullCalendar('refetchEvents');
+                }
             },
-            {
-                id: '3',
-                title: 'Meet manager',
-                start: '2023-08-25',
-                className: 'bg-warning'
-            }
-        ],
-        // Add event click handler
-        eventClick: function(info) {
-            $('#event-modal').modal('show');
-            // Populate the modal with event data
-            $('#event-modal .modal-body').html(`
-                <form id="edit-event-form">
-                    <div class="form-group">
-                        <label class="control-label">Topic</label>
-                        <input class="form-control" type="text" name="topic" value="${info.event.title}"/>
-                    </div>
-                    <!-- ... (add more form fields) ... -->
-                </form>
-            `);
+            eventClick: function(event) {
+                // edit the event
+
+
+            },
+            dateClick: function(info) {
+                console.log(date);
+                alert('Clicked on: ' + info.dateStr);
+                alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+                alert('Current view: ' + info.view.type);
+            },
+            // add dummy event
+            events: [{
+                title: 'All Day Event',
+                start: new Date(2023, 08, 1),
+                backgroundColor: '#1abc9c', //primary
+                borderColor: '#1abc9c' //primary
+            }],
+        });
+
+        function checkConflicts(event) {
+            // Implement your conflict checking logic here
+        }
+
+        function updateEvent(event) {
+            // Implement your event updating logic here
         }
     });
-
-    calendar.render();
-
-    // Save event handler
-    $('.save-event').on('click', function() {
-        var eventData = $('#edit-event-form').serializeArray();
-        calendar.addEvent({
-            title: eventData[0].value,
-            start: eventData[1].value,
-            // Add more event properties
-        });
-        $('#event-modal').modal('hide');
-    });
-});
-
 </script>
