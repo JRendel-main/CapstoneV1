@@ -53,13 +53,22 @@
                                 </a>
                             </li>
 
+                            <!-- Nested list for schedule with schedule list and request schedules -->
                             <li>
+                                <a href="#">
+                                    <i class="fe-calendar"></i>
+                                    <span> Schedule </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                
+                            </li>
+                            <!-- <li>
                                 <a href="javascript: void(0);">
                                     <i class="fe-list"></i>
                                     <span class="badge badge-success badge-pill float-right">4</span>
                                     <span> Schedule List </span>
                                 </a>
-                            </li>
+                            </li> -->
 
                             <!-- Emails -->
                             <li>
