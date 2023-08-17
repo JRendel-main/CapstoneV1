@@ -16,7 +16,7 @@ $password = $_POST['password'];
 $accountType = $_POST['accountType'];
 
 // Insert data into tbl_peerinfo
-$sql1 = "INSERT INTO peerinfo (firstname, middlename, lastname, email, contactnum, dob, gender, year, course)
+$sql1 = "INSERT INTO tbl_peerinfo (firstname, middlename, lastname, email, contactnum, dob, gender, year, course)
          VALUES ('$firstName', '$middleName', '$lastName', '$email', '$contactNumber', '$birthdate', '$gender', '$year', '$course')";
 
 if (mysqli_query($conn, $sql1)) {

@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcb8361f-51cb-483b-bfc2-967fc6b01eb0" name="Changes" comment="added server file for registraton">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/login_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/includes/login_page.html" afterDir="false" />
-    </list>
+    <list default="true" id="fcb8361f-51cb-483b-bfc2-967fc6b01eb0" name="Changes" comment="added server file for registraton" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,13 +23,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/includes/login_page.html" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/server/check_username.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/includes/registration_page.html" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pages/admin/includes/validation-footer.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/server/login.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/server/register.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.2" />
   <component name="ProjectId" id="2RyJJFFu5MsYtGOjgZJTC2yqJAV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -43,9 +43,11 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/CapstoneV1&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -80,11 +82,26 @@
       <workItem from="1688291321650" duration="17097000" />
       <workItem from="1688314214911" duration="224000" />
       <workItem from="1688386815639" duration="7148000" />
+<<<<<<< HEAD
       <workItem from="1688425846791" duration="842000" />
       <workItem from="1689337408709" duration="102000" />
       <workItem from="1689568552708" duration="633000" />
       <workItem from="1689575853588" duration="4834000" />
       <workItem from="1689656221351" duration="1767000" />
+=======
+      <workItem from="1688425846791" duration="1290000" />
+      <workItem from="1688427282092" duration="82000" />
+      <workItem from="1689069419034" duration="75000" />
+      <workItem from="1689069538015" duration="7333000" />
+      <workItem from="1689309145537" duration="1463000" />
+      <workItem from="1689310664052" duration="56000" />
+      <workItem from="1689567891023" duration="382000" />
+      <workItem from="1689659663379" duration="182000" />
+      <workItem from="1689660138734" duration="3693000" />
+      <workItem from="1691396886490" duration="2964000" />
+      <workItem from="1691404833077" duration="18000" />
+      <workItem from="1692185682260" duration="28000" />
+>>>>>>> ab1989bae0f23d274fc3f4363d905895311d7a59
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1688426728924</created>
@@ -100,7 +117,28 @@
       <option name="project" value="LOCAL" />
       <updated>1689580510275</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Initial commit">
+      <created>1688427037429</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1688427037429</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fixed registration page">
+      <created>1688427126054</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1688427126054</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added server file for registraton">
+      <created>1689568063529</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1689568063529</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,7 +147,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fixed the registration page" />
     <MESSAGE value="Initial commit" />
-    <MESSAGE value="finished the registration" />
+    <MESSAGE value="fixed registration page" />
     <MESSAGE value="added server file for registraton" />
     <option name="LAST_COMMIT_MESSAGE" value="added server file for registraton" />
   </component>
