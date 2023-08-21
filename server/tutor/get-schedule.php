@@ -1,8 +1,9 @@
 <?php
 require_once '../db-connect.php';
 
-// get the peer_id from ajax
-$peer_id = $_GET['peer_id'];
+// get the peer_id from the session
+session_start();
+$peer_id = $_SESSION['peer_id'];
 // Get the tutor's schedule
 $sql = "SELECT * FROM tbl_schedules WHERE peer_id = $peer_id";
 $result = $conn->query($sql);

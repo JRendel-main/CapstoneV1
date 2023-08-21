@@ -1,15 +1,17 @@
 <?php
 require_once '../db-connect.php';
-// get the peer_id from the session
+
+//
 session_start();
 $peer_id = $_SESSION['peer_id'];
 
+// Retrieve POST data from AJAX request
+$eventId = $_POST['id'];
 $title = $_POST['title'];
 $description = $_POST['description'];
 $place = $_POST['place'];
-$start = $_POST['start'];
-$duration = $_POST['duration'];
 $date = $_POST['date'];
+$duration = $_POST['duration'];
 
 // check if the schedule overlaps with an existing schedule
 $sql = "SELECT * FROM tbl_schedules WHERE peer_id = $peer_id AND date = '$date'";
@@ -41,16 +43,28 @@ if ($result->num_rows > 0) {
         }
     }
 }
-// insert the schedule into the database
-$sql = "INSERT INTO tbl_schedules (peer_id, title, description, place, start, duration, date) VALUES ($peer_id, '$title', '$description', '$place', '$start', $duration, '$date')";
-if ($conn->query($sql) === TRUE) {
+
+// Update the schedule in the database
+$sql = "UPDATE tbl_schedules 
+        SET title = ?, description = ?, place = ?, start = ?, duration = ? 
+        WHERE sched_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("sssssi", $title, $description, $place, $date, $duration, $eventId);
+
+$response = array();
+
+if ($stmt->execute()) {
     $response['status'] = 'success';
-    $response['message'] = 'The schedule was added successfully';
+    $response['message'] = 'Schedule updated successfully';
 } else {
     $response['status'] = 'error';
-    $response['message'] = 'There was an error adding the schedule';
+    $response['message'] = 'Error updating schedule';
 }
-echo json_encode($response);
-$conn->close();
-?>
 
+$stmt->close();
+$conn->close();
+
+// Return JSON response
+header('Content-Type: application/json');
+echo json_encode($response);
+?>

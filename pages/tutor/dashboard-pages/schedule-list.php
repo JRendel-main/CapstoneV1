@@ -20,17 +20,9 @@
                                     </a>
 
                                     <div class="mt-5 d-none d-xl-block">
-                                        <h5 class="text-center">How It Works ?</h5>
+                                        <h5 class="text-center">Edit Schedule</h5>
 
                                         <!-- Form for viewing the schedule when the event clicked -->
-                                        <form class="pl-3">
-                                            <div class="checkbox checkbox-primary mb-3">
-                                                <input id="drop-remove" type="checkbox" checked="">
-                                                <label for="drop-remove">
-                                                    Create a new schedule by clicking on the calendar
-                                                </label>
-                                            </div>
-                                        </form>
                                         <form id="event-details-form" class="d-none">
                                             <div class="form-group">
                                                 <label for="event-title">Title</label>
@@ -52,8 +44,15 @@
                                                 <label for="event-time">Time</label>
                                                 <input type="text" id="event-time" class="form-control" disabled>
                                             </div>
-                                            <button type="button" id="edit-event-btn" class="btn btn-primary">Edit</button>
-                                            <button type="button" id="save-event-btn" class="btn btn-success d-none">Save</button>
+                                            <div class="btn-group">
+                                                <div class="col-mb-6">
+                                                    <button type="button" class="btn btn-primary" id="edit-event-btn">Edit</button>
+                                                    <button type="button" class="btn btn-success" id="save-event-btn">Save</button>
+                                                </div>
+                                                <div class="col-mb-6">
+                                                    <button type="button" class="btn btn-danger" id="delete-event-btn">Delete</button>
+                                                </div>
+                                            </div>
                                         </form>
                                     </div>
                                 </div> <!-- end col-->
@@ -89,7 +88,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Add a schedule</h4>
+                                    <h4 class="modal-title">Add a new schedule</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                 </div>
                                 <div class="modal-body p-3">
@@ -106,6 +105,10 @@
                                         <input class="form-control form-white" placeholder="Event place" type="text" name="place">
                                     </div>
                                     <div class="form-group">
+                                        <label class="control-label">Date</label>
+                                        <input class="form-control form-white" placeholder="Event date" type="date" name="date">
+                                    </div>
+                                    <div class="form-group">
                                         <label class="control-label">Start</label>
                                         <input class="form-control form-white" placeholder="Event start" type="time" name="start">
                                     </div>
@@ -116,7 +119,7 @@
                                 </div>
                                 <div class="modal-footer text-right">
                                     <button type="button" class="btn btn-light " data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-success save-category">Save</button>
+                                    <button type="button" class="btn btn-success save-category" id="add-event-btn">Save</button>
                                 </div>
                             </div> <!-- end modal-content-->
                         </div> <!-- end modal dialog-->
@@ -126,3 +129,5 @@
             </div>
         </div>
     </div>
+    <!-- form for display the schedule -->
+</div>
