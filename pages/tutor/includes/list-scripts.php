@@ -25,6 +25,8 @@
                     events: events,
                     // when event clicked show the event details to form
                     eventClick: function(event, jsEvent, view) {
+                        schedid = event.id;
+                        console.log(event.id);
                         $('#event-details-form').removeClass('d-none');
                         $('#event-details-form').addClass('d-block');
                         $('#event-title').val(event.title);
@@ -38,119 +40,12 @@
                         $('#edit-event-btn').removeClass('d-none');
                         $('#save-event-btn').addClass('d-none');
                         $('#delete-event-btn').addClass('d-none');
-
-                        // when edit button clicked, show the edit form
-                        $('#edit-event-btn').click(function() {
-                            $('#event-title').prop('disabled', false);
-                            $('#event-description').prop('disabled', false);
-                            $('#event-place').prop('disabled', false);
-                            $('#event-date').prop('disabled', false);
-                            $('#event-time').prop('disabled', false);
-                            $('#edit-event-btn').addClass('d-none');
-                            $('#save-event-btn').removeClass('d-none');
-                            $('#delete-event-btn').removeClass('d-none');
-                        });
-
-                        // when delete button clicked, delete the event from the database
-                        $('#delete-event-btn').click(function() {
-                            $.ajax({
-                                url: '../../server/tutor/delete-schedule.php',
-                                type: 'POST',
-                                data: {
-                                    id: event.id
-                                },
-                                dataType: 'json',
-                                success: function(response) {
-                                    if (response.status === 'success') {
-                                        // get teh response and get the message use swal and refresh the calendar and close modal if ok button clicked
-                                        swal.fire({
-                                            title: 'Success',
-                                            text: response.message,
-                                            icon: 'success'
-                                        }).then(function() {
-                                            $('#calendar').fullCalendar('refetchEvents');
-                                            $('#event-details-form').removeClass('d-block');
-                                            $('#event-details-form').addClass('d-none');
-                                        });
-                                    } else {
-                                        // Handle error, e.g., show an error message
-                                        swal.fire({
-                                            title: 'Error',
-                                            text: response.message,
-                                            icon: 'error',
-                                            confirmButtonClass: 'btn btn-confirm mt-2'
-                                        });
-                                    }
-                                },
-                                error: function(xhr, status, error) {
-                                    // Handle AJAX error, e.g., show an error message
-                                    swal.fire({
-                                        title: 'Error',
-                                        text: 'There was an error deleting the schedule',
-                                        icon: 'error',
-                                        confirmButtonClass: 'btn btn-confirm mt-2'
-                                    });
-                                }
-                            });
-                        });
-
-                        // when save button clicked, save the changes to the database
-                        $('#save-event-btn').click(function() {
-                            var topic = $('#event-title').val();
-                            var description = $('#event-description').val();
-                            var place = $('#event-place').val();
-                            var date = $('#event-date').val();
-                            var time = $('#event-time').val();
-                            var duration = time.split('-')[1].trim() - time.split('-')[0].trim();
-                            var eventData = {
-                                id: event.id,
-                                title: topic,
-                                description: description,
-                                place: place,
-                                date: date,
-                                duration: duration
-                            };
-                            $.ajax({
-                                url: '../../server/tutor/edit-schedule.php',
-                                type: 'POST',
-                                data: eventData,
-                                dataType: 'json',
-                                success: function(response) {
-                                    if (response.status === 'success') {
-                                        // get teh response and get the message use swal and refresh the calendar and close modal if ok button clicked
-                                        swal.fire({
-                                            title: 'Success',
-                                            text: response.message,
-                                            icon: 'success'
-                                        }).then(function() {
-                                            $('#calendar').fullCalendar('refetchEvents');
-                                            $('#event-details-form').removeClass('d-block');
-                                            $('#event-details-form').addClass('d-none');
-                                        });
-                                    } else {
-                                        // Handle error, e.g., show an error message
-                                        swal.fire({
-                                            title: 'Error',
-                                            text: response.message,
-                                            icon: 'error',
-                                            confirmButtonClass: 'btn btn-confirm mt-2'
-                                        });
-                                    }
-                                },
-                                error: function(xhr, status, error) {
-                                    // Handle AJAX error, e.g., show an error message
-                                    swal.fire({
-                                        title: 'Error',
-                                        text: 'There was an error editing the schedule',
-                                        icon: 'error',
-                                        confirmButtonClass: 'btn btn-confirm mt-2'
-                                    });
-                                }
-                            });
-                        });
                     },
-                    // when empty space clicked, show the add event form
-                    
+                    dayClick: function(date, jsEvent, view) {
+                        $('#add-category').modal('show'); // Open the modal
+                        $('input[name="date"]').val(date.format('YYYY-MM-DD')); // Set the date value
+                        $('input[name="topic"]').focus(); // Set focus on the first input field
+                    },
                 });
 
                 function checkConflicts(event) {
@@ -162,6 +57,114 @@
                 $('#calendar').html('<h5 class="text-center">You have no schedule yet. Start adding by clicking the button below.</h5>');
                 // add animateio
             }
+        });
+        // when edit button clicked, show the edit form
+        $('#edit-event-btn').click(function() {
+            $('#event-title').prop('disabled', false);
+            $('#event-description').prop('disabled', false);
+            $('#event-place').prop('disabled', false);
+            $('#event-date').prop('disabled', false);
+            $('#event-time').prop('disabled', false);
+            $('#edit-event-btn').addClass('d-none');
+            $('#save-event-btn').removeClass('d-none');
+            $('#delete-event-btn').removeClass('d-none');
+        });
+
+        // when delete button clicked, delete the event from the database
+        $('#delete-event-btn').click(function() {
+            console.log(schedid);
+            $.ajax({
+                url: '../../server/tutor/delete-schedule.php',
+                type: 'POST',
+                data: {
+                    id: schedid
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === 'success') {
+                        // get the response and get the message, use swal, refresh the calendar, and close the modal
+                        swal.fire({
+                            title: 'Success',
+                            text: response.message,
+                            icon: 'success'
+                        }).then(function() {
+                            // Refresh the calendar
+                            $('#calendar').fullCalendar('refetchEvents');
+                            // Close the modal if open
+                            $('#event-details-form').modal('hide');
+                        });
+                    } else {
+                        // Handle error, show an error message
+                        swal.fire({
+                            title: 'Error',
+                            text: response.message,
+                            icon: 'error'
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Handle AJAX error, show an error message
+                    swal.fire({
+                        title: 'Error',
+                        text: 'There was an error deleting the schedule',
+                        icon: 'error'
+                    });
+                }
+            });
+        });
+        // when save button clicked, save the changes to the database
+        $('#save-event-btn').click(function() {
+            var topic = $('#event-title').val();
+            var description = $('#event-description').val();
+            var place = $('#event-place').val();
+            var date = $('#event-date').val();
+            var time = $('#event-time').val();
+            var duration = time.split('-')[1].trim() - time.split('-')[0].trim();
+            var eventData = {
+                id: schedid,
+                title: topic,
+                description: description,
+                place: place,
+                date: date,
+                duration: duration
+            };
+            $.ajax({
+                url: '../../server/tutor/edit-schedule.php',
+                type: 'POST',
+                data: eventData,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === 'success') {
+                        // get teh response and get the message use swal and refresh the calendar and close modal if ok button clicked
+                        swal.fire({
+                            title: 'Success',
+                            text: response.message,
+                            icon: 'success'
+                        }).then(function() {
+                            $('#calendar').fullCalendar('refetchEvents');
+                            $('#event-details-form').removeClass('d-block');
+                            $('#event-details-form').addClass('d-none');
+                        });
+                    } else {
+                        // Handle error, e.g., show an error message
+                        swal.fire({
+                            title: 'Error',
+                            text: response.message,
+                            icon: 'error',
+                            confirmButtonClass: 'btn btn-confirm mt-2'
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Handle AJAX error, e.g., show an error message
+                    swal.fire({
+                        title: 'Error',
+                        text: 'There was an error editing the schedule',
+                        icon: 'error',
+                        confirmButtonClass: 'btn btn-confirm mt-2'
+                    });
+                }
+            });
         });
         $("#add-event-btn").click(function() {
             var topic = $("input[name='topic']").val();
@@ -221,6 +224,10 @@
         });
 
         // add functionality to save button to save the changes to the database
-
+    });
+    $(document).keyup(function(e) {
+        if (e.key === "Escape" && $('#add-category').hasClass('show')) {
+            $('#add-category').modal('hide');
+        }
     });
 </script>
