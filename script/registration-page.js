@@ -207,6 +207,9 @@ $(document).ready(function() {
         error: function(xhr, status, error) {
           Swal.fire("Error", "An error occurred while submitting the form", "error");
         }
-      });
+      },
+      error: function(xhr, status, error) {
+        Swal.fire("Error", "An error occurred while checking the username availability", "error");
+      }
     });
   });
