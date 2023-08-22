@@ -54,7 +54,7 @@
                             </li>
 
                             <li>
-                                <a href="javascript: void(0);">
+                                <a href="tutor-list.php">
                                     <i class="fe-list"></i>
                                     <span class="badge badge-success badge-pill float-right">4</span>
                                     <span> Tutor List </span>
