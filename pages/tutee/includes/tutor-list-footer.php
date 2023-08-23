@@ -17,22 +17,232 @@
             dropdownAutoWidth: true,
             minimumResultsForSearch: Infinity,
         });
-        // Dummy tutor data
-        var tutors = [{
-                name: "John Doe",
-                department: "BSIT",
-                bio: "I am a passionate BSIT tutor with a focus on helping students achieve their goals and excel in their studies.",
-                expertise: ["Web Development", "Database Management", "Software Engineering", "Computer Programming"],
-                rating: 4.8,
+
+        // get the tutor data from the database
+        $.ajax({
+            url: '../../server/tutee/get-tutors.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                console.log(response.tutors);
+                // generate the tutor cards
+                var tutors = response.tutors;
             },
-            {
-                name: "Lert Ken",
-                department: "BSBA",
-                bio: "I want to learn by teaching others",
-                expertise: ["English", "Tutoring"],
-                rating: 2.1
+            error: function(xhr, ajaxOptions, thrownError) {
+                console.log(xhr.status);
+                console.log(thrownError);
             }
-        ];
+        });
+        // Dummy tutor data
+        // var tutors = [{
+        //         name: 'John Doe',
+        //         department: 'BSIT',
+        //         expertise: ['Calculus', 'Physics', 'Chemistry'],
+        //         rating: 4.5,
+        //         totalTutees: 15
+        //     },
+        //     {
+        //         name: 'Jane Smith',
+        //         department: 'Biology',
+        //         expertise: ['Biology', 'Anatomy', 'Genetics'],
+        //         rating: 4.8,
+        //         totalTutees: 22
+        //     },
+        //     {
+        //         name: 'Michael Johnson',
+        //         department: 'Mathematics',
+        //         expertise: ['Algebra', 'Geometry', 'Statistics'],
+        //         rating: 4.2,
+        //         totalTutees: 12
+        //     },
+        //     // Adding more tutors...
+        //     {
+        //         name: 'Maria Rodriguez',
+        //         department: 'Physics',
+        //         expertise: ['Mechanics', 'Thermodynamics', 'Electromagnetism'],
+        //         rating: 4.7,
+        //         totalTutees: 18
+        //     },
+        //     {
+        //         name: 'William Lee',
+        //         department: 'Chemistry',
+        //         expertise: ['Organic Chemistry', 'Inorganic Chemistry', 'Analytical Chemistry'],
+        //         rating: 4.4,
+        //         totalTutees: 10
+        //     },
+        //     {
+        //         name: 'Jessica Brown',
+        //         department: 'Psychology',
+        //         expertise: ['Cognitive Psychology', 'Abnormal Psychology', 'Social Psychology'],
+        //         rating: 4.9,
+        //         totalTutees: 30
+        //     },
+        //     // Adding more tutors...
+        //     {
+        //         name: 'David Martinez',
+        //         department: 'Economics',
+        //         expertise: ['Microeconomics', 'Macroeconomics', 'International Trade'],
+        //         rating: 4.3,
+        //         totalTutees: 25
+        //     },
+        //     {
+        //         name: 'Sophia Anderson',
+        //         department: 'English Literature',
+        //         expertise: ['Shakespeare', 'American Literature', 'British Romanticism'],
+        //         rating: 4.7,
+        //         totalTutees: 20
+        //     },
+        //     {
+        //         name: 'Daniel Thompson',
+        //         department: 'Geography',
+        //         expertise: ['Physical Geography', 'Human Geography', 'Geographical Information Systems'],
+        //         rating: 4.1,
+        //         totalTutees: 16
+        //     },
+        //     // Adding more tutors...
+        //     {
+        //         name: 'Olivia White',
+        //         department: 'Sociology',
+        //         expertise: ['Social Movements', 'Cultural Sociology', 'Gender Studies'],
+        //         rating: 4.5,
+        //         totalTutees: 28
+        //     },
+        //     {
+        //         name: 'James Martin',
+        //         department: 'Music',
+        //         expertise: ['Music Theory', 'Composition', 'Music History'],
+        //         rating: 4.6,
+        //         totalTutees: 14
+        //     },
+        //     {
+        //         name: 'Ava Taylor',
+        //         department: 'Art',
+        //         expertise: ['Painting', 'Sculpture', 'Digital Art'],
+        //         rating: 4.8,
+        //         totalTutees: 19
+        //     },
+        //     // Adding more tutors...
+        //     {
+        //         name: 'Alexander Wilson',
+        //         department: 'Political Science',
+        //         expertise: ['Comparative Politics', 'International Relations', 'Political Theory'],
+        //         rating: 4.2,
+        //         totalTutees: 23
+        //     },
+        //     {
+        //         name: 'Ella Adams',
+        //         department: 'Languages',
+        //         expertise: ['French', 'Spanish', 'German'],
+        //         rating: 4.7,
+        //         totalTutees: 27
+        //     },
+        //     {
+        //         name: 'Noah Harris',
+        //         department: 'Physics',
+        //         expertise: ['Quantum Mechanics', 'Relativity', 'Astrophysics'],
+        //         rating: 4.4,
+        //         totalTutees: 11
+        //     },
+        //     // Adding more tutors...
+        //     {
+        //         name: 'Grace Turner',
+        //         department: 'Chemistry',
+        //         expertise: ['Physical Chemistry', 'Biochemistry', 'Nuclear Chemistry'],
+        //         rating: 4.6,
+        //         totalTutees: 26
+        //     },
+        //     {
+        //         name: 'Liam Miller',
+        //         department: 'Mathematics',
+        //         expertise: ['Calculus', 'Linear Algebra', 'Number Theory'],
+        //         rating: 4.3,
+        //         totalTutees: 17
+        //     },
+        //     {
+        //         name: 'Chloe Jackson',
+        //         department: 'Biology',
+        //         expertise: ['Microbiology', 'Ecology', 'Cell Biology'],
+        //         rating: 4.9,
+        //         totalTutees: 21
+        //     },
+        //     // Adding more tutors...
+        //     {
+        //         name: 'Benjamin Thompson',
+        //         department: 'Computer Science',
+        //         expertise: ['Operating Systems', 'Computer Architecture', 'Computer Networks'],
+        //         rating: 4.5,
+        //         totalTutees: 13
+        //     },
+        //     {
+        //         name: 'Amelia Taylor',
+        //         department: 'History',
+        //         expertise: ['American History', 'European History', 'World History'],
+        //         rating: 4.7,
+        //         totalTutees: 32
+        //     },
+        //     {
+        //         name: 'Mason Garcia',
+        //         department: 'Psychology',
+        //         expertise: ['Developmental Psychology', 'Personality Psychology', 'Behavioral Neuroscience'],
+        //         rating: 4.2,
+        //         totalTutees: 9
+        //     }
+        //     // Adding more tutors...
+        // ];
+
+        // Function to populate expertise options in the select element
+        function populateExpertiseOptions() {
+            var expertiseSet = new Set();
+
+            // Extract expertise from tutors and add to the set
+            tutors.forEach(function (tutor) {
+                tutor.expertise.forEach(function (expertise) {
+                    expertiseSet.add(expertise);
+                });
+            });
+
+            // Populate the select element with expertise options
+            var selectElement = $('#expertiseFilter');
+            expertiseSet.forEach(function (expertise) {
+                selectElement.append($('<option>', {
+                    value: expertise,
+                    text: expertise
+                }));
+            });
+
+            // Initialize the select2 plugin
+            selectElement.select2();
+        }
+
+        // Function to populate department options in select element
+        function populateDepartmentOptions() {
+            var departmentSet = new Set();
+
+            // Extract departments from tutors and add to the set
+            tutors.forEach(function (tutor) {
+                departmentSet.add(tutor.department);
+            });
+
+            // Populate the select element with department options
+            var selectElement = $('#departmentFilter');
+            departmentSet.forEach(function (department) {
+                selectElement.append($('<option>', {
+                    value: department,
+                    text: department
+                }));
+            });
+
+            // Initialize the select2 plugin
+            selectElement.select2();
+        }
+
+        // Call the function to populate department options
+        populateDepartmentOptions();
+
+        // Call the function to populate expertise options
+        populateExpertiseOptions();
+
+        // Total: 50 tutors
 
         // Function to generate tutor cards
         function generateTutorCards(tutors) {
@@ -44,7 +254,7 @@
 
                 tutorCards += `
                 <div class="col-lg-4">
-                    <div class="card-box bg-pattern">
+                    <div class="card-box bg-pattern card-fixed-height">
                         <div class="text-center">
                             <img src="../../assets/images/users/user-1.jpg" alt="logo" class="avatar-xl rounded-circle mb-3">
                             <h4 class="mb-1 font-20">${tutor.name}</h4>
@@ -71,7 +281,12 @@
                                 <h5 class="font-weight-normal text-muted">Rating</h5>
                                 <h4>${tutor.rating.toFixed(1)}/5</h4>
                             </div>
+                            <div class="col-6">
+                                <h5 class="font-weight-normal text-muted">Total Tutees</h5>
+                                <h4>${tutor.totalTutees}</h4>
+                            </div>
                         </div>
+                        
                     </div> <!-- end card-box -->
                 </div><!-- end col -->
             `;
@@ -95,7 +310,26 @@
             });
             generateTutorCards(filteredTutors);
         });
-        
+
+        // Sort tutors based on the selected option
+        $('#status-select').on('change', function() {
+            var sortOption = $(this).val();
+            var sortedTutors = tutors.sort(function(a, b) {
+                if (sortOption == 'Name') {
+                    return a.name.localeCompare(b.name);
+                } else if (sortOption == 'Department') {
+                    return a.department.localeCompare(b.department);
+                } else if (sortOption == 'Rating') {
+                    return b.rating - a.rating;
+                } else if (sortOption == 'Expertise') {
+                    return a.expertise.join(' ').localeCompare(b.expertise.join(' '));
+                } else if (sortOption == 'Tutee Count') {
+                    return b.totalTutees - a.totalTutees;
+                }
+            });
+            generateTutorCards(sortedTutors);
+        });
+
         // Filter tutors based on the selected expertise, department
         $('#expertiseFilter, #departmentFilter').on('change', function() {
             var expertiseFilter = $('#expertiseFilter').val();
@@ -107,6 +341,6 @@
             });
             generateTutorCards(filteredTutors);
         });
-        
+
     });
 </script>

@@ -1,3 +1,8 @@
+<style>
+    .card-box {
+        height: 550px;
+    }
+</style>
 <div class="content-page">
     <div class="content">
 
@@ -29,11 +34,10 @@
                         <div class="form-group mx-sm-3">
                             <label for="status-select" class="mr-2">Sort By</label>
                             <select class="custom-select mb-0" id="status-select">
-                                <option>Name</option>
                                 <option>Department</option>
                                 <option selected>Rating</option>
                                 <option>Expertise</option>
-                                <option>Recent</option>
+                                <option>Tutee Count</option>
                             </select>
                         </div>
                     </form>
@@ -64,24 +68,11 @@
             </div>
             <div class="modal-body">
                 <h6>Filter by Expertise:</h6>
-                <select class="form-control select2" multiple="multiple" id="expertiseFilter">
-                    <option></option>
-                    <!-- Add sample indiviual academic skills for tutors can brag -->
-                    <option value="Calculus">Calculus</option>
-                    <option value="Physics">Physics</option>
-                    <option value="Chemistry">Chemistry</option>
-                    <option value="Biology">Biology</option>
-                    <option value="Web Development">Web Development</option>
-                    <option value="Software Development">Software Development</option>
-                    <option value="Data Science">Data Science</option>
+                <select class="form-control select2" multiple="multiple" id="expertiseFilter" style="width: 100% !important">
                 </select>
                 <h6 class="mt-3">Filter by Department:</h6>
-                <select class="form-control select2" multiple="multiple" id="departmentFilter">
+                <select class="form-control select2" multiple="multiple" id="departmentFilter" style="width: 100% !important">
                     <option></option>
-                    <!-- Add sample departments -->
-                    <option value="BSIT">BSIT</option>
-                    <option value="BSCS">BSCS</option>
-                    <option value="BSIS">BSIS</option>
                 </select>
                 <h6 class="mt-3">Filter by Rating:</h6>
                 <select class="form-control" id="ratingFilter">
