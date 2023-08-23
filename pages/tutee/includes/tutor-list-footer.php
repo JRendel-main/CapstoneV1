@@ -1,6 +1,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js" integrity="sha512-fHY2UiQlipUq0dEabSM4s+phmn+bcxSYzXP4vAXItBvBHU7zAM/mkhCZjtBEIJexhOMzZbgFlPLuErlJF2b+0g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="../../assets/libs/multiselect/jquery.multi-select.js"></script>
+<script src="../../assets/libs/select2/select2.min.js"></script>
 <script>
     $(document).ready(function() {
+        $('#expertiseFilter').select2({
+            placeholder: 'Select expertise...',
+            allowClear: true,
+            width: '100%',
+            dropdownAutoWidth: true,
+            minimumResultsForSearch: Infinity,
+        });
+        $('#departmentFilter').select2({
+            placeholder: 'Select department...',
+            allowClear: true,
+            width: '100%',
+            dropdownAutoWidth: true,
+            minimumResultsForSearch: Infinity,
+        });
         // Dummy tutor data
         var tutors = [{
                 name: "John Doe",
@@ -10,13 +26,12 @@
                 rating: 4.8,
             },
             {
-                name: "Jane Doe",
-                department: "BSIT",
-                bio: "I am a passionate BSIT tutor with a focus on helping students achieve their goals and excel in their studies.",
-                expertise: ["Web Development", "Database Management", "Software Engineering", "Computer Programming"],
-                rating: 3.1,
-            },
-
+                name: "Lert Ken",
+                department: "BSBA",
+                bio: "I want to learn by teaching others",
+                expertise: ["English", "Tutoring"],
+                rating: 2.1
+            }
         ];
 
         // Function to generate tutor cards
@@ -80,26 +95,18 @@
             });
             generateTutorCards(filteredTutors);
         });
-        // Sort tutors based on the selected option
-        $('#status-select').on('change', function() {
-            var selectedOption = $(this).val().toLowerCase();
-            var sortedTutors = tutors.sort(function(a, b) {
-                if (selectedOption === 'name') {
-                    return a.name.localeCompare(b.name);
-                } else if (selectedOption === 'department') {
-                    return a.department.localeCompare(b.department);
-                } else if (selectedOption === 'rating') {
-                    return b.rating - a.rating;
-                } else if (selectedOption === 'expertise') {
-                    return a.expertise.join(' ').localeCompare(b.expertise.join(' '));
-                } else if (selectedOption === 'recent') {
-                    return b.id - a.id;
-                }
+        
+        // Filter tutors based on the selected expertise, department
+        $('#expertiseFilter, #departmentFilter').on('change', function() {
+            var expertiseFilter = $('#expertiseFilter').val();
+            var departmentFilter = $('#departmentFilter').val();
+            var filteredTutors = tutors.filter(function(tutor) {
+                return (expertiseFilter.length == 0 || expertiseFilter.some(function(expertise) {
+                    return tutor.expertise.includes(expertise);
+                })) && (departmentFilter.length == 0 || departmentFilter.includes(tutor.department));
             });
-            generateTutorCards(sortedTutors);
-
-            // Reset search input value
-            $('#searchTutor').val('');
+            generateTutorCards(filteredTutors);
         });
+        
     });
 </script>

@@ -54,7 +54,7 @@
 </div>
 <!-- Filter Modal -->
 <div class="modal fade" id="filterModal" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Filter Tutors</h5>
@@ -63,12 +63,36 @@
                 </button>
             </div>
             <div class="modal-body">
-                <!-- Add your filter options here use group radio button -->
-                
+                <h6>Filter by Expertise:</h6>
+                <select class="form-control select2" multiple="multiple" id="expertiseFilter">
+                    <option></option>
+                    <!-- Add sample indiviual academic skills for tutors can brag -->
+                    <option value="Calculus">Calculus</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="Biology">Biology</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Software Development">Software Development</option>
+                    <option value="Data Science">Data Science</option>
+                </select>
+                <h6 class="mt-3">Filter by Department:</h6>
+                <select class="form-control select2" multiple="multiple" id="departmentFilter">
+                    <option></option>
+                    <!-- Add sample departments -->
+                    <option value="BSIT">BSIT</option>
+                    <option value="BSCS">BSCS</option>
+                    <option value="BSIS">BSIS</option>
+                </select>
+                <h6 class="mt-3">Filter by Rating:</h6>
+                <select class="form-control" id="ratingFilter">
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <!-- Add more rating options here -->
+                </select>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" id="applyFilters">Apply Filters</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
