@@ -19,6 +19,17 @@
         });
         var tutors = [];
 
+        // Replace with your actual functions to fetch status and message for the tutor
+        function getStatusForTutor(tutorId) {
+            // Implement your logic here
+            return tutorId; // Example status
+        }
+
+        function getMessageForTutor(tutorId) {
+            // Implement your logic here
+            return "Thank you for your assistance!"; // Example message
+        }
+
         // get the tutor data from the database
         $.ajax({
             url: '../../server/tutee/get-tutors.php',
@@ -29,6 +40,9 @@
                 if (response.success) {
                     tutors = response.tutors;
                     console.log(tutors);
+
+                    // if the bio and about_me is null add placeholder
+                    
 
                     // Function to populate expertise options in the select element
                     function populateExpertiseOptions() {
@@ -106,12 +120,11 @@
                         </p>
 
                         <div class="text-center">
-                            <a href="javascript:void(0);" class="btn btn-sm btn-danger" data-id=${tutor.peer_id} data-toggle="#modal" data-toggle="#profileView">
-                            <i class="mdi mdi-eye"></i>
-                            View Profile
-                            </a>
-                        </div>
-
+    <a href="tutor-profile.php?peer_id=${tutor.peer_id}" class="btn btn-sm btn-success">
+        <i class="mdi mdi-user"></i>
+        View Profile
+    </a>
+</div>
                         <div class="row mt-4 text-center">
                             <div class="col-12">
                                 <h5 class="font-weight-normal text-muted">Expertise</h5>
@@ -142,14 +155,10 @@
                     generateTutorCards(tutors);
 
                     // Search for tutors based on the input value
-                    $('#searchTutor').on('input', function() {
-                        // search for tutors name, department, expertise, and rating
-                        var searchValue = $(this).val().toLowerCase();
+                    $('#searchTutor').on('keyup', function() {
+                        var inputValue = $(this).val().toLowerCase();
                         var filteredTutors = tutors.filter(function(tutor) {
-                            return tutor.name.toLowerCase().includes(searchValue) ||
-                                tutor.department.toLowerCase().includes(searchValue) ||
-                                tutor.expertise.join(' ').toLowerCase().includes(searchValue) ||
-                                tutor.rating.toString().includes(searchValue);
+                            return tutor.fullname.toLowerCase().includes(inputValue);
                         });
                         generateTutorCards(filteredTutors);
                     });
@@ -173,6 +182,18 @@
                         generateTutorCards(sortedTutors);
                     });
 
+                    $('.view-profile-btn').click(function() {
+                        var tutorId = $(this).data('id');
+
+                        // Assume you have the logic to fetch status and message for the tutor
+                        var status = getStatusForTutor(tutorId); // Replace with your actual function
+                        var message = getMessageForTutor(tutorId); // Replace with your actual function
+
+                        // Populate modal content with retrieved data
+                        $('#profile-status').text(status);
+                        $('#message-to-tutor').text(message);
+                    });
+
                     // Filter tutors based on the selected expertise, department
                     $('#expertiseFilter, #departmentFilter').on('change', function() {
                         var expertiseFilter = $('#expertiseFilter').val();
@@ -184,6 +205,8 @@
                         });
                         generateTutorCards(filteredTutors);
                     });
+
+
                 } else {
                     console.log(response.message);
                 }
