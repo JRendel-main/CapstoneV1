@@ -79,7 +79,7 @@
                     <option value="5">5 Stars</option>
                     <option value="4">4 Stars</option>
                     <option value="3">3 Stars</option>
-                    <!-- Add more rating options here -->
+                    <option value="">2 and below</option>
                 </select>
             </div>
             <div class="modal-footer">

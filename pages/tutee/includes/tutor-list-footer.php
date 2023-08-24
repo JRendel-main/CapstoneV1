@@ -17,6 +17,7 @@
             dropdownAutoWidth: true,
             minimumResultsForSearch: Infinity,
         });
+        var tutors = [];
 
         // get the tutor data from the database
         $.ajax({
@@ -24,9 +25,168 @@
             type: 'GET',
             dataType: 'json',
             success: function(response) {
-                console.log(response.tutors);
                 // generate the tutor cards
-                var tutors = response.tutors;
+                if (response.success) {
+                    tutors = response.tutors;
+                    console.log(tutors);
+
+                    // Function to populate expertise options in the select element
+                    function populateExpertiseOptions() {
+                        var expertiseSet = new Set();
+
+                        // Extract expertise from tutors and add to the set
+                        tutors.forEach(function(tutor) {
+                            tutor.expertise.forEach(function(expertise) {
+                                expertiseSet.add(expertise);
+                            });
+                        });
+
+                        // Populate the select element with expertise options
+                        var selectElement = $('#expertiseFilter');
+                        expertiseSet.forEach(function(expertise) {
+                            selectElement.append($('<option>', {
+                                value: expertise,
+                                text: expertise
+                            }));
+                        });
+
+                        // Initialize the select2 plugin
+                        selectElement.select2();
+                    }
+
+                    // Function to populate department options in select element
+                    function populateDepartmentOptions() {
+                        var departmentSet = new Set();
+
+                        // Extract departments from tutors and add to the set
+                        tutors.forEach(function(tutor) {
+                            departmentSet.add(tutor.department);
+                        });
+
+                        // Populate the select element with department options
+                        var selectElement = $('#departmentFilter');
+                        departmentSet.forEach(function(department) {
+                            selectElement.append($('<option>', {
+                                value: department,
+                                text: department
+                            }));
+                        });
+
+                        // Initialize the select2 plugin
+                        selectElement.select2();
+                    }
+
+                    // Call the function to populate department options
+                    populateDepartmentOptions();
+
+                    // Call the function to populate expertise options
+                    populateExpertiseOptions();
+
+                    // Total: 50 tutors
+
+                    // Function to generate tutor cards
+                    function generateTutorCards(tutors) {
+                        var tutorCards = '';
+                        tutors.forEach(function(tutor) {
+                            var expertiseBadges = tutor.expertise.map(function(expertise) {
+                                return '<span class="badge badge-pill badge-primary">' + expertise + '</span>';
+                            }).join('');
+
+                            tutorCards += `
+                <div class="col-lg-4">
+                    <div class="card-box bg-pattern card-fixed-height">
+                        <div class="text-center">
+                            <img src="../../assets/images/users/user-1.jpg" alt="logo" class="avatar-xl rounded-circle mb-3">
+                            <h4 class="mb-1 font-20">${tutor.fullname}</h4>
+                            <p class="text-muted font-14">${tutor.department}</p>
+                        </div>
+
+                        <p class="font-14 text-center text-muted">
+                            ${tutor.bio}
+                        </p>
+
+                        <div class="text-center">
+                            <a href="javascript:void(0);" class="btn btn-sm btn-danger" data-id=${tutor.peer_id} data-toggle="#modal" data-toggle="#profileView">
+                            <i class="mdi mdi-eye"></i>
+                            View Profile
+                            </a>
+                        </div>
+
+                        <div class="row mt-4 text-center">
+                            <div class="col-12">
+                                <h5 class="font-weight-normal text-muted">Expertise</h5>
+                                ${expertiseBadges}
+                            </div>
+                        </div>
+
+                        <div class="row mt-3 text-center">
+                            <div class="col-6">
+                                <h5 class="font-weight-normal text-muted">Rating</h5>
+                                <h4>${tutor.rating}/5</h4>
+                            </div>
+                            <div class="col-6">
+                                <h5 class="font-weight-normal text-muted">Total Tutees</h5>
+                                <h4>${tutor.tutee_count}</h4>
+                            </div>
+                        </div>
+                        
+                    </div> <!-- end card-box -->
+                </div><!-- end col -->
+            `;
+                        });
+
+                        $('#tutor-cards-container').html(tutorCards);
+                    }
+
+                    // Initial tutor card generation
+                    generateTutorCards(tutors);
+
+                    // Search for tutors based on the input value
+                    $('#searchTutor').on('input', function() {
+                        // search for tutors name, department, expertise, and rating
+                        var searchValue = $(this).val().toLowerCase();
+                        var filteredTutors = tutors.filter(function(tutor) {
+                            return tutor.name.toLowerCase().includes(searchValue) ||
+                                tutor.department.toLowerCase().includes(searchValue) ||
+                                tutor.expertise.join(' ').toLowerCase().includes(searchValue) ||
+                                tutor.rating.toString().includes(searchValue);
+                        });
+                        generateTutorCards(filteredTutors);
+                    });
+
+                    // Sort tutors based on the selected option
+                    $('#status-select').on('change', function() {
+                        var sortOption = $(this).val();
+                        var sortedTutors = tutors.sort(function(a, b) {
+                            if (sortOption == 'Name') {
+                                return a.name.localeCompare(b.name);
+                            } else if (sortOption == 'Department') {
+                                return a.department.localeCompare(b.department);
+                            } else if (sortOption == 'Rating') {
+                                return b.rating - a.rating;
+                            } else if (sortOption == 'Expertise') {
+                                return a.expertise.join(' ').localeCompare(b.expertise.join(' '));
+                            } else if (sortOption == 'Tutee Count') {
+                                return b.totalTutees - a.totalTutees;
+                            }
+                        });
+                        generateTutorCards(sortedTutors);
+                    });
+
+                    // Filter tutors based on the selected expertise, department
+                    $('#expertiseFilter, #departmentFilter').on('change', function() {
+                        var expertiseFilter = $('#expertiseFilter').val();
+                        var departmentFilter = $('#departmentFilter').val();
+                        var filteredTutors = tutors.filter(function(tutor) {
+                            return (expertiseFilter.length == 0 || expertiseFilter.some(function(expertise) {
+                                return tutor.expertise.includes(expertise);
+                            })) && (departmentFilter.length == 0 || departmentFilter.includes(tutor.department));
+                        });
+                        generateTutorCards(filteredTutors);
+                    });
+                } else {
+                    console.log(response.message);
+                }
             },
             error: function(xhr, ajaxOptions, thrownError) {
                 console.log(xhr.status);
@@ -189,158 +349,6 @@
         //     }
         //     // Adding more tutors...
         // ];
-
-        // Function to populate expertise options in the select element
-        function populateExpertiseOptions() {
-            var expertiseSet = new Set();
-
-            // Extract expertise from tutors and add to the set
-            tutors.forEach(function (tutor) {
-                tutor.expertise.forEach(function (expertise) {
-                    expertiseSet.add(expertise);
-                });
-            });
-
-            // Populate the select element with expertise options
-            var selectElement = $('#expertiseFilter');
-            expertiseSet.forEach(function (expertise) {
-                selectElement.append($('<option>', {
-                    value: expertise,
-                    text: expertise
-                }));
-            });
-
-            // Initialize the select2 plugin
-            selectElement.select2();
-        }
-
-        // Function to populate department options in select element
-        function populateDepartmentOptions() {
-            var departmentSet = new Set();
-
-            // Extract departments from tutors and add to the set
-            tutors.forEach(function (tutor) {
-                departmentSet.add(tutor.department);
-            });
-
-            // Populate the select element with department options
-            var selectElement = $('#departmentFilter');
-            departmentSet.forEach(function (department) {
-                selectElement.append($('<option>', {
-                    value: department,
-                    text: department
-                }));
-            });
-
-            // Initialize the select2 plugin
-            selectElement.select2();
-        }
-
-        // Call the function to populate department options
-        populateDepartmentOptions();
-
-        // Call the function to populate expertise options
-        populateExpertiseOptions();
-
-        // Total: 50 tutors
-
-        // Function to generate tutor cards
-        function generateTutorCards(tutors) {
-            var tutorCards = '';
-            tutors.forEach(function(tutor) {
-                var expertiseBadges = tutor.expertise.map(function(expertise) {
-                    return '<span class="badge badge-pill badge-primary">' + expertise + '</span>';
-                }).join('');
-
-                tutorCards += `
-                <div class="col-lg-4">
-                    <div class="card-box bg-pattern card-fixed-height">
-                        <div class="text-center">
-                            <img src="../../assets/images/users/user-1.jpg" alt="logo" class="avatar-xl rounded-circle mb-3">
-                            <h4 class="mb-1 font-20">${tutor.name}</h4>
-                            <p class="text-muted font-14">${tutor.department}</p>
-                        </div>
-
-                        <p class="font-14 text-center text-muted">
-                            I am a passionate ${tutor.department.toLowerCase()} tutor with a focus on helping students achieve their goals and excel in their studies.
-                        </p>
-
-                        <div class="text-center">
-                            <a href="javascript:void(0);" class="btn btn-sm btn-light">View more info</a>
-                        </div>
-
-                        <div class="row mt-4 text-center">
-                            <div class="col-12">
-                                <h5 class="font-weight-normal text-muted">Expertise</h5>
-                                ${expertiseBadges}
-                            </div>
-                        </div>
-
-                        <div class="row mt-3 text-center">
-                            <div class="col-6">
-                                <h5 class="font-weight-normal text-muted">Rating</h5>
-                                <h4>${tutor.rating.toFixed(1)}/5</h4>
-                            </div>
-                            <div class="col-6">
-                                <h5 class="font-weight-normal text-muted">Total Tutees</h5>
-                                <h4>${tutor.totalTutees}</h4>
-                            </div>
-                        </div>
-                        
-                    </div> <!-- end card-box -->
-                </div><!-- end col -->
-            `;
-            });
-
-            $('#tutor-cards-container').html(tutorCards);
-        }
-
-        // Initial tutor card generation
-        generateTutorCards(tutors);
-
-        // Search for tutors based on the input value
-        $('#searchTutor').on('input', function() {
-            // search for tutors name, department, expertise, and rating
-            var searchValue = $(this).val().toLowerCase();
-            var filteredTutors = tutors.filter(function(tutor) {
-                return tutor.name.toLowerCase().includes(searchValue) ||
-                    tutor.department.toLowerCase().includes(searchValue) ||
-                    tutor.expertise.join(' ').toLowerCase().includes(searchValue) ||
-                    tutor.rating.toString().includes(searchValue);
-            });
-            generateTutorCards(filteredTutors);
-        });
-
-        // Sort tutors based on the selected option
-        $('#status-select').on('change', function() {
-            var sortOption = $(this).val();
-            var sortedTutors = tutors.sort(function(a, b) {
-                if (sortOption == 'Name') {
-                    return a.name.localeCompare(b.name);
-                } else if (sortOption == 'Department') {
-                    return a.department.localeCompare(b.department);
-                } else if (sortOption == 'Rating') {
-                    return b.rating - a.rating;
-                } else if (sortOption == 'Expertise') {
-                    return a.expertise.join(' ').localeCompare(b.expertise.join(' '));
-                } else if (sortOption == 'Tutee Count') {
-                    return b.totalTutees - a.totalTutees;
-                }
-            });
-            generateTutorCards(sortedTutors);
-        });
-
-        // Filter tutors based on the selected expertise, department
-        $('#expertiseFilter, #departmentFilter').on('change', function() {
-            var expertiseFilter = $('#expertiseFilter').val();
-            var departmentFilter = $('#departmentFilter').val();
-            var filteredTutors = tutors.filter(function(tutor) {
-                return (expertiseFilter.length == 0 || expertiseFilter.some(function(expertise) {
-                    return tutor.expertise.includes(expertise);
-                })) && (departmentFilter.length == 0 || departmentFilter.includes(tutor.department));
-            });
-            generateTutorCards(filteredTutors);
-        });
 
     });
 </script>
