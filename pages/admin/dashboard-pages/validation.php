@@ -43,3 +43,20 @@
     </div>
 </div>
 </div>
+<!-- Modal for View COR -->
+<div class="modal fade" id="viewCORModal" tabindex="-1" role="dialog" aria-labelledby="viewCORModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewCORModalLabel">View Certificate of Registration</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="cor-container" class="embed-responsive embed-responsive-4by3">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,10 @@
 <script>
     $(document).ready(function() {
+
+        function switchStep(fstep, lstep) {
+            $("#step" + fstep).hide();
+            $("#step" + lstep).show();
+        };
         // Step 1: Personal Information
         $("#next1").click(function(e) {
             e.preventDefault();
@@ -28,8 +33,7 @@
             }
 
             // Move to next step
-            $("#step1").hide();
-            $("#step2").show();
+            switchStep(1, 2);
         });
 
         // Step 2: Academic Information
@@ -40,6 +44,7 @@
             var year = $("#year").val();
             var section = $("#section").val();
             var course = $("#course").val();
+            var cor = $("#cor").val();
 
             if (year === null || section === null || course === null) {
                 Swal.fire("Error", "Please select an option for all the fields", "error");
@@ -52,8 +57,7 @@
             }
 
             // Move to next step
-            $("#step2").hide();
-            $("#step3").show();
+            switchStep(2, 3);
         });
 
         // Step 3: Account Information
@@ -87,8 +91,7 @@
 
                     if (responseData.available) {
                         // Move to next step
-                        $("#step3").hide();
-                        $("#step4").show();
+                        switchStep(3, 4);
                     } else {
                         Swal.fire("Error", responseData.message, "error");
                     }
@@ -164,10 +167,9 @@
         });
 
         // Submit form
+        // Submit form
         $("#submit").click(function(e) {
             e.preventDefault();
-            // upload the file to server folder and save the path and name to database
-            // get the file from file input
             var firstname = $('#firstname').val();
             var middlename = $('#middlename').val();
             var lastname = $('#lastname').val();
@@ -175,93 +177,104 @@
             var file = $("#cor").prop("files")[0];
 
             if (file) {
-                var file = new FormData();
-                formData.append("file", file);
-                formData.append("name", name);
+                var filename = new FormData(); // Create a new FormData object
+                filename.append("file", file);
+                filename.append("name", name);
 
                 $.ajax({
                     url: "server/uploadCOR.php",
                     type: "POST",
-                    data: file,
+                    data: filename,
                     contentType: false,
                     processData: false,
                     success: function(response) {
                         var responseData = JSON.parse(response);
                         if (responseData.status === "success") {
                             var fileName = responseData.fileName;
-                            // Continue with your logic here, e.g., save the file name to a hidden input field
+                            // Gather form data
+                            var formData = {
+                                firstName: $("#firstname").val(),
+                                middleName: $("#middlename").val(),
+                                lastName: $("#lastname").val(),
+                                email: $("#emailaddress").val(),
+                                contactNumber: $("#contactnumber").val(),
+                                birthdate: $("#birthdate").val(),
+                                gender: $("#gender").val(),
+                                year: $("#year").val(),
+                                section: $("#section").val(),
+                                course: $("#course").val(),
+                                cor: fileName,
+                                username: $("#username").val(),
+                                password: $("#password").val(),
+                                accountType: $("#accounttype").val(),
+                            };
+                            console.log(formData);
+                            var submitBtn = $(this);
+                            submitBtn
+                                .prop("disabled", true)
+                                .html(
+                                    '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...'
+                                );
+
+                            $.ajax({
+                                type: "POST",
+                                url: "server/register.php",
+                                data: formData,
+                                success: function(response) {
+                                    var responseData = JSON.parse(response);
+
+                                    if (responseData.status === "success") {
+                                        // Enable the submit button and hide loading state
+                                        submitBtn.prop("disabled", false).text("Sign Up");
+                                        swal.fire({
+                                            title: "Success",
+                                            text: responseData.message,
+                                            icon: "success"
+                                        });
+                                        // Redirect to login page
+                                        setTimeout(function() {
+                                            window.location.href = "login.php";
+                                        }, 3000);
+                                    } else {
+                                        Swal.fire("Error", responseData.message, "error");
+                                    }
+                                },
+                                error: function(xhr, status, error) {
+                                    Swal.fire(
+                                        "Error",
+                                        "An error occurred while submitting the form",
+                                        "error"
+                                    );
+                                },
+                            });
+
                         } else {
                             // Handle error
-                            console.log("Error uploading file: " + responseData.message);
+                            swal.fire({
+                                title: "Error",
+                                text: responseData.message,
+                                icon: "error",
+                            });
+                            // go back to step 2
+                            switchStep(5, 2);
                         }
                     },
                     error: function(xhr, status, error) {
                         // Handle error
-                        console.log("AJAX error: " + error);
+                        swal.fire({
+                            title: "Error",
+                            text: "An error occurred while uploading the file",
+                            icon: "error",
+                        });
+
+                        // go back to step 2
+                        $("#step5").hide();
+                        $("#step2").show();
                     }
                 });
             } else {
                 // Handle no file selected
             }
-
-
-            // Gather form data
-            var formData = {
-                firstName: $("#firstname").val(),
-                middleName: $("#middlename").val(),
-                lastName: $("#lastname").val(),
-                email: $("#emailaddress").val(),
-                contactNumber: $("#contactnumber").val(),
-                birthdate: $("#birthdate").val(),
-                gender: $("#gender").val(),
-                year: $("#year").val(),
-                section: $("#section").val(),
-                course: $("#course").val(),
-                cor: fileName,
-                username: $("#username").val(),
-                password: $("#password").val(),
-                accountType: $("#accounttype").val(),
-            };
-            console.log(formData);
-            var submitBtn = $(this);
-            submitBtn
-                .prop("disabled", true)
-                .html(
-                    '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...'
-                );
-
-            // Send form data to PHP server using AJAX
-            // Send form data to PHP server using AJAX
-            $.ajax({
-                type: "POST",
-                url: "server/register.php",
-                data: formData,
-                success: function(response) {
-                    var responseData = JSON.parse(response);
-
-                    if (responseData.status === "success") {
-                        // Enable the submit button and hide loading state
-                        submitBtn.prop("disabled", false).text("Sign Up");
-                        Swal.fire({
-                            title: "Success",
-                            text: responseData.message,
-                            icon: "success",
-                            onClose: function() {
-                                window.location.href = "login.php";
-                            },
-                        });
-                    } else {
-                        Swal.fire("Error", responseData.message, "error");
-                    }
-                },
-                error: function(xhr, status, error) {
-                    Swal.fire(
-                        "Error",
-                        "An error occurred while submitting the form",
-                        "error"
-                    );
-                },
-            });
         });
 
         // Step 2: Previous button

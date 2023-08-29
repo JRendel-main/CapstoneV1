@@ -3,7 +3,7 @@
 require_once '../db-connect.php';
 
 // Query to fetch pending accounts from the database
-$query = " SELECT a.peer_id, a.firstname, a.middlename, a.lastname, a.email, a.dob, a.year, a.course, b.username FROM tbl_peerinfo a, tbl_auth b WHERE b.acc_status = 0 AND a.peer_id = b.peer_id";
+$query = " SELECT a.peer_id, a.firstname, a.middlename, a.lastname, a.email, a.dob, a.year, a.course, a.cor, b.username FROM tbl_peerinfo a, tbl_auth b WHERE b.acc_status = 0 AND a.peer_id = b.peer_id";
 $result = mysqli_query($conn, $query);
 
 $accounts = [];
@@ -18,6 +18,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         'age' => $age,
         'department' => $row['course'],
         'year' => $row['year'],
+        'cor' => $row['cor'],
         'email' => $row['email'],
     ];
 }

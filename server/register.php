@@ -14,10 +14,11 @@ $course = $_POST['course'];
 $username = $_POST['username'];
 $password = $_POST['password'];
 $accountType = $_POST['accountType'];
+$cor = $_POST['cor'];
 
 // Insert data into tbl_peerinfo
-$sql1 = "INSERT INTO tbl_peerinfo (firstname, middlename, lastname, email, contactnum, dob, gender, year, course)
-         VALUES ('$firstName', '$middleName', '$lastName', '$email', '$contactNumber', '$birthdate', '$gender', '$year', '$course')";
+$sql1 = "INSERT INTO tbl_peerinfo (firstname, middlename, lastname, email, contactnum, dob, gender, year, course, cor)
+         VALUES ('$firstName', '$middleName', '$lastName', '$email', '$contactNumber', '$birthdate', '$gender', '$year', '$course', '$cor')";
 
 if (mysqli_query($conn, $sql1)) {
     $peerId = mysqli_insert_id($conn);

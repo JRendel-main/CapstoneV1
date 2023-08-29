@@ -34,15 +34,13 @@
                             <p class="text-muted font-13 mb-3" id="tutor-about">
                                 [Tutor's About Me]
                             </p>
-                            <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ml-2">Geneva
-                                    D. McKnight</span></p>
+                            <p class="text-muted mb-2 font-13" id="fullname"><strong>Full Name :</strong> <span class="ml-2">[Full Name]</span></p>
 
-                            <p class="text-muted mb-2 font-13"><strong>Mobile :</strong><span class="ml-2">(123)
-                                    123 1234</span></p>
+                            <p class="text-muted mb-2 font-13" id="contactnum"><strong>Mobile :</strong><span class="ml-2"></span></p>
 
-                            <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                            <p class="text-muted mb-2 font-13" id="email"><strong>Email :</strong> <span class="ml-2 "></span></p>
 
-                            <p class="text-muted mb-1 font-13"><strong>Location :</strong> <span class="ml-2">USA</span></p>
+                            <p class="text-muted mb-1 font-13"><strong>Location :</strong> <span class="ml-2"></span></p>
                         </div>
 
                         <ul class="social-list list-inline mt-3 mb-0">
@@ -133,12 +131,12 @@
                     <div class="card-box">
                         <ul class="nav nav-pills navtab-bg nav-justified">
                             <li class="nav-item">
-                                <a href="#aboutme" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                <a href="#history" data-toggle="tab" aria-expanded="false" class="nav-link">
                                     History
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#timeline" data-toggle="tab" aria-expanded="true" class="nav-link active">
+                                <a href="#schedule" data-toggle="tab" aria-expanded="true" class="nav-link active">
                                     Schedule List
                                 </a>
                             </li>
@@ -149,7 +147,7 @@
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <div class="tab-pane" id="aboutme">
+                            <div class="tab-pane" id="history">
 
                                 <h5 class="mb-4 text-uppercase"><i class="mdi mdi-briefcase mr-1"></i>
                                     Experience</h5>
@@ -248,15 +246,24 @@
                             </div> <!-- end tab-pane -->
                             <!-- end about me section content -->
 
-                            <div class="tab-pane show active" id="timeline">
-
-                                
-
+                            <div class="tab-pane show active" id="schedule">
+                                <div class="row justify-content-center align-items-center">
+                                    <div class="col-md-6 text-center mt-4">
+                                        <!-- Use alert -->
+                                        <div class="alert alert-danger" role="alert" id="no-sched-message">
+                                            <strong>Heads up!</strong> This tutor has no schedule yet.
+                                        </div>
+                                    </div>
+                                    <div class="calendar" id="calendar"></div>
+                                </div>
                             </div>
+
+
+
                             <!-- end timeline content-->
 
                             <div class="tab-pane" id="settings">
-                                
+
                             </div>
                             <!-- end settings content-->
 
@@ -270,3 +277,83 @@
         </div> <!-- container -->
 
     </div> <!-- content -->
+
+    <!-- Schedule Details Modal -->
+    <div class="modal fade" id="schedule-modal" tabindex="-1" aria-labelledby="schedule-modal-label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <h5 class="modal-title" id="modal-title">Schedule Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Tabs -->
+                    <ul class="nav nav-tabs" id="scheduleTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="schedule-details-tab" data-bs-toggle="tab" href="#schedule-details" role="tab" aria-controls="schedule-details" aria-selected="true">Schedule Details</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="tutee-list-tab" data-bs-toggle="tab" href="#tutee-list" role="tab" aria-controls="tutee-list" aria-selected="false">Tutee List</a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab Content -->
+                    <div class="tab-content text-center" id="scheduleTabsContent">
+                        <!-- Schedule Details Tab -->
+                        <div class="tab-pane fade show active" id="schedule-details" role="tabpanel" aria-labelledby="schedule-details-tab">
+                            <!-- use readonly form to display schedule details -->
+                            <form>
+                                <div class="row mb-3">
+                                    <label for="modal-date" class="col-sm-2 col-form-label">Date</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" readonly class="form-control-plaintext" id="modal-date" value="[Schedule Date]">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="modal-time" class="col-sm-2 col-form-label">Time</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" readonly class="form-control-plaintext" id="modal-time" value="[Schedule Time]">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="modal-topic" class="col-sm-2 col-form-label">Topic</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" readonly class="form-control-plaintext" id="modal-topic" value="[Schedule Topic]">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="modal-place" class="col-sm-2 col-form-label">Place</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" readonly class="form-control-plaintext" id="modal-place" value="[Schedule Place]">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="modal-description" class="col-sm-2 col-form-label">Description</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" readonly class="form-control-plaintext" id="modal-description" value="[Schedule Description]">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Tutee List Tab -->
+                        <div class="tab-pane fade" id="tutee-list" role="tabpanel" aria-labelledby="tutee-list-tab">
+                            <!-- Tutee list content goes here -->
+                            <p>Tutee List content will be displayed here.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" id="footer">
+                    <!-- Request schedule button -->
+                    <button type="button" class="btn btn-success" id="request-schedule">Request</button>
+                    <!-- Cancel request schedule button -->
+                    <button type="button" class="btn btn-danger" id="cancel-request">Cancel</button>
+                    <!-- schedule full button -->
+                    <button type="button" class="btn btn-warning" id="schedule-full" disabled>Full</button>
+                    <!-- schedule past button -->
+                    <button type="button" class="btn btn-secondary" id="schedule-past" disabled>Past</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>

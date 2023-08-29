@@ -6,9 +6,9 @@
     $(document).ready(function() {
         new DataTable('#validation', {
             responsive: true,
-            fixedHeader: true,
+            dom: 'Bfrtip',
             buttons: [
-                'copy', 'excel', 'pdf'
+                'copy', 'csv', 'excel', 'pdf', 'print'
             ]
         })
 
@@ -35,10 +35,22 @@
                 row.append('<td>' + account.name + '</td>');
                 row.append('<td>' + account.department + '</td>');
                 row.append('<td>' + account.year + '</td>');
-                row.append('<td><button class="btn btn-sm btn-primary"><i class="mdi mdi-eye"></i> View</button></td>');
+                // add open modal button
+                row.append('<td><button class="btn btn-sm btn-primary" id="view-cor" data-name="' + account.name + '" data-cor="' + account.cor +'"><i class="mdi mdi-eye"></i></button></td>');
                 row.append('<td>' + account.email + '</td>');
                 row.append('<td><button class="btn btn-sm btn-success" id="approveAccount" data-peerid="' + account.peerid + '"><i class="mdi mdi-account-check"></i></button><button class="btn btn-sm btn-danger" id="denyAccount" data-peerid="' + account.peerid + '"><i class="mdi mdi-account-off"></i></button></td>');
                 tableBody.append(row);
+            });
+            
+            // display the image to modal when view cor button clicked
+            $('#validation').on('click', '#view-cor', function() {
+                var name = $(this).data('name');
+                var cor = $(this).data('cor');
+                //replace the space on name by underscore
+                name = name.replace(/\s/g, '_');
+                $('#viewCORModalLabel').text('View Certificate of Registration of ' + name);
+                $('#viewCORModal').modal('show');
+                $('#cor-container').html('<img src="../../server/COR/' + encodeURIComponent(name) + '/' + cor + '" class="embed-responsive-item">');
             });
         }
 
