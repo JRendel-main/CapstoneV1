@@ -1,17 +1,9 @@
+<?php 
+$peer_id = $_SESSION('peer_id');
+?>
 <script>
     $(document).ready(function() {
-        var data = [
-        {
-            topic: 'Math Tutoring',
-            description: 'Algebra and Geometry',
-            date: '2023-08-15',
-            time: '14:00 - 16:00',
-            availableSlot: '3 / 3',
-            status: '<span class="badge badge-pill badge-danger">Full</span>',
-            option: '<button class="btn btn-success btn-rounded"><i class="fa fa-cog"></i></button>'
-        }
-
-    ];
+        console.log('test');
         $('#pending-table').DataTable({
             data: data,
             columns: [
@@ -22,7 +14,8 @@
                 { data: 'status' },
                 { data: 'option' }
             ],
-
+            responsive: true,
+            
         });
     });
 </script>

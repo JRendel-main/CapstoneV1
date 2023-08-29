@@ -8,7 +8,7 @@ $(document).ready(function() {
             $("#user-fullname").text(data.fullname);
             $("#user-rank").html("Bronze");
             console.log(data);
-            var peer_id = data.peer_id;
+            let peer_id = data.peer_id;
         },
         error: function(data) {
             console.log(data);
