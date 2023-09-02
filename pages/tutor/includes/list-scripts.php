@@ -6,6 +6,40 @@
 <!-- Calendar init -->
 <script>
     $(document).ready(function() {
+        // hide f2f and online div
+        $('#f2f').hide();
+        $('#online').hide();
+
+        // check the mode of learning select if online or f2f
+        $('#mode').change(function() {
+            if ($(this).val() === 'online') {
+                $('#f2f').hide();
+                $('#online').show();
+            } else {
+                $('#f2f').show();
+                $('#online').hide();
+            }
+        });
+
+        // if user click rules on picking place a href
+        $('#place-rules').click(function() {
+            Swal.fire({
+                title: 'Place Selection Rules',
+                html: `
+            <p><strong>1. Choose a Suitable Location:</strong> Select a place that is comfortable and free from distractions.</p>
+            <p><strong>2. Respect Shared Spaces:</strong> If you're in a shared environment, be considerate of others.</p>
+            <p><strong>3. Ensure Good Lighting:</strong> Make sure you have adequate lighting for your tasks.</p>
+            <p><strong>4. Stay Organized:</strong> Keep your workspace tidy and organized.</p>
+            <p><strong>5. Minimize Noise:</strong> Reduce background noise that may disturb your concentration.</p>
+        `,
+                icon: 'info',
+                confirmButtonText: 'Got it!',
+                confirmButtonColor: '#007BFF',
+                customClass: {
+                    title: 'swal-title',
+                },
+            });
+        });
         // get the list of events to ajax
         var events = [];
         $.ajax({
@@ -169,19 +203,92 @@
         $("#add-event-btn").click(function() {
             var topic = $("input[name='topic']").val();
             var description = $("textarea[name='description']").val();
-            var place = $("input[name='place']").val();
-            var start = $("input[name='start']").val();
-            var duration = $("input[name='duration']").val();
             var date = $("input[name='date']").val();
+            // get the value on select mode
+            var mode = $('#mode').val();
+            var max = $("input[name='max']").val();
+
+            // add validation for the form
+            switch (true) {
+                case topic === '':
+                    validationMsg('Topic');
+                    return false;
+                case description === '':
+                    validationMsg('Description');
+                    return false;
+                case date === '':
+                    validationMsg('Date');
+                    return false;
+                case mode === 'online' && $("input[name='online']").val() === '':
+                    validationMsg('Online Link');
+                    return false;
+                case mode === 'f2f' && $("input[name='f2f']").val() === '':
+                    validationMsg('Place');
+                    return false;
+                case max === '':
+                    validationMsg('Max Students');
+                    return false;
+            }
+
+            if (mode === 'online') {
+                var platform = $("select[name='platform']").val();
+                var link = $("input[name='link']").val();
+                var start = $("input[name='start-online']").val();
+                var duration = $("input[name='duration-online']").val();
+                var place = '';
+
+                switch (true) {
+                    case platform === '':
+                        validationMsg('Platform');
+                        return false;
+                    case link === '':
+                        validationMsg('Link');
+                        return false;
+                    case start === '':
+                        validationMsg('Start Time');
+                        return false;
+                    case duration === '':
+                        validationMsg('Duration');
+                        return false;
+                }
+            } else {
+                var place = $("input[name='place']").val();
+                var start = $("input[name='start-f2f']").val();
+                var duration = $("input[name='duration-f2f']").val();
+                var platform = '';
+                var link = '';
+
+                switch (true) {
+                    case place === '':
+                        validationMsg('Place');
+                        return false;
+                    case start === '':
+                        validationMsg('Start Time');
+                        return false;
+                    case duration === '':
+                        validationMsg('Duration');
+                        return false;
+                }
+            }
+            // var topic = $("input[name='topic']").val();
+            // var description = $("textarea[name='description']").val();
+            // var place = $("input[name='place']").val();
+            // var start = $("input[name='start']").val();
+            // var duration = $("input[name='duration']").val();
+            // var date = $("input[name='date']").val();
 
             // Create an object with the schedule data
             var eventData = {
                 title: topic,
                 description: description,
                 place: place,
-                start: start,
+                mode: mode,
+                platform: platform,
+                link: link,
+                date: date,
                 duration: duration,
-                date: date
+                start: start,
+                max_tutee: max
             };
 
             // Use AJAX to send the schedule data to your PHP server
@@ -230,4 +337,14 @@
             $('#add-category').modal('hide');
         }
     });
+    // validation message
+    function validationMsg(topic) {
+        // use swal
+        swal.fire({
+            title: 'Error',
+            text: topic + ' is required',
+            icon: 'error',
+            confirmButtonClass: 'btn btn-confirm mt-2'
+        });
+    };
 </script>

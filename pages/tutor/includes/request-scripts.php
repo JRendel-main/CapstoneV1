@@ -5,7 +5,6 @@ $peer_id = $_SESSION('peer_id');
     $(document).ready(function() {
         console.log('test');
         $('#pending-table').DataTable({
-            data: data,
             columns: [
                 { data: 'topic' },
                 { data: 'date' },
@@ -15,7 +14,6 @@ $peer_id = $_SESSION('peer_id');
                 { data: 'option' }
             ],
             responsive: true,
-            
         });
     });
 </script>

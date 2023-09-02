@@ -24,7 +24,7 @@ if ($result->num_rows > 0) {
         $event['id'] = $row['sched_id'];
         $event['title'] = $row['title'];
         $event['description'] = $row['description'];
-        $event['place'] = $row['place'];
+        $event['mode'] = $row['mode'];
         $event['start'] = $startDateTime; // Use the combined datetime
         $event['duration'] = $row['duration'];
         $event['date'] = $row['date'];

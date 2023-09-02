@@ -42,7 +42,7 @@
                     console.log(tutors);
 
                     // if the bio and about_me is null add placeholder
-                    
+
 
                     // Function to populate expertise options in the select element
                     function populateExpertiseOptions() {

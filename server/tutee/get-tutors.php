@@ -4,7 +4,7 @@ require_once '../db-connect.php';
 $response = array();
 
 $sql = "
-    SELECT a.*, COALESCE(c.bio, 'No bio available') AS bio, COALESCE(c.about_me, 'No information available') AS about_me
+    SELECT a.*, COALESCE(c.bio, 'No bio available') AS bio, COALESCE(c.about_me, 'No information available') AS about_me, COALESCE(c.expertise_id, 'No expertise available') AS expertise_id
     FROM tbl_peerinfo a
     JOIN tbl_auth b ON a.peer_id = b.peer_id
     LEFT JOIN tbl_tutor_profile c ON a.peer_id = c.peer_id
@@ -21,7 +21,8 @@ if(mysqli_num_rows($result) > 0) {
         $fullname = $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'];
         $department = $row['course'];
         $rating = '5';
-        $expertise = ['Web Development', 'Python'];
+        // get the expertise of the tutor seperated by comma and put to array
+        $expertise = explode(',', $row['expertise_id']);
         $bio = $row['bio'];
         $tutee_count = 0;
         $tutor = array(

@@ -4,7 +4,7 @@ $request_id = $_POST['request_id'];
 
 require_once '../db-connect.php';
 
-$sql = "DELETE FROM tbl_request WHERE request_id = $request_id";
+$sql = "UPDATE tbl_request SET request_status = 3 WHERE request_id = '$request_id'";
 $result = mysqli_query($conn, $sql);
 
 if($result) {

@@ -88,7 +88,7 @@
                             <li class="menu-title">Account Settings</li>
                             
                             <li>
-                                <a href="javascript: void(0);">
+                                <a href="edit-profile.php">
                                     <i class="fe-user"></i>
                                     <span> Profile </span>
                                 </a>
