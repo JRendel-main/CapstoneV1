@@ -28,7 +28,7 @@ if (mysqli_num_rows($result) > 0) {
         $time_now = date("H:i:s");
 
         // only show on table where the date is less than or equal to the date now
-        $sql3 = "SELECT * FROM tbl_schedules WHERE sched_id = $schedule_id AND date <= '$date_now'";
+        $sql3 = "SELECT * FROM tbl_schedules WHERE sched_id = '$schedule_id' AND date <= '$date_now;'";
         $result3 = mysqli_query($conn, $sql3);
         $row3 = mysqli_fetch_assoc($result3);
 
@@ -58,7 +58,7 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     $data[] = array(
         'message' => 'No requests found.',
-        'status' => 'Failed'
+        'stats' => 'Failed'
     );
 }
 echo json_encode($data);

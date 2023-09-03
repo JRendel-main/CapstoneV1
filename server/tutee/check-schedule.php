@@ -20,7 +20,7 @@ if(mysqli_num_rows($result) > 0) {
     $sql2 = "SELECT max_tutee FROM tbl_schedules WHERE sched_id = $sched_id";
     $result2 = mysqli_query($conn, $sql2);
     
-    $sql3 = "SELECT COUNT(*) AS tutee_count FROM tbl_request WHERE tutee_id = $peer_id AND request_status != 0";
+    $sql3 = "SELECT COUNT(*) AS tutee_count FROM tbl_request WHERE tutee_id = $peer_id AND request_status = 1 AND schedule_id = $sched_id";
     $result3 = mysqli_query($conn, $sql3);
 
     if(mysqli_num_rows($result2) > 0) {

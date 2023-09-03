@@ -3,74 +3,71 @@ require_once '../db-connect.php';
 
 $peer_id = $_POST['peer_id'];
 
-// Construct the SQL query to fetch tutor information and schedules
-$sql = "SELECT p.*, t.about_me, t.bio, s.* 
-        FROM tbl_peerinfo p
-        LEFT JOIN tbl_tutor_profile t ON p.peer_id = t.peer_id
-        LEFT JOIN tbl_schedules s ON p.peer_id = s.peer_id
-        WHERE p.peer_id = $peer_id";
+$sql = "SELECT * FROM tbl_peerinfo WHERE peer_id = '$peer_id'";
+$result = $conn->query($sql);
 
-$result = mysqli_query($conn, $sql);
-
-$response = array(
-    'success' => false,
-    'message' => 'No tutor found.'
-);
+$response = array();
+$response['error'] = false;
 
 if (mysqli_num_rows($result) > 0) {
-    $tutorInfo = array();
-    $schedules = array();
-
     while ($row = mysqli_fetch_assoc($result)) {
-        if (empty($tutorInfo)) {
-            // Extract tutor profile information
-            $fullname = $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'];
-            $department = $row['course'];
-            $contactnum = $row['contactnum'];
-            $email = $row['email'];
-            $gender = $row['gender'];
-            $dob = $row['dob'];
+        // store data in tutor
+        $tutor = array();
+        $tutor['peer_id'] = $row['peer_id'];
+        $tutor['firstname'] = $row['firstname'];
+        $tutor['middlename'] = $row['middlename'];
+        $tutor['lastname'] = $row['lastname'];
+        $tutor['email'] = $row['email'];
+        $tutor['contactnum'] = $row['contactnum'];
+        $tutor['course'] = $row['course'];
+        $tutor['year'] = $row['year'];
 
-            // Extract tutor profile information (if available)
-            $about_me = isset($row['about_me']) ? $row['about_me'] : 'About me is not set yet.';
-            $bio = isset($row['bio']) ? $row['bio'] : 'Bio is not set yet.';
-
-            $tutorInfo = array(
-                'tutor_id' => $peer_id,
-                'fullname' => $fullname,
-                'department' => $department,
-                'contactnum' => $contactnum,
-                'email' => $email,
-                'gender' => $gender,
-                'dob' => $dob,
-                'about' => $about_me,
-                'bio' => $bio
-            );
+        $sql3 = "SELECT * FROM tbl_tutor_profile WHERE peer_id = '$peer_id'";
+        $result3 = $conn->query($sql3);
+        if (mysqli_num_rows($result3) > 0) {
+            $row3 = mysqli_fetch_assoc($result3);
+            $tutor['bio'] = $row3['bio'];
+            $tutor['about_me'] = $row3['about_me'];
+        } else {
+            $tutor['bio'] = "Bio has not been setup yet";
+            $tutor['about_me'] = "About me has not been setup yet";
         }
+        $tutor['rating'] = '4.5';
+        // store tutor in response
+        $response['tutor'] = $tutor;
 
-        if (!empty($row['sched_id'])) {
-            // Extract schedule information
-            $schedule = array(
-                'sched_id' => $row['sched_id'],
-                'title' => $row['title'],
-                'description' => $row['description'],
-                'start' => $row['start'],
-                'place' => $row['place'],
-                'duration' => $row['duration'],
-                'max_tutee' => $row['max_tutee'],
-                'date' => $row['date']
-            );
-            $schedules[] = $schedule;
+        $sql2 = "SELECT * FROM tbl_schedules WHERE peer_id = '$peer_id'";
+        $result2 = $conn->query($sql2);
+
+        if (mysqli_num_rows($result2) > 0) {
+            while ($row2 = mysqli_fetch_assoc($result2)) {
+                // store every schedule in array schedule
+                $schedule = array();
+                $schedule = $row2;
+                // get the end by adding the start time and duration(hours)
+                $end = date('H:i:s', strtotime($schedule['start'] . ' + ' . $schedule['duration'] . ' hours'));
+                // store the end in schedule
+                $schedule['end'] = $end;
+                $schedules[] = $schedule;
+
+                // get the mode
+                $mode = $schedule['mode'];
+                // if mode is online
+                if ($mode == '0') {
+                    // get the 
+                } else {
+                }
+
+                // store schedules in response
+                $response['schedules'] = $schedules;
+            }
+        } else {
+            $response['schedules'] = '';
         }
     }
-
-    $response = array(
-        'success' => true,
-        'tutor' => $tutorInfo,
-        'schedules' => $schedules
-    );
+} else {
+    $response['error'] = true;
+    $response['message'] = "No tutor found";
 }
-
 // send back the JSON response to AJAX
 echo json_encode($response);
-?>

@@ -50,10 +50,18 @@ if ($mode == 'online') {
     $mode = 1;
     $sql = "INSERT INTO tbl_schedules (peer_id, title, description, mode, start, duration, date, max_tutee) VALUES ($peer_id, '$title', '$description', $mode, '$start', $duration, '$date', $max_tutee)";
     if ($conn->query($sql) === TRUE) {
-        $sql2 = "INSERT INTO tbl_online (sched_id, platform, link) VALUES ($conn->insert_id, '$platform', '$link')";
+        $sched_id = $conn->insert_id;
+        $sql2 = "INSERT INTO tbl_online (sched_id, platform, link) VALUES ($sched_id, '$platform', '$link')";
         if ($conn->query($sql2) === TRUE) {
-            $response['status'] = 'success';
-            $response['message'] = 'The schedule was added successfully';
+            $mode_id = $conn->insert_id;
+            $sql3 = "UPDATE tbl_schedules SET mode_id = $mode_id WHERE sched_id = $sched_id";
+            if ($conn->query($sql3) === TRUE) {
+                $response['status'] = 'success';
+                $response['message'] = 'The schedule was added successfully';
+            } else {
+                $response['status'] = 'error';
+                $response['message'] = 'There was an error adding the schedule';
+            }
         } else {
             $response['status'] = 'error';
             $response['message'] = 'There was an error adding the schedule';
@@ -67,10 +75,18 @@ if ($mode == 'online') {
     $mode = 0;
     $sql = "INSERT INTO tbl_schedules (peer_id, title, description, mode, start, duration, date, max_tutee) VALUES ($peer_id, '$title', '$description', $mode, '$start', $duration, '$date', $max_tutee)";
     if ($conn->query($sql) === TRUE) {
-        $sql2 = "INSERT INTO tbl_f2f (sched_id,place) VALUES ($conn->insert_id, '$place')";
+        $sched_id = $conn->insert_id;
+        $sql2 = "INSERT INTO tbl_f2f (sched_id,place) VALUES ($sched_id, '$place')";
         if ($conn->query($sql2) === TRUE) {
-            $response['status'] = 'success';
-            $response['message'] = 'The schedule was added successfully';
+            $mode_id = $conn->insert_id;
+            $sql3 = "UPDATE tbl_schedules SET mode_id = $mode_id WHERE sched_id = $sched_id";
+            if ($conn->query($sql3) === TRUE) {
+                $response['status'] = 'success';
+                $response['message'] = 'The schedule was added successfully';
+            } else {
+                $response['status'] = 'error';
+                $response['message'] = 'There was an error adding the schedule';
+            }
         } else {
             $response['status'] = 'error';
             $response['message'] = 'There was an error adding the schedule';
@@ -86,4 +102,3 @@ if ($mode == 'online') {
 echo json_encode($response);
 $conn->close();
 ?>
-

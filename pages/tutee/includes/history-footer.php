@@ -5,46 +5,84 @@
             method: 'GET',
             dataType: 'json',
             success: function(data) {
-                $('#history-list').DataTable({
-                    responsive: true,
-                    language: {
-                        search: "_INPUT_",
-                        searchPlaceholder: "Search history",
-                    },
-                    "order": [
-                        [2, "asc"]
-                    ],
-                    "columnDefs": [{
-                        "targets": [0, 1, 2, 3, 4, 5],
-                        "className": "text-center"
-                    }],
-                    "drawCallback": function(settings) {
-                        $('[data-toggle="tooltip"]').tooltip();
-                    },
-                    data: data,
-                    columns: [
-                        {
-                            data: "tutorName",
-                            title: "Tutor Name"
+                if (data.stats = 'Failed') {
+                    $('#history-list').DataTable({
+                        responsive: true,
+                        columns: [{
+                                data: "tutorName",
+                                title: "Tutor Name"
+                            },
+                            {
+                                data: "topic",
+                                title: "Topic"
+                            },
+                            {
+                                data: "mode",
+                                title: "Mode Of Tutoring"
+                            },
+                            {
+                                data: "date-time",
+                                title: "Date & Time"
+                            },
+                            {
+                                data: "status",
+                                title: "Status"
+                            },
+                            {
+                                data: "review",
+                                title: "Review & Feedback"
+                            }
+                        ],
+                        "columnDefs": [{
+                            "targets": [0, 1, 2, 3, 4, 5],
+                            "className": "text-center"
+                        }],
+                    });
+                } else {
+                    $('#history-list').DataTable({
+                        responsive: true,
+                        language: {
+                            search: "_INPUT_",
+                            searchPlaceholder: "Search history",
                         },
-                        {
-                            data: "topic",
-                            title: "Topic"
+                        "order": [
+                            [2, "asc"]
+                        ],
+                        "columnDefs": [{
+                            "targets": [0, 1, 2, 3, 4, 5],
+                            "className": "text-center"
+                        }],
+                        "drawCallback": function(settings) {
+                            $('[data-toggle="tooltip"]').tooltip();
                         },
-                        {
-                            data: "date-time",
-                            title: "Date & Time"
-                        },
-                        {
-                            data: "status",
-                            title: "Status"
-                        },
-                        {
-                            data: "review",
-                            title: "Review & Feedback"
-                        }
-                    ]
-                });
+                        data: data,
+                        columns: [{
+                                data: "tutorName",
+                                title: "Tutor Name"
+                            },
+                            {
+                                data: "topic",
+                                title: "Topic"
+                            },
+                            {
+                                data: "mode",
+                                title: "Mode Of Tutoring"
+                            },
+                            {
+                                data: "date-time",
+                                title: "Date & Time"
+                            },
+                            {
+                                data: "status",
+                                title: "Status"
+                            },
+                            {
+                                data: "review",
+                                title: "Review & Feedback"
+                            }
+                        ]
+                    });
+                }
             },
             error: function(xhr, status, error) {
                 swal.fire({

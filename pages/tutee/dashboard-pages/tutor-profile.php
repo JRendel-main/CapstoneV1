@@ -42,86 +42,9 @@
 
                             <p class="text-muted mb-1 font-13"><strong>Location :</strong> <span class="ml-2"></span></p>
                         </div>
-
-                        <ul class="social-list list-inline mt-3 mb-0">
-                            <li class="list-inline-item">
-                                <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i class="mdi mdi-facebook"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="mdi mdi-google"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="mdi mdi-twitter"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github-circle"></i></a>
-                            </li>
-                        </ul>
                     </div> <!-- end card-box -->
 
                     <div class="card-box">
-                        <h4 class="header-title mb-3">Inbox</h4>
-
-                        <div class="inbox-widget slimscroll" style="max-height: 310px;">
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/user-2.jpg" class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Tomaslau</p>
-                                <p class="inbox-item-text">I've finished it! See you so...</p>
-                                <p class="inbox-item-date">
-                                    <a href="javascript:(0);" class="btn btn-sm btn-link text-info font-13"> Reply </a>
-                                </p>
-                            </div>
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/user-3.jpg" class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Stillnotdavid</p>
-                                <p class="inbox-item-text">This theme is awesome!</p>
-                                <p class="inbox-item-date">
-                                    <a href="javascript:(0);" class="btn btn-sm btn-link text-info font-13"> Reply </a>
-                                </p>
-                            </div>
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/user-4.jpg" class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Kurafire</p>
-                                <p class="inbox-item-text">Nice to meet you</p>
-                                <p class="inbox-item-date">
-                                    <a href="javascript:(0);" class="btn btn-sm btn-link text-info font-13"> Reply </a>
-                                </p>
-                            </div>
-
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/user-5.jpg" class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Shahedk</p>
-                                <p class="inbox-item-text">Hey! there I'm available...</p>
-                                <p class="inbox-item-date">
-                                    <a href="javascript:(0);" class="btn btn-sm btn-link text-info font-13"> Reply </a>
-                                </p>
-                            </div>
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/user-6.jpg" class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Adhamdannaway</p>
-                                <p class="inbox-item-text">This theme is awesome!</p>
-                                <p class="inbox-item-date">
-                                    <a href="javascript:(0);" class="btn btn-sm btn-link text-info font-13"> Reply </a>
-                                </p>
-                            </div>
-
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/user-3.jpg" class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Stillnotdavid</p>
-                                <p class="inbox-item-text">This theme is awesome!</p>
-                                <p class="inbox-item-date">
-                                    <a href="javascript:(0);" class="btn btn-sm btn-link text-info font-13"> Reply </a>
-                                </p>
-                            </div>
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="assets/images/users/user-4.jpg" class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Kurafire</p>
-                                <p class="inbox-item-text">Nice to meet you</p>
-                                <p class="inbox-item-date">
-                                    <a href="javascript:(0);" class="btn btn-sm btn-link text-info font-13"> Reply </a>
-                                </p>
-                            </div>
-                        </div> <!-- end inbox-widget -->
 
                     </div> <!-- end card-box-->
 
@@ -148,41 +71,6 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane" id="history">
-
-                                <h5 class="mb-4 text-uppercase"><i class="mdi mdi-briefcase mr-1"></i>
-                                    Experience</h5>
-
-                                <ul class="list-unstyled timeline-sm">
-                                    <li class="timeline-sm-item">
-                                        <span class="timeline-sm-date">2015 - 18</span>
-                                        <h5 class="mt-0 mb-1">Lead designer / Developer</h5>
-                                        <p>websitename.com</p>
-                                        <p class="text-muted mt-2">Everyone realizes why a new common language
-                                            would be desirable: one could refuse to pay expensive translators.
-                                            To achieve this, it would be necessary to have uniform grammar,
-                                            pronunciation and more common words.</p>
-
-                                    </li>
-                                    <li class="timeline-sm-item">
-                                        <span class="timeline-sm-date">2012 - 15</span>
-                                        <h5 class="mt-0 mb-1">Senior Graphic Designer</h5>
-                                        <p>Software Inc.</p>
-                                        <p class="text-muted mt-2">If several languages coalesce, the grammar
-                                            of the resulting language is more simple and regular than that of
-                                            the individual languages. The new common language will be more
-                                            simple and regular than the existing European languages.</p>
-                                    </li>
-                                    <li class="timeline-sm-item">
-                                        <span class="timeline-sm-date">2010 - 12</span>
-                                        <h5 class="mt-0 mb-1">Graphic Designer</h5>
-                                        <p>Coderthemes LLP</p>
-                                        <p class="text-muted mt-2 mb-0">The European languages are members of
-                                            the same family. Their separate existence is a myth. For science
-                                            music sport etc, Europe uses the same vocabulary. The languages
-                                            only differ in their grammar their pronunciation.</p>
-                                    </li>
-                                </ul>
-
                                 <h5 class="mb-3 mt-4 text-uppercase"><i class="mdi mdi-cards-variant mr-1"></i>
                                     Projects</h5>
                                 <div class="table-responsive">
@@ -238,7 +126,6 @@
                                                 <td><span class="badge badge-warning">Coming soon</span></td>
                                                 <td>Karel Auberjo</td>
                                             </tr>
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -280,7 +167,7 @@
 
     <!-- Schedule Details Modal -->
     <div class="modal fade" id="schedule-modal" tabindex="-1" aria-labelledby="schedule-modal-label" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-success">
                     <h5 class="modal-title" id="modal-title">Schedule Details</h5>
@@ -301,45 +188,46 @@
                     <div class="tab-content text-center" id="scheduleTabsContent">
                         <!-- Schedule Details Tab -->
                         <div class="tab-pane fade show active" id="schedule-details" role="tabpanel" aria-labelledby="schedule-details-tab">
-                            <!-- use readonly form to display schedule details -->
-                            <form>
-                                <div class="row mb-3">
-                                    <label for="modal-date" class="col-sm-2 col-form-label">Date</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="modal-date" value="[Schedule Date]">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="modal-time" class="col-sm-2 col-form-label">Time</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="modal-time" value="[Schedule Time]">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="modal-topic" class="col-sm-2 col-form-label">Topic</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="modal-topic" value="[Schedule Topic]">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="modal-place" class="col-sm-2 col-form-label">Place</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="modal-place" value="[Schedule Place]">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="modal-description" class="col-sm-2 col-form-label">Description</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="modal-description" value="[Schedule Description]">
-                                    </div>
-                                </div>
-                            </form>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card-box">
+                                        <h4 class="header-title mb-3" id="schedule-title">[Schedule Title]</h4>
+                                        <!-- for description title -->
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <!-- description -->
+                                                <p id="schedule-description">[Schedule Description]</p>
+                                            </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-borderless table-nowrap mb-0">
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">Date</th>
+                                                        <td id="schedule-date">[Schedule Date]</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Time</th>
+                                                        <td id="schedule-time">[Schedule Time]</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Tutoring Mode</th>
+                                                        <td id="schedule-mode">[Schedule Mode]</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Capacity</th>
+                                                        <td id="schedule-capacity">[Schedule Capacity]</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div> <!-- end card-box -->
+                                </div> <!-- end col -->
+                            </div> <!-- end row -->
                         </div>
 
                         <!-- Tutee List Tab -->
                         <div class="tab-pane fade" id="tutee-list" role="tabpanel" aria-labelledby="tutee-list-tab">
-                            <!-- Tutee list content goes here -->
-                            <p>Tutee List content will be displayed here.</p>
+
                         </div>
                     </div>
                 </div>
@@ -352,7 +240,6 @@
                     <button type="button" class="btn btn-warning" id="schedule-full" disabled>Full</button>
                     <!-- schedule past button -->
                     <button type="button" class="btn btn-secondary" id="schedule-past" disabled>Past</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
