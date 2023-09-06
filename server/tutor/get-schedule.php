@@ -29,6 +29,29 @@ if ($result->num_rows > 0) {
         $event['duration'] = $row['duration'];
         $event['date'] = $row['date'];
         $event['end'] = $end;
+        $event['max'] = $row['max_tutee'];
+
+        if ($row['mode'] == 1) {
+            $sql2 = "SELECT * FROM tbl_online WHERE sched_id = " . $row['sched_id'];
+            $result2 = $conn->query($sql2);
+            if ($result2->num_rows > 0) {
+                $row2 = $result2->fetch_assoc();
+                $event['platform'] = $row2['platform'];
+                $event['link'] = $row2['link'];
+            } else {
+                $event['platform'] = '';
+                $event['link'] = '';
+            }
+        } else {
+            $sql2 = "SELECT * FROM tbl_f2f WHERE sched_id = " . $row['sched_id'];
+            $result2 = $conn->query($sql2);
+            if ($result2->num_rows > 0) {
+                $row2 = $result2->fetch_assoc();
+                $event['place'] = $row2['place'];
+            } else {
+                $event['place'] = '';
+            }
+        }
     
         // Merge the event array into the return array
         array_push($events, $event);

@@ -80,6 +80,53 @@
                         $('input[name="date"]').val(date.format('YYYY-MM-DD')); // Set the date value
                         $('input[name="topic"]').focus(); // Set focus on the first input field
                     },
+                    eventClick: function(event) {
+                        // open edit schedule modal
+                        $('#edit-schedule-modal').modal('show');
+                        // hide online and f2f div
+
+                        // set the values of the form
+                        $('#edit-schedule-modal input[name="sched_id"]').val(event.id);
+                        $('#edit-schedule-modal input[name="edit-topic"]').val(event.title);
+                        $('#edit-schedule-modal textarea[name="edit-description"]').val(event.description);
+                        $('#edit-schedule-modal input[name="edit-date"]').val(event.date);
+
+                        var edit_mode = event.mode;
+                        var startTime = moment(event.start).format('HH:mm');
+                        console.log(event.date);
+
+                        if (edit_mode == 0) {
+                            // hide the online div
+                            $('#edit-online').hide();
+                            // show the f2f div
+                            $('#edit-f2f').show();
+
+                            // get the start time on start
+
+
+                            // set the values of the f2f div
+                            $('#edit-schedule-modal select[name="edit-mode"]').val("f2f");
+                            $('#edit-schedule-modal input[name="edit-max"]').val(event.max);
+                            $('#edit-schedule-modal input[name="edit-place"]').val(event.place);
+                            $('#edit-schedule-modal input[name="edit-start-f2f"]').val(startTime);
+                            $('#edit-schedule-modal input[name="edit-duration-f2f"]').val(event.duration);
+
+                        } else if (edit_mode == 1) {
+                            // hide the f2f div
+                            $('#edit-f2f').hide();
+                            // show the online div
+                            $('#edit-online').show();
+
+                            // set the values of the online div
+                            $('#edit-schedule-modal select[name="edit-mode"]').val("online");
+                            $('#edit-schedule-modal input[name="edit-max"]').val(event.max);
+                            $('#edit-schedule-modal select[name="edit-platform"]').val(event.platform);
+                            $('#edit-schedule-modal input[name="edit-link"]').val(event.link);
+                            $('#edit-schedule-modal input[name="edit-start-online"]').val(startTime);
+                            $('#edit-schedule-modal input[name="edit-duration-online"]').val(event.duration);
+                        }
+
+                    }
                 });
 
                 function checkConflicts(event) {
@@ -92,16 +139,95 @@
                 // add animateio
             }
         });
-        // when edit button clicked, show the edit form
+
+        // get the values of the form and save it to the database
         $('#edit-event-btn').click(function() {
-            $('#event-title').prop('disabled', false);
-            $('#event-description').prop('disabled', false);
-            $('#event-place').prop('disabled', false);
-            $('#event-date').prop('disabled', false);
-            $('#event-time').prop('disabled', false);
-            $('#edit-event-btn').addClass('d-none');
-            $('#save-event-btn').removeClass('d-none');
-            $('#delete-event-btn').removeClass('d-none');
+            // get the values of the form
+            var sched_id = $('#edit-schedule-modal input[name="sched_id"]').val();
+            var topic = $('#edit-schedule-modal input[name="edit-topic"]').val();
+            var description = $('#edit-schedule-modal textarea[name="edit-description"]').val();
+            var date = $('#edit-schedule-modal input[name="edit-date"]').val();
+            var mode = $('#edit-schedule-modal select[name="edit-mode"]').val();
+            var max = $('#edit-schedule-modal input[name="edit-max"]').val();
+
+            if (mode == 'online') {
+                var platform = $('#edit-schedule-modal select[name="edit-platform"]').val();
+                var link = $('#edit-schedule-modal input[name="edit-link"]').val();
+                var start = $('#edit-schedule-modal input[name="edit-start-online"]').val();
+                var duration = $('#edit-schedule-modal input[name="edit-duration-online"]').val();
+                var place = '';
+            } else {
+                var place = $('#edit-schedule-modal input[name="edit-place"]').val();
+                var start = $('#edit-schedule-modal input[name="edit-start-f2f"]').val();
+                var duration = $('#edit-schedule-modal input[name="edit-duration-f2f"]').val();
+                var platform = '';
+                var link = '';
+            }
+
+            // add swal confirmation first
+            swal.fire({
+                title: 'Are you sure?',
+                text: 'You are about to edit this schedule',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonClass: 'btn btn-confirm mt-2',
+                cancelButtonClass: 'btn btn-cancel ml-2 mt-2',
+                confirmButtonText: 'Yes, edit it!'
+            }).then(function(result) {
+                if (result.value) {
+                    // if ok button clicked, send the data to the database
+                    var eventData = {
+                        sched_id: sched_id,
+                        title: topic,
+                        description: description,
+                        place: place,
+                        mode: mode,
+                        platform: platform,
+                        link: link,
+                        date: date,
+                        duration: duration,
+                        start: start,
+                        max_tutee: max
+                    };
+                    $.ajax({
+                        url: '../../server/tutor/edit-schedule.php',
+                        type: 'POST',
+                        data: eventData,
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.status === 'success') {
+                                // get teh response and get the message use swal and refresh the calendar and close modal if ok button clicked
+                                swal.fire({
+                                    title: 'Success',
+                                    text: response.message,
+                                    icon: 'success'
+                                }).then(function() {
+                                    $('#calendar').fullCalendar('refetchEvents');
+                                    $('#event-details-form').removeClass('d-block');
+                                    $('#event-details-form').addClass('d-none');
+                                });
+                            } else {
+                                // Handle error, e.g., show an error message
+                                swal.fire({
+                                    title: 'Error',
+                                    text: response.message,
+                                    icon: 'error',
+                                    confirmButtonClass: 'btn btn-confirm mt-2'
+                                });
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle AJAX error, e.g., show an error message
+                            swal.fire({
+                                title: 'Error',
+                                text: 'There was an error editing the schedule',
+                                icon: 'error',
+                                confirmButtonClass: 'btn btn-confirm mt-2'
+                            });
+                        }
+                    });
+                }
+            });
         });
 
         // when delete button clicked, delete the event from the database

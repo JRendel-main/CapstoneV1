@@ -22,44 +22,8 @@
                                         <i class="mdi mdi-plus-circle-outline"></i> Add New Schedule
                                     </a>
 
-                                    <div class="mt-5 d-none d-xl-block">
-                                        <h5 class="text-center">Edit Schedule</h5>
+                                    <!-- This section is for listed schedule list -->
 
-                                        <!-- Form for viewing the schedule when the event clicked -->
-                                        <form id="event-details-form" class="d-none">
-                                            <div class="form-group">
-                                                <label for="event-title">Title</label>
-                                                <input type="text" id="event-title" class="form-control" placeholder="Schedule Topic" disabled>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="event-description">Description</label>
-                                                <textarea id="event-description" class="form-control" placeholder="Schedule Description" disabled></textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="event-place">Place</label>
-                                                <input type="text" id="event-place" class="form-control" disabled>
-                                                <!-- Add notes for selecting place for scheduling -->
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="event-date">Date</label>
-                                                <input type="text" id="event-date" class="form-control" disabled>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="event-time">Time</label>
-                                                <input type="text" id="event-time" class="form-control" disabled>
-                                            </div>
-                                            <div class="btn-group">
-                                                <div class="col-mb-6">
-                                                    <button type="button" class="btn btn-primary" id="edit-event-btn">Edit</button>
-                                                    <button type="button" class="btn btn-success" id="save-event-btn">Save</button>
-                                                </div>
-                                                <div class="col-mb-6">
-                                                    <button type="button" class="btn btn-danger" id="delete-event-btn">Delete</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
                                 </div> <!-- end col-->
                                 <div class="col-lg-9">
                                     <div id="calendar"></div>
@@ -178,6 +142,98 @@
                     </div>
                     <!-- end modal-->
                 </div>
+                <!-- Edit Modal -->
+                <div class="modal fade" id="edit-schedule-modal" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Edit Schedule</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="modal-body p-3">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <!-- Add hidden value for sched id -->
+                                            <input type="hidden" name="sched_id" id="edit-sched-id">
+                                            <div class="form-group">
+                                                <label class="control-label">Topic</label>
+                                                <input class="form-control form-white" placeholder="Schedule Title" type="text" name="edit-topic">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Description</label>
+                                                <textarea class="form-control form-white" placeholder="Schedule Description" name="edit-description"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Date</label>
+                                                <input class="form-control form-white" readonly id="edit-datepicker" placeholder="Event date" type="date" name="edit-date">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Mode of Tutoring</label>
+                                                <select class="form-control form-white" name="edit-mode" id="edit-mode">
+                                                    <option selected disabled>Select mode of learning</option>
+                                                    <option value="online">Online Tutoring</option>
+                                                    <option value="f2f">Face-to-Face</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">How many Tutees can enroll?</label>
+                                                <input class="form-control form-white" placeholder="Number of Tutees" type="number" name="edit-max">
+                                                <p class="header-description"><i class="fe-info"></i><i> Maximum of 10 tutees only</i></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="edit-f2f">
+                                            <div class="form-group">
+                                                <label class="control-label">Place</label>
+                                                <input class="form-control form-white" placeholder="Select Place" type="text" name="edit-place">
+                                                <p class="header-description"><i class="fe-info"></i><i> Please click <a href="#" id="place-rules">here</a> to see the rules for selecting the place</i></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Start</label>
+                                                <input class="form-control form-white" readonly placeholder="Event start" type="time" name="edit-start-f2f">
+                                                <p class="header-description"><i class="fe-info"></i><i> Set schedules between 8:00 am - 5:00 pm only</i></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Duration</label>
+                                                <input class="form-control form-white" placeholder="Duration of Session" type="number" name="edit-duration-f2f">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="edit-online">
+                                            <div class="form-group">
+                                                <label class="control-label">Select one platform:</label>
+                                                <select class="form-control form-white" name="edit-platform">
+                                                    <option value="zoom">Zoom Meeting</option>
+                                                    <option value="googlemeet">Google Meet</option>
+                                                    <option value="messenger">Facebook Messenger</option>
+                                                    <option value="discord">Discord</option>
+                                                    <option value="skype">Skype</option>
+                                                    <option value="others">Others</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Link:</label>
+                                                <input class="form-control form-white" placeholder="Link for the platform" type="url" name="edit-link">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Start</label>
+                                                <input class="form-control form-white" readonly placeholder="Event start" type="time" name="edit-start-online">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Duration</label>
+                                                <input class="form-control form-white" placeholder="Duration of Session" type="number" name="edit-duration-online">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer text-right">
+                                <button type="button" class="btn btn-success save-category" id="edit-event-btn">Save Changes</button>
+                            </div>
+                        </div> <!-- end modal-content-->
+                    </div> <!-- end modal dialog-->
+                </div>
+
+
             </div>
         </div>
     </div>

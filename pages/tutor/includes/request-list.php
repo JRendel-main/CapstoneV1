@@ -3,6 +3,10 @@ $peer_id = $_SESSION['peer_id'];
 ?>
 <script>
     $(document).ready(function() {
+        // Trigger a click event on the "pending" tab link
+        $('#pending-tab').tab('show');
+
+        // Initialize the other tabs as before
         var dataTableInitialized = {
             'pending': false,
             'approved': false,
@@ -72,7 +76,11 @@ $peer_id = $_SESSION['peer_id'];
                             data: 'pending'
                         }
                     ],
-                    data: data
+                    data: data,
+                    // sort by date
+                    "order": [
+                        [1, "desc"]
+                    ],
 
                 });
                 // if the view button is clicked
