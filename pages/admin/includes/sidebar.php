@@ -46,6 +46,14 @@
 
                         <li class="menu-title">Admin Settings</li>
 
+                        <!-- Course settings -->
+                        <li>
+                            <a href="course-list.php">
+                                <i class="fe-book"></i>
+                                <span> Course Settings </span>
+                            </a>
+                        </li>
+
                         <!-- Archive list -->
                         <li>
                             <a href="{{ route('archive') }}">
