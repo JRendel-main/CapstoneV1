@@ -2,37 +2,121 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
 <script>
-    console.log("dashboard-scripts.php loaded");
     $(document).ready(function() {
         $.ajax({
-            
-        });
-
-        $("#name").text(tutorName[0].name);
-        $("#pending-count").text(tutorName[0].pendingReq);
-        $("#upcoming-count").text(tutorName[0].upcoming);
-
-
-        // data table
-        $('#today-sched').DataTable({
-            "paging": false,
-            "searching": false,
-            "ordering": true,
-            "info": false,
-            "order": [[ 0, "desc" ]],
-            "info": true,
-            "responsive": true,
-            // remove the "show entries" dropdown
-            "lengthChange": false,
-            // remove the "showing entries" text
-            "language": {
-                "info": ""
+            url: "../../server/tutee/get-tutee-dashboard.php",
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                // console.log(data);
+                // get tutor name
+                var name = data.tuteeInfo.name;
+                var pendingReq = data.tuteeInfo.pendingReq;
+                var upcoming = data.tuteeInfo.upcoming;
+                // display tutor name
+                $('#name').html(name);
+                // display pending requests
+                $('#pending-count').html(pendingReq);
+                // display upcoming sessions
+                $('#upcoming-count').html(upcoming);
+                // data table
+                $('#today-sched').DataTable({
+                    columns: [
+                        { 
+                            title: "Start",
+                            data: 'start' 
+                        },
+                        { 
+                            title: "Title",
+                            data: 'title' 
+                        },
+                        {
+                            title: "Mode",
+                            data: 'mode' 
+                        },
+                        {
+                            title: "Duration",
+                            data: 'duration' },
+                        {
+                            title: "Max Tutee",
+                            data: 'max_tutee' }
+                    ],
+                    "paging": false,
+                    "searching": false,
+                    "ordering": true,
+                    "info": false,
+                    "order": [
+                        [0, "desc"]
+                    ],
+                    "info": true,
+                    "responsive": true,
+                    // remove the "show entries" dropdown
+                    "lengthChange": false,
+                    // remove the "showing entries" text
+                    "language": {
+                        "info": ""
+                    },
+                    "columnDefs": [{
+                        "orderable": false,
+                        "targets": 3
+                    }],
+                    // remove scroll-x
+                    "scrollX": false,
+                    data: data.todaySched,
+                    responsive: true
+                });
+                // data table
+                $('#upcoming-sched').DataTable({
+                    columns: [
+                        {
+                            title: "Week",
+                            data: 'week'
+                        },
+                        { 
+                            title: "Start",
+                            data: 'start' 
+                        },
+                        { 
+                            title: "Title",
+                            data: 'title' 
+                        },
+                        {
+                            title: "Mode",
+                            data: 'mode' 
+                        },
+                        {
+                            title: "Duration",
+                            data: 'duration' },
+                        {
+                            title: "Status",
+                            data: 'status'
+                        }
+                    ],
+                    "paging": false,
+                    "searching": false,
+                    "ordering": true,
+                    "info": false,
+                    "order": [
+                        [0, "desc"]
+                    ],
+                    "info": true,
+                    "responsive": true,
+                    // remove the "show entries" dropdown
+                    "lengthChange": false,
+                    // remove the "showing entries" text
+                    "language": {
+                        "info": ""
+                    },
+                    "columnDefs": [{
+                        "orderable": false,
+                        "targets": 3
+                    }],
+                    // remove scroll-x
+                    "scrollX": false,
+                    data: data.weekSched,
+                    responsive: true
+                }); 
             },
-            "columnDefs": [
-                { "orderable": false, "targets": 3 }
-            ],
-            // remove scroll-x
-            "scrollX": false,
         });
     });
 </script>

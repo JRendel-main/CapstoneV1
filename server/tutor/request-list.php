@@ -34,6 +34,7 @@ if(mysqli_num_rows($result) > 0) {
         } else {
             $availableSlot = '0 / ' . $max_tutee;
             $status = '<span class="badge badge-danger">Unavailable</span>';
+            $enrolled = $num_request;
         }
         // check if the schedule is past or not use date and time
         $current_date = date('Y-m-d');
