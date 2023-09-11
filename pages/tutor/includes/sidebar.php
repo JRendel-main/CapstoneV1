@@ -104,6 +104,13 @@
                         </li>
 
                         <li>
+                            <a href="rank.php">
+                                <i class="fe-star"></i>
+                                <span> Ranks </span>
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="javascript: void(0);">
                                 <i class="fe-settings"></i>
                                 <span> Settings </span>

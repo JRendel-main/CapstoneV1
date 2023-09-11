@@ -17,7 +17,7 @@
 
                         <!-- Complains and emails -->
                         <li>
-                            <a href="javascript: void(0);">
+                            <a href="logs.php">
                                 <i class="fe-archive"></i>
                                 <span> Logs </span>
                             </a>
