@@ -140,10 +140,7 @@
                 <div class="col-lg-6">
                     <div class="card-box" dir="ltr">
                         <h4 class="header-title mb-3">Numbers of Users per Department</h4>
-                        <div id="morris-donut-example" style="height: 350px;" class="morris-chart"></div>
-                        <div class="text-center">
-                            <p class="text-muted font-15 font-family-secondary mb-0" id="department-list"></p>
-                        </div>
+                        <div id="course-chart"></div>
                     </div> <!-- end card-box-->
                 </div>
 

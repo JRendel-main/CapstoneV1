@@ -34,7 +34,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     $row2 = mysqli_fetch_assoc($result2);
     $tutor_name = $row2['firstname'] . " " . $row2['lastname'];
 
-    $sql3 = "SELECT * FROM tbl_schedules WHERE sched_id = $schedule_id";
+    $sql3 = "SELECT * FROM tbl_schedules WHERE sched_id = $schedule_id AND sched_status = 1";
     $result3 = mysqli_query($conn, $sql3);
 
     if (mysqli_num_rows($result3) > 0) {

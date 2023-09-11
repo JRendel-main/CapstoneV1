@@ -20,9 +20,9 @@
                             </div>
                             <div class="col-6">
                                 <div class="text-right">
-                                    <h3 class="text-dark mt-1"><span data-plugin="counterup" id="totalTutee">0</span>
+                                    <h3 class="text-dark mt-1"><span data-plugin="counterup" id="totalTutor">0</span>
                                     </h3>
-                                    <p class="text-muted mb-1 text-truncate">Pending Request</p>
+                                    <p class="text-muted mb-1 text-truncate">Total Tutors</p>
                                 </div>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                             </div>
                             <div class="col-6">
                                 <div class="text-right">
-                                    <h3 class="text-dark mt-1"><span data-plugin="counterup" id="totalTutee">0</span>
+                                    <h3 class="text-dark mt-1"><span data-plugin="counterup" id="totalSched">0</span>
                                     </h3>
                                     <p class="text-muted mb-1 text-truncate">Total Sessions</p>
                                 </div>
@@ -68,9 +68,14 @@
             <div class="row">
                 <div class="col-md-6 col-xl-6">
                     <div class="card-box">
-                        <div class="announcement-board text-center">
-                            <h4 class="header-title mb-3">Announcement Board</h4>
-                            <div id="announcement-list" class="mt-3"></div>
+                        <div class="announcement-board">
+                            <h4 class="header-title mb-3">Today's Schedule</h4>
+                            <table class="table table-borderless m-0" id="ongoing">
+                                <thead class="thead-light text-center">
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -110,6 +115,7 @@
             </div>
             <!-- This is for the "this week schedule" -->
             <div class="row">
+
             </div>
         </div>
     </div>

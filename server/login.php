@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Manila');
 include_once 'db-connect.php';
 
 // Get the form data
@@ -35,7 +36,12 @@ if (empty($username) || empty($password)) {
             $_SESSION['username'] = $username;
             $_SESSION['cat_id'] = $cat_id;
             $_SESSION['peer_id'] = $peer_id;
+            $dateTime = date('Y-m-d H:i:s');
 
+            $action = 'Login';
+
+            $sql = "INSERT INTO tbl_logs (peer_id, action, date) VALUES ('$peer_id', '$action', '$dateTime')";
+            mysqli_query($conn, $sql);
             // Redirect user to the appropriate directory based on account type
             switch ($cat_id) {
                 case '1':

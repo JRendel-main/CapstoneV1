@@ -5,7 +5,7 @@ require_once '../db-connect.php';
 $response = array();
 
 // Fetch data from the database
-$sql = "SELECT * FROM tbl_courses";
+$sql = "SELECT * FROM tbl_course";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {

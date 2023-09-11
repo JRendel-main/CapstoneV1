@@ -34,6 +34,48 @@
 
             // Move to next step
             switchStep(1, 2);
+            // fetch the courses
+            $.ajax({
+                url: "server/admin-dashboard/get-course-list.php",
+                method: "POST",
+                success: function(data) {
+                    var courses = data.data;
+                    var selectElement = document.getElementById("course");
+                    var groupedCourses = {};
+
+                    for (var i = 0; i < courses.length; i++) {
+                        var course = courses[i];
+                        var courseAlias = course[2]; // Assuming course[2] is the course alias
+
+                        // Create an optgroup element for each unique course alias
+                        if (!groupedCourses[courseAlias]) {
+                            var optgroup = document.createElement("optgroup");
+                            optgroup.label = courseAlias;
+                            groupedCourses[courseAlias] = optgroup;
+                        }
+
+                        // Create an option element for the course and append it to the corresponding optgroup
+                        var option = document.createElement("option");
+                        option.value = course[0]; // Assuming course[0] is the course_id
+                        option.text = course[1]; // Assuming course[1] is the course_name
+                        groupedCourses[courseAlias].appendChild(option);
+                    }
+
+                    // Append the optgroups to the select element
+                    for (var alias in groupedCourses) {
+                        if (groupedCourses.hasOwnProperty(alias)) {
+                            selectElement.appendChild(groupedCourses[alias]);
+                        }
+                    }
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire(
+                        "Error",
+                        "An error occurred while fetching the courses",
+                        "error"
+                    );
+                },
+            });
         });
 
         // Step 2: Academic Information

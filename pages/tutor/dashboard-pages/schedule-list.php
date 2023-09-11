@@ -227,6 +227,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer text-right">
+                                <button type="button" class="btn btn-danger delete-schedule" id="delete-event-btn">Delete Schedule</button>
                                 <button type="button" class="btn btn-success save-category" id="edit-event-btn">Save Changes</button>
                             </div>
                         </div> <!-- end modal-content-->

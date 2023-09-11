@@ -6,34 +6,7 @@
 $(document).ready(function() {
     var table = $('#user_list').DataTable({
         responsive: true,
-        dom: 'Bfrtip',
-        buttons: [
-            {
-                extend: 'copy',
-                text: '<i class="fa fa-copy"></i> Copy',
-                className: 'btn btn-primary btn-sm'
-            },
-            {
-                extend: 'excel',
-                text: '<i class="fa fa-file-excel"></i> Excel',
-                className: 'btn btn-primary btn-sm'
-            },
-            {
-                extend: 'pdf',
-                text: '<i class="fa fa-file-pdf"></i> PDF',
-                className: 'btn btn-primary btn-sm'
-            },
-            {
-                extend: 'print',
-                text: '<i class="fa fa-print"></i> Print',
-                className: 'btn btn-primary btn-sm'
-            },
-            {
-                extend: 'colvis',
-                text: '<i class="fa fa-eye"></i> Column Visibility',
-                className: 'btn btn-primary btn-sm'
-            }
-        ],
+        
         "order": [[ 0, "desc" ]],
         "language": {
             "emptyTable": "No data available in table"

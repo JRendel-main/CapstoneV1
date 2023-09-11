@@ -5,7 +5,7 @@ require_once '../db-connect.php';
 session_start();
 $peer_id = $_SESSION['peer_id'];
 // Get the tutor's schedule
-$sql = "SELECT * FROM tbl_schedules WHERE peer_id = $peer_id";
+$sql = "SELECT * FROM tbl_schedules WHERE peer_id = $peer_id AND sched_status = 1";
 $result = $conn->query($sql);
 // If there are results from database push to result array
 if ($result->num_rows > 0) {

@@ -1,5 +1,6 @@
 <?php
 include_once 'db-connect.php';
+require_once '../send-email.php';
 // Get the form data
 $firstName = $_POST['firstName'];
 $middleName = $_POST['middleName'];
@@ -32,6 +33,12 @@ if (mysqli_query($conn, $sql1)) {
             'status' => 'success',
             'message' => 'Registration successful.'
         );
+        $to = $email;
+        $subject = "Account Registration";
+        $type = "Registration: $accountType";
+        $message = "Hello $firstName $lastName! Your account has been registered. Please wait for Admin to Review your Registration.";
+        sendEmail($to, $subject, $type, $message);
+        
     } else {
         $response = array(
             'status' => 'error',

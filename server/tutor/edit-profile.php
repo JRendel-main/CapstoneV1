@@ -19,9 +19,18 @@ $expertise = $_POST['expertise'];
 $sql = "UPDATE tbl_peerinfo SET firstname = '$firstname', middlename = '$middlename', lastname = '$lastname', email = '$email', contactnum = '$contactnum', course = '$course', year = '$year' WHERE peer_id = '$peer_id'";
 $result = mysqli_query($conn, $sql);
 
-// update the tbl_tutor_profile
-$sql = "UPDATE tbl_tutor_profile SET bio = '$bio', expertise_id = '$expertise' WHERE peer_id = '$peer_id'";
+// check if there is tutor profile
+$sql = "SELECT * FROM tbl_tutor_profile WHERE peer_id = '$peer_id'";
 $result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+
+if ($row) {
+    $sql = "UPDATE tbl_tutor_profile SET bio = '$bio', expertise_id = '$expertise' WHERE peer_id = '$peer_id'";
+    $result = mysqli_query($conn, $sql);
+} else {
+    $sql = "INSERT INTO tbl_tutor_profile (peer_id, bio, expertise_id) VALUES ('$peer_id', '$bio', '$expertise')";
+    $result = mysqli_query($conn, $sql);
+}
 
 if($result) {
     $data = array(

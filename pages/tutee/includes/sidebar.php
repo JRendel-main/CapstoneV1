@@ -11,7 +11,6 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown" id="user-fullname">NAME HERE</a>
                             <div class="dropdown-menu user-pro-dropdown">
-
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <i class="fe-user mr-1"></i>
@@ -41,6 +40,17 @@
                         <p class="text-muted" id="user-rank">RANK HERE</p>
                     </div>
                     <ul class="metismenu" id="side-menu">
+                        <li class="menu-title">Schedules</li>
+                        <li>
+                            <a href="javascript: void(0);">
+                            <i class="fe-server"></i>
+                                <span>
+                                    Documentation
+                                </span>
+                                <!-- Add alert -->
+                                <span class="badge badge-danger badge-pill float-right">1</span>
+                            </a>
+                        </li>
 
                         <li class="menu-title">Dashboard</li>
 
@@ -54,7 +64,7 @@
                         <li>
                             <a href="tutor-list.php">
                                 <i class="fe-list"></i>
-                                <span> Tutor List </span>
+                                <span> Find Tutor </span>
                             </a>
                         </li>
 
@@ -82,7 +92,7 @@
                                 <span> Email </span>
                                 <span class="menu-arrow"></span>
                             </a>
-                            <ul class="nav-second-level nav"aria-expanded="false">
+                            <ul class="nav-second-level nav" aria-expanded="false">
                                 <li>
                                     <a href="email-inbox.php">Inbox</a>
                                 </li>

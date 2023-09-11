@@ -25,6 +25,7 @@ if ($row) {
     $expertise = $row['expertise_id'];
 } else {
     $bio = "";
+    $expertise = "";
 }
 
 // pack the data into an array

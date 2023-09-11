@@ -7,11 +7,9 @@
                 <div id="sidebar-menu">
                     <!-- User box -->
                     <div class="user-box text-center">
-                        <img src="../../assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme"
-                            class="rounded-circle avatar-md">
+                        <img src="../../assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md">
                         <div class="dropdown">
-                            <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block"
-                                data-toggle="dropdown" id="user-fullname">NAME HERE</a>
+                            <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown" id="user-fullname">NAME HERE</a>
                             <div class="dropdown-menu user-pro-dropdown">
 
                                 <!-- item-->
@@ -43,33 +41,44 @@
                         <p class="text-muted" id="user-rank">RANK HERE</p>
                     </div>
                     <ul class="metismenu" id="side-menu">
+                        <li class="menu-title">Schedules</li>
+                        <li>
+                            <a href="documentation.php">
+                                <i class="fe-server"></i>
+                                <span>
+                                    Documentation
+                                </span>
+                                <!-- Add alert -->
+                                <span class="badge badge-danger badge-pill float-right">1</span>
+                            </a>
+                        </li>
 
-                            <li class="menu-title">Dashboard</li>
+                        <li class="menu-title">Dashboard</li>
 
-                            <li>
-                                <a href="index.php">
-                                    <i class="fe-home"></i>
-                                    <span> Home </span>
-                                </a>
-                            </li>
+                        <li>
+                            <a href="index.php">
+                                <i class="fe-home"></i>
+                                <span> Home </span>
+                            </a>
+                        </li>
 
-                            <!-- Nested list for schedule with schedule list and request schedules -->
-                            <li>
-                                <a href="#">
-                                    <i class="fe-calendar"></i>
-                                    <span> Schedules </span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                                <ul class="nav-second-level nav" aria-expanded="false">
-                                    <li>
-                                        <a href="schedule-list.php">Schedule List</a>
-                                    </li>
-                                    <li>
-                                        <a href="schedule-request.php">Request Schedules</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- <li>
+                        <!-- Nested list for schedule with schedule list and request schedules -->
+                        <li>
+                            <a href="#">
+                                <i class="fe-calendar"></i>
+                                <span> Schedules </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level nav" aria-expanded="false">
+                                <li>
+                                    <a href="schedule-list.php">Schedule List</a>
+                                </li>
+                                <li>
+                                    <a href="schedule-request.php">Request Schedules</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- <li>
                                 <a href="javascript: void(0);">
                                     <i class="fe-list"></i>
                                     <span class="badge badge-success badge-pill float-right">4</span>
@@ -77,39 +86,39 @@
                                 </a>
                             </li> -->
 
-                            <!-- Emails -->
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="fe-mail"></i>
-                                    <span> Messages </span>
-                                </a>
-                            </li>
+                        <!-- Emails -->
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="fe-mail"></i>
+                                <span> Messages </span>
+                            </a>
+                        </li>
 
-                            <li class="menu-title">Account Settings</li>
-                            
-                            <li>
-                                <a href="edit-profile.php">
-                                    <i class="fe-user"></i>
-                                    <span> Profile </span>
-                                </a>
-                            </li>
+                        <li class="menu-title">Account Settings</li>
 
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="fe-settings"></i>
-                                    <span> Settings </span>
-                                </a>
-                            </li>
+                        <li>
+                            <a href="edit-profile.php">
+                                <i class="fe-user"></i>
+                                <span> Profile </span>
+                            </a>
+                        </li>
 
-                            <li class="menu-title">Others</li>
-                            <!-- History list -->
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="fe-clock"></i>
-                                    <span> History </span>
-                                </a>
-                            </li>
-                        </ul>
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="fe-settings"></i>
+                                <span> Settings </span>
+                            </a>
+                        </li>
+
+                        <li class="menu-title">Others</li>
+                        <!-- History list -->
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="fe-clock"></i>
+                                <span> History </span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </ul>
         </div>

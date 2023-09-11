@@ -54,16 +54,6 @@ $(document).ready(function() {
             message +
             '</div>';
         $(".card-body").prepend(alertHtml);
-
-        // Disable the button
-        $(".btn-primary").prop("disabled", true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
-
-        // Remove the alert after 2 seconds
-        setTimeout(function() {
-            $(".alert").remove();
-            // Enable the button
-            $(".btn-primary").prop("disabled", false).html("Log In");
-        }, 3000);
     }
 
 

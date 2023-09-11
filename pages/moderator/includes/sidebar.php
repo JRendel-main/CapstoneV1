@@ -89,7 +89,7 @@
 
                             <!-- Schedule Settings -->
                             <li>
-                                <a href="javascript: void(0);">
+                                <a href="schedule-list.php">
                                     <i class="fe-calendar"></i>
                                     <span> Schedule Lists </span>
                                 </a>

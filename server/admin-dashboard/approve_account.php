@@ -1,4 +1,5 @@
 <?php
+require_once '../../send-email.php';
 // Check if the request method is POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Assuming the server-side validation and authentication have already been performed.
@@ -11,13 +12,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "UPDATE tbl_auth SET acc_status = 1 WHERE peer_id = $peerid";
     $result = mysqli_query($conn, $sql);
 
-    $sql2 = "SELECT firstname, middlename, lastname FROM tbl_peerinfo WHERE $peerid = peer_id";
+    $sql2 = "SELECT * FROM tbl_peerinfo WHERE $peerid = peer_id";
     $result2 = mysqli_query($conn, $sql2);
     $row = mysqli_fetch_assoc($result2);
     $name = $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'];
+    $email = $row['email'];
 
     if ($result) {
         echo "Account of <b>$name</b> has been approved.";
+        $to = $email;
+        $subject = "Account Approved";
+        $type = "Account Approved";
+        $message = "Hello $name! Your account has been approved. You can now login to your account.";
+        sendEmail($to, $subject, $type, $message);
     } else {
         echo "Error: " . mysqli_error($conn);
     }

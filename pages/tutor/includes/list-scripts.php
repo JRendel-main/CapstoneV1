@@ -230,48 +230,59 @@
             });
         });
 
-        // when delete button clicked, delete the event from the database
         $('#delete-event-btn').click(function() {
-            console.log(schedid);
-            $.ajax({
-                url: '../../server/tutor/delete-schedule.php',
-                type: 'POST',
-                data: {
-                    id: schedid
-                },
-                dataType: 'json',
-                success: function(response) {
-                    if (response.status === 'success') {
-                        // get the response and get the message, use swal, refresh the calendar, and close the modal
-                        swal.fire({
-                            title: 'Success',
-                            text: response.message,
-                            icon: 'success'
-                        }).then(function() {
-                            // Refresh the calendar
-                            $('#calendar').fullCalendar('refetchEvents');
-                            // Close the modal if open
-                            $('#event-details-form').modal('hide');
-                        });
-                    } else {
-                        // Handle error, show an error message
-                        swal.fire({
-                            title: 'Error',
-                            text: response.message,
-                            icon: 'error'
-                        });
-                    }
-                },
-                error: function(xhr, status, error) {
-                    // Handle AJAX error, show an error message
-                    swal.fire({
-                        title: 'Error',
-                        text: 'There was an error deleting the schedule',
-                        icon: 'error'
+            // close modal
+            $('#edit-schedule-modal').modal('hide');
+            // get the values of the form
+            var sched_id = $('#edit-schedule-modal input[name="sched_id"]').val();
+            swal.fire({
+                title: 'Are you sure you want to disable this schedule?',
+                text: "This action cannot be undone.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, disable it!',
+                // Use 'textarea' for multi-line input
+                input: 'textarea',
+                inputPlaceholder: 'Please state your reason for disabling this schedule.',
+                inputAttributes: {
+                    'aria-label': 'Please state your reason for disabling this schedule.'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '../../server/moderator/disable-schedule.php', // Replace with the correct URL
+                        method: 'POST',
+                        data: {
+                            id: sched_id,
+                            reason: result.value
+                        },
+                        dataType: 'json',
+                        success: function(data) {
+                            // Handle a successful response from the server
+                            if (data.status === 'success') {
+                                swal.fire(
+                                    'Disabled!',
+                                    'The schedule has been disabled.',
+                                    'success')
+                                // Reload the page
+                                location.reload();
+                            } else {
+                                swal.fire(
+                                    'Error!',
+                                    'There was an error disabling the schedule.',
+                                    'error')
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Failed to disable schedule:', error);
+                        }
                     });
                 }
-            });
+            })
         });
+
         // when save button clicked, save the changes to the database
         $('#save-event-btn').click(function() {
             var topic = $('#event-title').val();

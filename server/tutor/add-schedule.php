@@ -14,6 +14,7 @@ $date = $_POST['date'];
 $start = $_POST['start'];
 $duration = $_POST['duration'];
 $max_tutee = $_POST['max_tutee'];
+$sched_status = 1;
 
 // check if the schedule overlaps with an existing schedule
 $sql = "SELECT * FROM tbl_schedules WHERE peer_id = $peer_id AND date = '$date'";

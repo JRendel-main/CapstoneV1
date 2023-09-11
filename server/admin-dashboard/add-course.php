@@ -8,7 +8,7 @@ $now = date('Y-m-d');
 
 require_once '../db-connect.php';
 
-$sql = "INSERT INTO tbl_courses (course_name, course_alias, date_created) VALUES ('$course_name', '$course_alias', $now)";
+$sql = "INSERT INTO tbl_course (course_name, course_alias, date_created) VALUES ('$course_name', '$course_alias', $now)";
 $result = mysqli_query($conn, $sql);
 if ($result){
     $status = "success";

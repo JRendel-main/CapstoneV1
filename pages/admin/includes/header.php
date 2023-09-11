@@ -13,6 +13,7 @@
         <!-- Bootstrap Tables css -->
         <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-1.13.6/b-2.4.1/b-html5-2.4.1/cr-1.7.0/date-1.5.1/r-2.5.0/sc-2.2.0/sl-1.7.0/datatables.min.css" rel="stylesheet">
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.css" integrity="sha512-cznfNokevSG7QPA5dZepud8taylLdvgr0lDqw/FEZIhluFsSwyvS81CMnRdrNSKwbsmc43LtRd2/WMQV+Z85AQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         <!-- third party css -->
         <link href="../../assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
