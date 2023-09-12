@@ -140,6 +140,15 @@
                                             $('#schedule-full').hide();
                                             $('#schedule-past').show();
                                         }
+                                        // if the date is on past add done button
+                                        var today = moment().format('YYYY-MM-DD');
+                                        if (today > event.date) {
+                                            $('#request-schedule').hide();
+                                            $('#cancel-request').hide();
+                                            $('#schedule-full').hide();
+                                            $('#schedule-past').hide();
+                                            $('#schedule-past').show();
+                                        }
                                         // if the user clicks the request schedule button
                                         $('#request-schedule').click(function() {
                                             // get the schedule_id

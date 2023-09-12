@@ -239,7 +239,7 @@
                     <!-- schedule full button -->
                     <button type="button" class="btn btn-warning" id="schedule-full" disabled>Full</button>
                     <!-- schedule past button -->
-                    <button type="button" class="btn btn-secondary" id="schedule-past" disabled>Past</button>
+                    <button type="button" class="btn btn-warning" id="schedule-past" disabled>Schedule Done</button>
                 </div>
             </div>
         </div>

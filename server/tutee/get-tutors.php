@@ -19,12 +19,22 @@ if(mysqli_num_rows($result) > 0) {
     $response['tutors'] = array();
     while($row = mysqli_fetch_assoc($result)) {
         $fullname = $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'];
-        $department = $row['course'];
+        $sql3 = "SELECT course_name FROM tbl_course WHERE course_id = '" . $row['course'] . "'";
+        $result3 = mysqli_query($conn, $sql3);
+        if (mysqli_num_rows($result3) > 0) {
+            $row3 = mysqli_fetch_assoc($result3);
+            $department = $row3['course_name'];
+        } else {
+            $department = "No course available";
+        }
         $rating = '5';
         // get the expertise of the tutor seperated by comma and put to array
         $expertise = explode(',', $row['expertise_id']);
         $bio = $row['bio'];
-        $tutee_count = 0;
+        $sql2 = "SELECT * FROM tbl_request WHERE tutor_id = '" . $row['peer_id'] . "'";
+        $result2 = mysqli_query($conn, $sql2);
+        $tutee_count = mysqli_num_rows($result2);
+        // store data in tutor
         $tutor = array(
             'peer_id' => $row['peer_id'],
             'fullname' => $fullname,

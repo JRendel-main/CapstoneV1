@@ -19,8 +19,15 @@ if (mysqli_num_rows($result) > 0) {
         $tutor['lastname'] = $row['lastname'];
         $tutor['email'] = $row['email'];
         $tutor['contactnum'] = $row['contactnum'];
-        $tutor['course'] = $row['course'];
         $tutor['year'] = $row['year'];
+        $sql4 = "SELECT course_name FROM tbl_course WHERE course_id = '" . $row['course'] . "'";
+        $result4 = $conn->query($sql4);
+        if (mysqli_num_rows($result4) > 0) {
+            $row4 = mysqli_fetch_assoc($result4);
+            $tutor['course'] = $row4['course_name'];
+        } else {
+            $tutor['course'] = "No course available";
+        }
 
         $sql3 = "SELECT * FROM tbl_tutor_profile WHERE peer_id = '$peer_id'";
         $result3 = $conn->query($sql3);

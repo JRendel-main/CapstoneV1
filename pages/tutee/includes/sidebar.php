@@ -42,7 +42,7 @@
                     <ul class="metismenu" id="side-menu">
                         <li class="menu-title">Schedules</li>
                         <li>
-                            <a href="javascript: void(0);">
+                            <a href="documentation.php">
                             <i class="fe-server"></i>
                                 <span>
                                     Documentation
