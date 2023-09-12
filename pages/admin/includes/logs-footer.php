@@ -39,7 +39,7 @@
                             x: 'date',
                             value: ['count']
                         },
-                        type: 'scatter'
+                        type: 'bar'
                     },
                     axis: {
                         x: {

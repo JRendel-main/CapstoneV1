@@ -49,7 +49,7 @@ if ($result->num_rows > 0) {
 if ($mode == 'online') {
     // insert to database
     $mode = 1;
-    $sql = "INSERT INTO tbl_schedules (peer_id, title, description, mode, start, duration, date, max_tutee) VALUES ($peer_id, '$title', '$description', $mode, '$start', $duration, '$date', $max_tutee)";
+    $sql = "INSERT INTO tbl_schedules (peer_id, title, description, mode, start, duration, date, max_tutee, sched_status) VALUES ($peer_id, '$title', '$description', $mode, '$start', $duration, '$date', $max_tutee, $sched_status)";
     if ($conn->query($sql) === TRUE) {
         $sched_id = $conn->insert_id;
         $sql2 = "INSERT INTO tbl_online (sched_id, platform, link) VALUES ($sched_id, '$platform', '$link')";
@@ -74,7 +74,7 @@ if ($mode == 'online') {
     
 } else if ($mode == 'f2f') {
     $mode = 0;
-    $sql = "INSERT INTO tbl_schedules (peer_id, title, description, mode, start, duration, date, max_tutee) VALUES ($peer_id, '$title', '$description', $mode, '$start', $duration, '$date', $max_tutee)";
+    $sql = "INSERT INTO tbl_schedules (peer_id, title, description, mode, start, duration, date, max_tutee, sched_status) VALUES ($peer_id, '$title', '$description', $mode, '$start', $duration, '$date', $max_tutee, $sched_status)";
     if ($conn->query($sql) === TRUE) {
         $sched_id = $conn->insert_id;
         $sql2 = "INSERT INTO tbl_f2f (sched_id,place) VALUES ($sched_id, '$place')";
