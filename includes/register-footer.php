@@ -316,6 +316,11 @@
                 });
             } else {
                 // Handle no file selected
+                swal.fire({
+                    title: "Error",
+                    text: "Please upload a file",
+                    icon: "error",
+                });
             }
         });
 

@@ -58,22 +58,15 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="rating_form">
                 <div class="col-md-6">
                     <div class="card-box">
                         <h5 class="text-uppercase bg-light p-2 mt-0 mb-3">DOCUMENTATION</h5>
 
-                        <form action="/" method="post" class="dropzone" id="myAwesomeDropzone">
-                            <div class="fallback">
-                                <input name="file" type="file" multiple />
-                            </div>
-
-                            <div class="dz-message needsclick">
-                                <i class="h1 text-muted dripicons-cloud-upload"></i>
-                                <h3>Drop files here or click to upload.</h3>
-                                <span class="text-muted font-13">(Upload a Selfie/Screenshot while on Session.)</span>
-                            </div>
-                        </form>
+                        <div class="form-group mb-3">
+                            <label for="product-meta-title">Upload Documentation <span class="text-danger">*</label>
+                            <input type="file" class="form-control" id="uploadDocu" placeholder="Enter Documentation" required>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -85,7 +78,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="product-meta-title">Rate Tutor <span class="text-danger">*</label>
-                            <select class="form-control">
+                            <select class="form-control" name="rating">
                                 <option value="5">5 Star</option>
                                 <option value="4">4 Star</option>
                                 <option value="3">3 Star</option>
@@ -94,7 +87,7 @@
                             </select>
                         </div>
                         <div class="form-group mb-3">
-                            <button type="submit" class="btn btn-success btn-block waves-effect waves-light">Submit</button>
+                            <button type="button" class="btn btn-success btn-block waves-effect waves-light" id="btn-submit">Submit</button>
                         </div>
                     </div>
                 </div>

@@ -34,12 +34,14 @@ if (mysqli_num_rows($result) > 0) {
         }
 
         $data[] = array(
+            'id' => $row['request_id'],
             'title' => $row3['title'], // 'title' => 'Documentation
             'date' => date('F d, Y', strtotime($row3['date'])),
             'time' => date('h:i A', strtotime($row3['start'])) . ' - ' . date('h:i A', strtotime($row3['duration'])),
             'tutor_name' => $row2['firstname'] . ' ' . $row2['lastname'],
+            'tutor_id' => $row2['peer_id'],
             'status' => $status,
-            'action' => '<button data-id="'.$row['schedule_id'].'" class="btn btn-success btn-block"><i class="fe-plus-circle" id="add-docu"></i> Add</button>'
+            'action' => '<button data-id="'.$row['schedule_id'].'" class="btn btn-success btn-block add-docu"><i class="fe-plus-circle" id="add-docu"></i> Add</button>'
         );
     }
 } else {
