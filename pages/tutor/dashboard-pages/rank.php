@@ -17,8 +17,8 @@
                     <div class="card-box text-center">
                         <img src="https://ui-avatars.com/api/?name=John+Doe" class="rounded-circle avatar-lg img-thumbnail" alt="profile-image" id="profile-pic">
 
-                        <h4 class="mb-0">Novice Tutor</h4>
-                        <p class="text-muted"><strong>15</strong> Points</p>
+                        <h4 class="mb-0" id="rank"></h4>
+                        <p class="text-muted"><strong id="points">15</strong> Points</p>
 
                         <!-- add Total Tutored and Average Rank -->
                         <div class="text-left mt-3">

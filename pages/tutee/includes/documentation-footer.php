@@ -74,7 +74,7 @@
                             formData.append("file", file);
                             formData.append("filena,e", filename);
 
-                            
+
 
                             // add the tutor_id and request_id to formData object
                             var tutor_id = data.tutor_id;
@@ -101,8 +101,33 @@
                                 contentType: false,
                                 processData: false,
                                 success: function(response) {
-                                    // Handle the response from the server
-                                    console.log('Response from the server:', response);
+                                    // check if success is true or false
+                                    var data = JSON.parse(response);
+                                    if (data.success == true) {
+                                        swal.fire({
+                                            title: "Success!",
+                                            text: data.message,
+                                            icon: "success",
+                                            confirmButtonText: "OK",
+                                            closeOnConfirm: false
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                location.reload();
+                                            }
+                                        })
+                                    } else {
+                                        swal.fire({
+                                            title: "Failed!",
+                                            text: data.message,
+                                            icon: "error",
+                                            confirmButtonText: "OK",
+                                            closeOnConfirm: false
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                location.reload();
+                                            }
+                                        });
+                                    }
                                 },
                                 error: function(error) {
                                     // Handle errors

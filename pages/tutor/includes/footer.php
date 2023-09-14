@@ -117,7 +117,32 @@
 <script src="../../assets/libs/flatpickr/flatpickr.min.js"></script>
 <script src="../../assets/libs/bootstrap-colorpicker/bootstrap-colorpicker.min.js"></script>
 <script src="../../assets/libs/clockpicker/bootstrap-clockpicker.min.js"></script>
-<script src="scripts/get-infos.js"></script>
+<script>
+    // get the fullname from php using ajax
+    $(document).ready(function() {
+        $.ajax({
+            url: "../../server/admin-dashboard/get-sidebar-name.php",
+            type: "POST",
+            dataType: "json",
+            success: function(data) {
+                $("#user-fullname").text(data.fullname);
+                $("#user-rank").html("Bronze");
+
+                // upper case the first letter
+                var name = data.name;
+                var firstLetter = name.charAt(0).toUpperCase();
+                var restOfName = name.slice(1);
+                var fullName = firstLetter + restOfName;
+
+
+                $("#user-name").text(fullName);
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+    });
+</script>
 </body>
 
 </html>

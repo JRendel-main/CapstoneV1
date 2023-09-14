@@ -1,21 +1,6 @@
 <!-- Topbar Start -->
-<div class="navbar-custom">
+<div class="navbar-custom navbar-custom-light">
     <ul class="list-unstyled topnav-menu float-right mb-0">
-
-        <li class="d-none d-sm-block">
-            <form class="app-search">
-                <div class="app-search-box">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search...">
-                        <div class="input-group-append">
-                            <button class="btn" type="submit">
-                                <i class="fe-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </li>
 
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#"
@@ -66,7 +51,7 @@
     <div class="logo-box">
         <a href="../../index.html" class="logo text-center">
             <span class="logo-lg">
-                <img src="../../assets/images/new-logo.png" alt="" height="48">
+                <img src="../../assets/images/nexus-logo.png" alt="" height="26">
                 <!-- <span class="logo-lg-text-light">UBold</span> -->
             </span>
             <span class="logo-sm">

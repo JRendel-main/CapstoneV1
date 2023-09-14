@@ -130,7 +130,14 @@
                 $("#user-fullname").text(data.fullname);
                 $("#user-rank").html("Bronze");
 
-                $("#user-name").text(data.fullname);
+                // upper case the first letter
+                var name = data.name;
+                var firstLetter = name.charAt(0).toUpperCase();
+                var restOfName = name.slice(1);
+                var fullName = firstLetter + restOfName;
+
+
+                $("#user-name").text(fullName);
             },
             error: function(data) {
                 console.log(data);

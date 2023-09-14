@@ -28,7 +28,7 @@
 
     </head>
 
-    <body>
+    <body class="left-side-menu-dark">
 
         <!-- Begin page -->
         <div id="wrapper">
