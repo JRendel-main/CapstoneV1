@@ -1,5 +1,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js" />
 
 <script>
     $(document).ready(function() {
@@ -21,25 +22,26 @@
                 $('#upcoming-count').html(upcoming);
                 // data table
                 $('#today-sched').DataTable({
-                    columns: [
-                        { 
+                    columns: [{
                             title: "Start",
-                            data: 'start' 
+                            data: 'start'
                         },
-                        { 
+                        {
                             title: "Title",
-                            data: 'title' 
+                            data: 'title'
                         },
                         {
                             title: "Mode",
-                            data: 'mode' 
+                            data: 'mode'
                         },
                         {
                             title: "Duration",
-                            data: 'duration' },
+                            data: 'duration'
+                        },
                         {
                             title: "Max Tutee",
-                            data: 'max_tutee' }
+                            data: 'max_tutee'
+                        }
                     ],
                     "paging": false,
                     "searching": false,
@@ -67,26 +69,26 @@
                 });
                 // data table
                 $('#upcoming-sched').DataTable({
-                    columns: [
-                        {
+                    columns: [{
                             title: "Week",
                             data: 'week'
                         },
-                        { 
+                        {
                             title: "Start",
-                            data: 'start' 
+                            data: 'start'
                         },
-                        { 
+                        {
                             title: "Title",
-                            data: 'title' 
+                            data: 'title'
                         },
                         {
                             title: "Mode",
-                            data: 'mode' 
+                            data: 'mode'
                         },
                         {
                             title: "Duration",
-                            data: 'duration' },
+                            data: 'duration'
+                        },
                         {
                             title: "Status",
                             data: 'status'
@@ -115,7 +117,7 @@
                     "scrollX": false,
                     data: data.weekSched,
                     responsive: true
-                }); 
+                });
             },
         });
     });
