@@ -45,7 +45,63 @@
                 }
             });
 
-
+            $.ajax({
+                type: "GET",
+                url: "../../server/admin-dashboard/get-ranking.php",
+                dataType: "json",
+                success: function(data) {
+                    // if the data array is not empty
+                    if (data.length > 0) {
+                        // initialize the table
+                        var table = $("#rank").DataTable({
+                            "data": data,
+                            "columns": [
+                                {
+                                    title: "Rank",
+                                    data: "rank"
+                                },
+                                {
+                                    title: "Name",
+                                    data: "fullname"
+                                },
+                                {
+                                    title: "Points",
+                                    data: "points"
+                                },
+                                {
+                                    title: "Average Rating",
+                                    data: "avg_rating"
+                                }
+                            ],
+                            "order": [
+                                [2, "desc"]
+                            ],
+                            "columnDefs": [{
+                                "targets": [0, 1, 2, 3],
+                                "className": "text-center"
+                            }],
+                            // remove search bar
+                            "bFilter": false,
+                            // remove pagination
+                            "bLengthChange": false,
+                            "bInfo": false,
+                            // remove sorting
+                            "bSort": false,
+                            reponsive: true,
+                        });
+                    } else {
+                        
+                    }
+                },
+                error: function(xhr, status, error) {
+                    swal.fire({
+                        title: "Server Error",
+                        text: "Failed to fetch ranking data",
+                        icon: "error",
+                        confirmButtonText: "Ok",
+                    })
+                }
+            });
         });
     });
 </script>

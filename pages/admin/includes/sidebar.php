@@ -75,6 +75,13 @@
                             </a>
                         </li>
 
+                        <li>
+                            <a href="generate-cert.php">
+                                <i class="fe-file-text"></i>
+                                <span> Generate Certificate </span>
+                            </a>
+                        </li>
+
                         <li class="menu-title">Admin Settings</li>
 
                         <!-- Website settings -->

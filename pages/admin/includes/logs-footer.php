@@ -39,7 +39,7 @@
                             x: 'date',
                             value: ['count']
                         },
-                        type: 'bar'
+                        type: 'line'
                     },
                     axis: {
                         x: {

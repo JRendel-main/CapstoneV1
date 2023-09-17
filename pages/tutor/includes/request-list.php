@@ -198,7 +198,8 @@ $peer_id = $_SESSION['peer_id'];
                                                             // reload the page
                                                             location.reload();
                                                         });
-                                                    } else if (data.status == 'full') {
+                                                    }
+                                                    else if (data.status == 'full') {
                                                         // use swal
                                                         swal.fire({
                                                             title: 'Cannot Enroll this student!',
@@ -214,7 +215,20 @@ $peer_id = $_SESSION['peer_id'];
                                                         text: 'Something went wrong.',
                                                         icon: 'error',
                                                     })
-                                                }
+                                                },
+                                                // add loading swal when the request is being loaded
+                                                beforeSend: function() {
+                                                    swal.fire({
+                                                        title: 'Loading! Please wait...',
+                                                        text: 'The request is being loaded.',
+                                                        icon: 'info',
+                                                        allowOutsideClick: false,
+                                                        allowEscapeKey: false,
+                                                        allowEnterKey: false,
+                                                        showConfirmButton: false,
+                                                    });
+                                                },
+                                                
                                             });
                                         } else {
                                             $.ajax({

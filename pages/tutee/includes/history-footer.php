@@ -37,6 +37,7 @@
                             "targets": [0, 1, 2, 3, 4, 5],
                             "className": "text-center"
                         }],
+                        data: data,
                     });
                 } else {
                     $('#history-list').DataTable({
