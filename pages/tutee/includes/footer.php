@@ -6,6 +6,7 @@
         </p>
     </div>
 </div>
+<!-- Modal for message-->
 <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -46,6 +47,38 @@
     </div>
 </div>
 
+<!-- Add testminial modal -->
+<div class="modal fade" id="addTestimonial" tabindex="-1" role="dialog" aria-labelledby="addTestimonialLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Testimonial to System</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeAddTestimonialModal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="testimonialForm">
+                    <div class="form-group">
+                        <label for="name">We'd like to hear your Testimonial here!</label>
+                        <textarea type="text" class="form-control" id="testimonial" placeholder="Enter your message here"></textarea>
+                        <!-- Add a small note here -->
+                        <small id="testimonialHelp" class="form-text text-muted">
+                            <i class="fe fe-circle-info"></i>
+                            <i>
+                                Please note that your testimonial will be reviewed by our admin first before it will be posted on our website.
+                            </i>
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success btn-block" id="submitTestimonial">
+                            Submit  
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -173,6 +206,21 @@
 <script>
     // get the fullname from php using ajax
     $(document).ready(function() {
+        // check if user already have testimonial
+        $.ajax({
+            url: "../../server/check-testimonial.php",
+            type: "POST",
+            dataType: "json",
+            success: function(data) {
+                if (data.success === true) {
+                    $('#testimonial-sidebar').hide();
+                }
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+
         $('#messageModalBtn').click(function() {
             $('#messageModal').modal('show');
 
@@ -202,8 +250,7 @@
                                 title: 'Success!',
                                 text: 'Message sent!',
                             })
-                            $('#messageModal').modal('hide');
-                        },
+                            location.reload();                        },
                         error: function(data) {
                             console.log(data);
                         }
@@ -211,6 +258,51 @@
                 }
             });
         });
+
+        // if submit testimonial clicked
+        $('#submitTestimonial').click(function() {
+            var testimonial = $('#testimonial').val();
+
+            if (testimonial === ''){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please fill out all fields!',
+                })
+            } else {
+                $.ajax({
+                    url: "../../server/add-testimonial.php",
+                    type: "POST",
+                    data: {
+                        testimonial: testimonial
+                    },
+                    success: function(data) {
+                        if(data.success === 'success') {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success!',
+                                text: data.message,
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: data.message,
+                            })
+                        }
+                    },
+                    error: function(data) {
+                        console.log(data);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong!',
+                        });
+                    }
+                });
+            }
+        });
+
         $.ajax({
             url: "../../server/admin-dashboard/get-sidebar-name.php",
             type: "POST",
