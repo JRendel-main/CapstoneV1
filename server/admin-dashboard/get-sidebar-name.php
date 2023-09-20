@@ -18,6 +18,21 @@ $middlename = $row['middlename'];
 $lastname = $row['lastname'];
 $peer_id = $row['peer_id'];
 
+$query = "SELECT * FROM tbl_ratings WHERE peer_id = '$peer_id'";
+$result = mysqli_query($conn, $query);
+
+if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    if ($rank == null) {
+        $rank = 'No rank yet';
+    } else {
+        $rank = $row['rank'];
+    }
+} else {
+    $rank = 'Student';
+}
+
+
 // get the first letter on lastname
 $lastnameini = substr($lastname, 0, 1);
 
@@ -29,7 +44,8 @@ $data = array(
     'status' => 'success',
     'name' => $name,
     'fullname' => $fullname,
-    'peer_id' => $peer_id
+    'peer_id' => $peer_id,
+    'rank' => $rank
 );
 echo json_encode($data);
 

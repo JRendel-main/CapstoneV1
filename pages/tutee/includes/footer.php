@@ -309,7 +309,7 @@
             dataType: "json",
             success: function(data) {
                 $("#user-fullname").text(data.fullname);
-                $("#user-rank").html("Bronze");
+                $("#user-rank").html(data.rank);
 
                 // upper case the first letter
                 var name = data.name;

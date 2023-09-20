@@ -40,7 +40,16 @@
                         </div>
                         <p class="text-muted" id="user-rank">RANK HERE</p>
                     </div>
+                    <ul id="testimonial-sidebar">
+                        <li>
+                            <a href="javascript: void(0);" data-toggle="modal" data-target="#addTestimonial">
+                                <i class="fe-plus-circle"></i> Add Testimonial
+                                <span class="badge badge-danger float-right">!</span>
+                            </a>
+                        </li>
+                    </ul>
                     <ul class="metismenu" id="side-menu">
+                        
                         <li class="menu-title">Schedules</li>
                         <li>
                             <a href="documentation.php">

@@ -1,3 +1,84 @@
+<div id="container-floating">
+    <div id="floating-button">
+        <p class="plus" id="messageModalBtn">
+            <!-- Alert triangle -->
+            <i class="fa fa-exclamation-triangle"></i>
+        </p>
+    </div>
+</div>
+<!-- Modal for message-->
+<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="messageModalLabel">Send Message to Admin</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Add your message form here -->
+                <form id="messageForm">
+                    <div class="form-group">
+                        <label for="name">Subject</label>
+                        <input type="text" class="form-control" id="subject" placeholder="Enter subject here">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Priority Level</label>
+                        <!-- Add color per intensity -->
+                        <select class="form-control" id="priority">
+                            <option value="1">Low</option>
+                            <option value="2">Medium</option>
+                            <option value="3">High</option>
+                            <option value="4">Urgent</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea class="form-control" id="message" rows="4" placeholder="Type your message here"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="sendMessage">Send Message</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add testminial modal -->
+<div class="modal fade" id="addTestimonial" tabindex="-1" role="dialog" aria-labelledby="addTestimonialLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Testimonial to System</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeAddTestimonialModal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="testimonialForm">
+                    <div class="form-group">
+                        <label for="name">We'd like to hear your Testimonial here!</label>
+                        <textarea type="text" class="form-control" id="testimonial" placeholder="Enter your message here"></textarea>
+                        <!-- Add a small note here -->
+                        <small id="testimonialHelp" class="form-text text-muted">
+                            <i class="fe fe-circle-info"></i>
+                            <i>
+                                Please note that your testimonial will be reviewed by our admin first before it will be posted on our website.
+                            </i>
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success btn-block" id="submitTestimonial">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- END wrapper -->
 
@@ -120,21 +201,117 @@
 <script>
     // get the fullname from php using ajax
     $(document).ready(function() {
+        // check if user already have testimonial
+        $.ajax({
+            url: "../../server/check-testimonial.php",
+            type: "POST",
+            dataType: "json",
+            success: function(data) {
+                if (data.success === true) {
+                    $('#testimonial-sidebar').hide();
+                }
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+
+        $('#messageModalBtn').click(function() {
+            $('#messageModal').modal('show');
+
+            $('#sendMessage').click(function() {
+                var subject = $('#subject').val();
+                var priority = $('#priority').val();
+                var message = $('#message').val();
+
+                if (subject == "" || priority == "" || message == "") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Please fill out all fields!',
+                    })
+                } else {
+                    $.ajax({
+                        url: "../../server/send-report.php",
+                        type: "POST",
+                        data: {
+                            subject: subject,
+                            priority: priority,
+                            message: message
+                        },
+                        success: function(data) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success!',
+                                text: 'Message sent!',
+                            })
+                            location.reload();
+                        },
+                        error: function(data) {
+                            console.log(data);
+                        }
+                    });
+                }
+            });
+        });
+
+        // if submit testimonial clicked
+        $('#submitTestimonial').click(function() {
+            var testimonial = $('#testimonial').val();
+
+            if (testimonial === '') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please fill out all fields!',
+                })
+            } else {
+                $.ajax({
+                    url: "../../server/add-testimonial.php",
+                    type: "POST",
+                    data: {
+                        testimonial: testimonial
+                    },
+                    success: function(data) {
+                        if (data.success === 'success') {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success!',
+                                text: data.message,
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: data.message,
+                            })
+                        }
+                    },
+                    error: function(data) {
+                        console.log(data);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong!',
+                        });
+                    }
+                });
+            }
+        });
         $.ajax({
             url: "../../server/admin-dashboard/get-sidebar-name.php",
             type: "POST",
             dataType: "json",
             success: function(data) {
                 $("#user-fullname").text(data.fullname);
-                $("#user-rank").html("Bronze");
+                $("#user-rank").html(data.rank);
 
                 // upper case the first letter
                 var name = data.name;
                 var firstLetter = name.charAt(0).toUpperCase();
                 var restOfName = name.slice(1);
                 var fullName = firstLetter + restOfName;
-
-
+                
                 $("#user-name").text(fullName);
             },
             error: function(data) {
