@@ -233,7 +233,7 @@
                 </div>
                 <div class="modal-footer" id="footer">
                     <!-- Request schedule button -->
-                    <button type="button" class="btn btn-success" id="request-schedule">Request</button>
+                    <button type="button" class="btn btn-success" id="request-schedule">Join</button>
                     <!-- Cancel request schedule button -->
                     <button type="button" class="btn btn-danger" id="cancel-request">Cancel</button>
                     <!-- schedule full button -->

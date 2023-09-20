@@ -117,7 +117,7 @@
                         <li class="menu-title">Account Settings</li>
 
                         <li>
-                            <a href="javascript: void(0);">
+                            <a href="settings.php">
                                 <i class="fe-user"></i>
                                 <span> Profile </span>
                             </a>

@@ -23,6 +23,7 @@ $result = mysqli_query($conn, $query);
 
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
+    $rank = $row['rank'];
     if ($rank == null) {
         $rank = 'No rank yet';
     } else {
