@@ -144,9 +144,6 @@
                                     <div class="calendar" id="calendar"></div>
                                 </div>
                             </div>
-
-
-
                             <!-- end timeline content-->
 
                             <div class="tab-pane" id="settings">
