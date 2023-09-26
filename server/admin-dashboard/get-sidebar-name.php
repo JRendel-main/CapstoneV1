@@ -10,13 +10,14 @@ $result = mysqli_query($conn, $query);
 $row = mysqli_fetch_assoc($result);
 $peer_id = $row['peer_id'];
 
-$query = "SELECT firstname,middlename,lastname,peer_id FROM tbl_peerinfo WHERE peer_id = '$peer_id'";
+$query = "SELECT firstname,middlename,lastname,peer_id,profile FROM tbl_peerinfo WHERE peer_id = '$peer_id'";
 $result = mysqli_query($conn, $query);
 $row = mysqli_fetch_assoc($result);
 $firstname = $row['firstname'];
 $middlename = $row['middlename'];
 $lastname = $row['lastname'];
 $peer_id = $row['peer_id'];
+$profile = $row['profile'];
 
 $query = "SELECT * FROM tbl_ratings WHERE peer_id = '$peer_id'";
 $result = mysqli_query($conn, $query);
@@ -46,7 +47,8 @@ $data = array(
     'name' => $name,
     'fullname' => $fullname,
     'peer_id' => $peer_id,
-    'rank' => $rank
+    'rank' => $rank,
+    'profile' => $profile
 );
 echo json_encode($data);
 

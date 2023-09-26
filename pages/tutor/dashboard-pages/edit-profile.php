@@ -35,7 +35,7 @@
                         <div class="text-left mt-3">
                             <h4 class="font-13 text-uppercase">About Me :</h4>
                             <p class="text-muted font-13 mb-3">
-                                
+
                             </p>
                             <p class="text-muted mb-2 font-13" id="fullname"><span class="ml-2"></span></p>
 
@@ -56,7 +56,7 @@
                 <div class="col-lg-8 col-xl-8">
                     <div class="card-box">
                         <form>
-                            <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle mr-1"></i> Personal Info</h5>
+                            <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-account mr-1"></i> Personal Info</h5>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -139,7 +139,7 @@
                                 <!-- Using multiselect user can select expertise or skills add if there is none -->
                                 <div class="col-md-6">
                                     <select class="form-control select2" id="expertiseDropdown" multiple="multiple">
-                                        
+
                                     </select>
                                 </div>
                             </div> <!-- end row -->

@@ -88,24 +88,3 @@
         </div>
     </div>
 </div>
-
-<!-- Modal -->
-<div class="modal fade" id="profileViewModal" tabindex="-1" role="dialog" aria-labelledby="profileViewModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="profileViewModalLabel">Tutor Profile</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p><strong>Status:</strong> <span id="profile-status"></span></p>
-                <p><strong>Message to Tutor:</strong> <span id="message-to-tutor"></span></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>

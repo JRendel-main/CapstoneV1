@@ -110,7 +110,7 @@
                 <div class="col-lg-4">
                     <div class="card-box bg-pattern card-fixed-height">
                         <div class="text-center">
-                            <img src="../../assets/images/users/user-1.jpg" alt="logo" class="avatar-xl rounded-circle mb-3">
+                            <img src="${tutor.profile}" alt="No Profile yet" class="avatar-xl rounded-circle mb-3">
                             <h4 class="mb-1 font-20">${tutor.fullname}</h4>
                             <p class="text-muted font-14">${tutor.department}</p>
                         </div>
