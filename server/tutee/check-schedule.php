@@ -31,8 +31,16 @@ if(mysqli_num_rows($result) > 0) {
         $row3 = mysqli_fetch_assoc($result3);
         $tutee_count = $row3['tutee_count'];
 
+        // count how many enrolled
+        $sql4 = "SELECT COUNT(*) AS tutee_count FROM tbl_request WHERE request_status = 1 AND schedule_id = $sched_id";
+        $result4 = mysqli_query($conn, $sql4);
+
+        $row4 = mysqli_fetch_assoc($result4);
+
+        $enrolled_count = $row4['tutee_count'];
+
         // respond 2 if the schedule is full
-        if($tutee_count >= $max_tutee) {
+        if($enrolled_count >= $max_tutee) {
             $response = array(
                 'status' => 2,
                 'success' => true,
@@ -41,6 +49,7 @@ if(mysqli_num_rows($result) > 0) {
             $response = array(
                 'status' => 0,
                 'success' => true,
+                'slot' => $enrolled_count . '/' . $max_tutee
             );
         }
     }

@@ -121,6 +121,7 @@
                                             $('#cancel-request').hide();
                                             $('#schedule-full').hide();
                                             $('#schedule-past').hide();
+                                            $('#request-schedule').html('Enroll ' + data.slot);
                                         } else if (status == 1) {
                                             // schedule is already requested
                                             $('#request-schedule').hide();

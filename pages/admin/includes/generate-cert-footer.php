@@ -107,6 +107,7 @@
                                 console.log(xhr.responseText);
                             }
                         });
+                        
                         // add swal alert
                         Swal.fire({
                             title: 'Success!',

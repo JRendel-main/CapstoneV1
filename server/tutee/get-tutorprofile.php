@@ -59,11 +59,7 @@ if (mysqli_num_rows($result) > 0) {
 
                 // get the mode
                 $mode = $schedule['mode'];
-                // if mode is online
-                if ($mode == '0') {
-                    // get the 
-                } else {
-                }
+                
 
                 // store schedules in response
                 $response['schedules'] = $schedules;

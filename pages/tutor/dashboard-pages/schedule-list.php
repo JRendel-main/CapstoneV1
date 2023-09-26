@@ -194,7 +194,7 @@
                                                 <p class="header-description"><i class="fe-info"></i><i> Set schedules between 8:00 am - 5:00 pm only</i></p>
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label">Duration</label>
+                                                <label class="control-label">Duration <b>(Hours)</b></label>
                                                 <input class="form-control form-white" placeholder="Duration of Session" type="number" name="edit-duration-f2f">
                                             </div>
                                         </div>
@@ -213,13 +213,14 @@
                                             <div class="form-group">
                                                 <label class="control-label">Link:</label>
                                                 <input class="form-control form-white" placeholder="Link for the platform" type="url" name="edit-link">
+                                                <p class="header-description"><i class="fe-info"></i><i> Note: Provide link that cannot be changed later.</i></p>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label">Start</label>
                                                 <input class="form-control form-white" readonly placeholder="Event start" type="time" name="edit-start-online">
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label">Duration</label>
+                                                <label class="control-label">Duration<b>(Hours)</b></label>
                                                 <input class="form-control form-white" placeholder="Duration of Session" type="number" name="edit-duration-online">
                                             </div>
                                         </div>
