@@ -19,6 +19,7 @@ if(mysqli_num_rows($result) > 0) {
     $response['tutors'] = array();
     while($row = mysqli_fetch_assoc($result)) {
         $fullname = $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'];
+        $profile = $row['profile'];
         $sql3 = "SELECT course_name FROM tbl_course WHERE course_id = '" . $row['course'] . "'";
         $result3 = mysqli_query($conn, $sql3);
         if (mysqli_num_rows($result3) > 0) {
@@ -42,7 +43,8 @@ if(mysqli_num_rows($result) > 0) {
             'bio' => $bio,
             'rating' => $rating,
             'expertise' => $expertise,
-            'tutee_count' => $tutee_count
+            'tutee_count' => $tutee_count,
+            'profile' => $profile
         );
         array_push($response['tutors'], $tutor);
     }

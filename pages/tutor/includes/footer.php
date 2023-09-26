@@ -313,6 +313,13 @@
                 var fullName = firstLetter + restOfName;
                 
                 $("#user-name").text(fullName);
+
+                // change the profile picture
+                if (data.profile == null) {
+                    $("#profile-picture").attr("src", "../../assets/images/users/user-1.jpg");
+                } else {
+                    $("#profile-picture").attr("src", data.profile);
+                }
             },
             error: function(data) {
                 console.log(data);

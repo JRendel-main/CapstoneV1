@@ -7,7 +7,7 @@
                 <div id="sidebar-menu">
                     <!-- User box -->
                     <div class="user-box text-center">
-                        <img src="../../assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md">
+                        <img src="../../assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md" id="profile-picture">
                         <div class="dropdown">
                             <a href="javascript: void(0);" class="text-light dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown" id="user-fullname">NAME HERE</a>
                             <div class="dropdown-menu user-pro-dropdown">
@@ -120,7 +120,7 @@
                         </li>
 
                         <li>
-                            <a href="javascript: void(0);">
+                            <a href="settings.php">
                                 <i class="fe-settings"></i>
                                 <span> Settings </span>
                             </a>

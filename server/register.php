@@ -5,6 +5,7 @@ require_once '../send-email.php';
 $firstName = $_POST['firstName'];
 $middleName = $_POST['middleName'];
 $lastName = $_POST['lastName'];
+$profile = 'https://ui-avatars.com/api/?name=' . $firstName . '+' . $lastName . '&rounded=true&size=128';
 $email = $_POST['email'];
 $contactNumber = $_POST['contactNumber'];
 $birthdate = $_POST['birthdate'];
@@ -18,8 +19,8 @@ $accountType = $_POST['accountType'];
 $cor = $_POST['cor'];
 
 // Insert data into tbl_peerinfo
-$sql1 = "INSERT INTO tbl_peerinfo (firstname, middlename, lastname, email, contactnum, dob, gender, year, course, cor)
-         VALUES ('$firstName', '$middleName', '$lastName', '$email', '$contactNumber', '$birthdate', '$gender', '$year', '$course', '$cor')";
+$sql1 = "INSERT INTO tbl_peerinfo (firstname, middlename, lastname, email, contactnum, dob, gender, year, course, cor, profile)
+         VALUES ('$firstName', '$middleName', '$lastName', '$email', '$contactNumber', '$birthdate', '$gender', '$year', '$course', '$cor', '$profile')";
 
 if (mysqli_query($conn, $sql1)) {
     $peerId = mysqli_insert_id($conn);
