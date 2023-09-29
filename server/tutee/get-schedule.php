@@ -9,7 +9,7 @@ $dateNow = date('Y-m-d');
 $timeNow = date('H:i:s');
 
 // display only past schedules
-$sql = "SELECT * FROM tbl_request WHERE tutee_id = $peer_id AND request_status = 1 AND schedule_id IN (SELECT sched_id FROM tbl_schedules WHERE date < '$dateNow' OR (date = '$dateNow' AND duration < '$timeNow'))";
+$sql = "SELECT * FROM tbl_request WHERE tutee_id = $peer_id AND request_status = 1 AND schedule_id IN (SELECT sched_id FROM tbl_schedules WHERE date < '$dateNow' OR (date = '$dateNow' AND duration < '$timeNow') AND sched_status = 1)";
 $result = $conn->query($sql);
 $data = array();
 
@@ -19,7 +19,7 @@ if (mysqli_num_rows($result) > 0) {
         $result2 = $conn->query($sql);
         $row2 = mysqli_fetch_assoc($result2);
 
-        $sql = "SELECT * FROM tbl_schedules WHERE sched_id = " . $row['schedule_id'] . " AND sched_status = 1";
+        $sql = "SELECT * FROM tbl_schedules WHERE sched_id = " . $row['schedule_id'];
         $result3 = $conn->query($sql);
         $row3 = mysqli_fetch_assoc($result3);
         
