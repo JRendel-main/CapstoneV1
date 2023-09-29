@@ -8,8 +8,14 @@
                 $('#rank').html(data.rank);
                 $('#points').html(data.points);
                 $('#avg_rating').html(data.avg_rating);
+                // change the profile
+                $('#profile-pic').attr('src', data.profile);
             } else {
-                console.log(data.message);
+                swal.fire({
+                    title: 'Error!',
+                    text: data.message,
+                    icon: 'error'
+                })
             }
         },
     })

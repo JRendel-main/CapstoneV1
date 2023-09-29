@@ -1,60 +1,76 @@
 <style>
-    .card {
-        box-shadow: 0 0 40px 0 rgba(0,0,0,0.2);
-        border: none;
-        border-radius: 10px;
-        
-    }
-    
+  .card {
+    box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 10px;
+  }
 </style>
 <div class="account-pages mt-5 mb-5">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6 col-xl-5">
-                <div class="card">
-                    <div class="card-body p-4">
-                        <div class="text-center w-75 m-auto">
-                            <!-- Logo -->
-                            <a href="index.html">
-                                <span><img src="assets/images/nexus-logo.png" alt="" height="48"></span>
-                            </a>
-                            <p class="text-muted mb-4 mt-3">
-                                Enter your username and password
-                            </p>
-                        </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-5">
+        <div class="card">
+          <div class="card-body p-4">
+            <div class="text-center w-75 m-auto">
+              <!-- Logo -->
+              <a href="index.html">
+                <span
+                  ><img src="assets/images/nexus-logo.png" alt="" height="48"
+                /></span>
+              </a>
+              <p class="text-muted mb-4 mt-3">
+                Enter your username and password
+              </p>
+            </div>
 
-                        <form id="loginForm">
-
-                            <div class="form-group mb-3">
-                                <label for="username">Username</label>
-                                <input class="form-control" type="text" id="username" placeholder="Enter your username">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="password">Password</label>
-                                <input class="form-control" type="password" id="password" placeholder="Enter your password">
-                            </div>
-                            <div class="form-group mb-0 text-center">
-                                <button class="btn btn-dark btn-block" type="submit"> Log In </button>
-                            </div>
-                        </form>
-                    </div> <!-- end card-body -->
-                </div>
-                <!-- end card -->
-                <div class="row mt-3">
-                    <div class="col-12 text-center">
-                        <p> <a href="pass-recovery.php" class="text-white-50 ml-1">Forgot your password?</a></p>
-                        <p class="text-white-50">Don't have an account? <a href="register.php" class="text-white ml-1"><b>Sign Up</b></a></p>
-                    </div> <!-- end col -->
-                </div>
-                <!-- end row -->
-            </div> <!-- end col -->
+            <form id="loginForm">
+              <div class="form-group mb-3">
+                <label for="username">Username</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  id="username"
+                  placeholder="Enter your username"
+                />
+              </div>
+              <div class="form-group mb-3">
+                <label for="password">Password</label>
+                <input
+                  class="form-control"
+                  type="password"
+                  id="password"
+                  placeholder="Enter your password"
+                />
+              </div>
+              <div class="form-group mb-0 text-center">
+                <button class="btn btn-dark btn-block" type="submit">
+                  Log In
+                </button>
+              </div>
+              <div class="form-group mb-0 mt-3 text-center">
+                <!-- add href for redirection to registration page -->
+                <p class="text-dark-50">
+                  Don't have an account?
+                  <a href="register.php" class="text-dark ml-1"
+                    ><b>Sign Up</b></a
+                  >
+                </p>
+              </div>
+            </form>
+          </div>
+          <!-- end card-body -->
         </div>
+        <!-- end card -->
         <!-- end row -->
+      </div>
+      <!-- end col -->
     </div>
-    <!-- end container -->
+    <!-- end row -->
+  </div>
+  <!-- end container -->
 </div>
 <!-- end page -->
 
 <footer class="footer footer-alt">
-    2023 &copy; Nexus Link by <a href="" class="text-white-50">WizTech Team</a>
+  2023 &copy; Nexus Link by <a href="" class="text-white-50">WizTech Team</a>
 </footer>

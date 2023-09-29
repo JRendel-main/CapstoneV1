@@ -319,6 +319,9 @@
 
 
                 $("#user-name").text(fullName);
+
+                // change profile picture
+                $("#profile-picture").attr("src", data.profile);
             },
             error: function(data) {
                 console.log(data);

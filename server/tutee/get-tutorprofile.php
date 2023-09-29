@@ -39,11 +39,12 @@ if (mysqli_num_rows($result) > 0) {
             $tutor['bio'] = "Bio has not been setup yet";
             $tutor['about_me'] = "About me has not been setup yet";
         }
+        
         $tutor['rating'] = '4.5';
         // store tutor in response
         $response['tutor'] = $tutor;
 
-        $sql2 = "SELECT * FROM tbl_schedules WHERE peer_id = '$peer_id'";
+        $sql2 = "SELECT * FROM tbl_schedules WHERE peer_id = '$peer_id' AND sched_status = 1";
         $result2 = $conn->query($sql2);
 
         if (mysqli_num_rows($result2) > 0) {

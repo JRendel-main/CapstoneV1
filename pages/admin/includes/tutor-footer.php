@@ -177,7 +177,7 @@
                             }
                         });
                     }
-                })
+                })  
                 // if the user click the cancel button
                 .catch((error) => {
                     console.log(error);

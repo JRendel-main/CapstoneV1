@@ -37,7 +37,27 @@
                         data: {
                             columns: chartData,
                             type: 'pie',
+                            onmouseover: function(d, element) { console.log('onmouseover', d, element); },
+                            onmouseout: function(d, element) { console.log('onmouseout', d, element); },
+                            // display value only
+                            labels: true,
+                            // format the value
+                            label: {
+                                format: function(value, ratio, id) {
+                                    return value;
+                                }
+                            }
                         },
+                        tooltip: {
+                            format: {
+                                value: function(value, ratio, id) {
+                                    return value;
+                                }
+                            }
+                        },
+                        color: {
+                            pattern: ['#4CAF50', '#FF9800', '#2196F3', '#9C27B0', '#F44336', '#E91E63', '#00BCD4', '#FFEB3B', '#795548', '#607D8B']
+                        }
                     });
                 },
                 error: function(xhr, status, error) {

@@ -14,7 +14,9 @@ if ($result-> num_rows > 0) {
         $result2 = $conn->query($sql);
         $row2 = $result2->fetch_assoc();
         $fullname = $row2['firstname'] . ' ' . $row2['lastname'];
-        $image = 'https://ui-avatars.com/api/?name=' . $row2['firstname'] . '+' . $row2['lastname'];
+        $image = $row2['profile'];
+        // remove the "../../" on image
+        $image = str_replace('../../', '', $image);
         $course = $row2['course'];
 
         $sql = "SELECT * FROM tbl_course WHERE course_id = $course";

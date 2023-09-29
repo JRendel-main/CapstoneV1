@@ -49,12 +49,19 @@ if(mysqli_num_rows($result) > 0) {
         );
     }
 
+    $sql = "SELECT profile FROM tbl_peerinfo WHERE peer_id = $peer_id";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+
+    $profile = $row['profile'];
+
     $response = array(
         'status' => 200,
         'message' => 'Rank fetched successfully',
         'rank' => $rank,
         'points' => $points,
-        'avg_rating' => $avg_rating
+        'avg_rating' => $avg_rating,
+        'profile' => $profile
     );
 } else {
     // insert rank
