@@ -121,6 +121,9 @@
                                             $('#cancel-request').hide();
                                             $('#schedule-full').hide();
                                             $('#schedule-past').hide();
+                                            $('#schedule-enrolled').hide();
+                                            $('#request-sent').hide();
+                                            $('#request-cancelled').hide();
                                             $('#request-schedule').html('Enroll ' + data.slot);
                                         } else if (status == 1) {
                                             // schedule is already requested
@@ -128,18 +131,50 @@
                                             $('#cancel-request').show();
                                             $('#schedule-full').hide();
                                             $('#schedule-past').hide();
+                                            $('#schedule-enrolled').hide();
+                                            $('#request-cancelled').hide();
                                         } else if (status == 2) {
                                             // schedule is already full
                                             $('#request-schedule').hide();
                                             $('#cancel-request').hide();
                                             $('#schedule-full').show();
                                             $('#schedule-past').hide();
+                                            $('#schedule-enrolled').hide();
+                                            $('#request-sent').hide();
+                                            $('#request-cancelled').hide();
                                         } else if (status == 3) {
                                             // schedule is already past
                                             $('#request-schedule').hide();
                                             $('#cancel-request').hide();
                                             $('#schedule-full').hide();
                                             $('#schedule-past').show();
+                                            $('#schedule-enrolled').hide();
+                                            $('#request-sent').hide();
+                                            $('#request-cancelled').hide();
+                                        } else if (status == 4) {
+                                            // already enrolled
+                                            $('#request-schedule').hide();
+                                            $('#schedule-full').hide();
+                                            $('#schedule-past').hide();
+                                            $('#schedule-enrolled').show();
+                                            $('#request-sent').hide();
+                                            $('#request-cancelled').hide();
+                                        } else if (status == 5) {
+                                            // request cancelled
+                                            $('#request-schedule').hide();
+                                            $('#schedule-full').hide();
+                                            $('#schedule-past').hide();
+                                            $('#schedule-enrolled').hide();
+                                            $('#request-sent').hide();
+                                            $('#cancel-request').hide();
+                                        } else {
+                                            // hide all buttons
+                                            $('#request-schedule').hide();
+                                            $('#cancel-request').hide();
+                                            $('#schedule-full').hide();
+                                            $('#schedule-past').hide();
+                                            $('#schedule-enrolled').hide();
+                                            $('#request-cancelled').hide();
                                         }
                                         // if the date is on past add done button
                                         var today = moment().format('YYYY-MM-DD');
@@ -149,6 +184,9 @@
                                             $('#schedule-full').hide();
                                             $('#schedule-past').hide();
                                             $('#schedule-past').show();
+                                            $('#schedule-enrolled').hide();
+                                            $('#request-sent').hide();
+                                            $('#request-cancelled').hide();
                                         }
                                         // if the user clicks the request schedule button
                                         $('#request-schedule').click(function() {
@@ -159,7 +197,7 @@
                                             swal.fire({
                                                 icon: 'warning',
                                                 title: 'Are you sure?',
-                                                text: 'You are about to request this schedule.',
+                                                text: 'You are about to request this schedule',
                                                 showCancelButton: true,
                                                 confirmButtonText: 'Yes, request it!',
                                                 cancelButtonText: 'No, cancel!',
@@ -196,39 +234,48 @@
                                                     });
                                                 }
                                             });
-                                            
                                         });
                                         var request_id = data.request_id;
                                         // if the user clicks the cancel request button
                                         $('#cancel-request').click(function() {
-                                            // get the schedule_id
-                                            var sched_id = event.sched_id;
-                                            console.log(request_id);
-
-                                            // send the request to the server
-                                            $.ajax({
-                                                url: '../../server/tutee/cancel-request.php',
-                                                type: 'POST',
-                                                data: {
-                                                    request_id: request_id
-                                                },
-                                                success: function(response) {
-                                                    var data = JSON.parse(response);
-                                                    if (data.success) {
-                                                        swal.fire({
-                                                            icon: 'success',
-                                                            title: 'Success!',
-                                                            text: 'Schedule request cancelled successfully!'
-                                                        }).then(function() {
-                                                            location.reload();
-                                                        });
-                                                    } else {
-                                                        swal.fire({
-                                                            icon: 'error',
-                                                            title: 'Oops...',
-                                                            text: 'Something went wrong! Please try again later.'
-                                                        });
-                                                    }
+                                            // add also confirmation to the cancel request swal
+                                            swal.fire({
+                                                icon: 'warning',
+                                                title: 'Are you sure?',
+                                                text: 'You are about to cancel your request, YOU NO LONGER CANNOT REQUEST FOR THIS SCHEDULE',
+                                                showCancelButton: true,
+                                                confirmButtonText: 'Yes, cancel it!',
+                                                cancelButtonText: 'No, cancel!',
+                                                confirmButtonColor: '#3085d6',
+                                                cancelButtonColor: '#d33',
+                                            }).then((result) => {
+                                                if (result.value) {
+                                                    // send the cancel request to the server
+                                                    $.ajax({
+                                                        url: '../../server/tutee/cancel-request.php',
+                                                        type: 'POST',
+                                                        data: {
+                                                            request_id: request_id
+                                                        },
+                                                        success: function(response) {
+                                                            var data = JSON.parse(response);
+                                                            if (data.success) {
+                                                                swal.fire({
+                                                                    icon: 'success',
+                                                                    title: 'Success!',
+                                                                    text: 'Request cancelled successfully!'
+                                                                }).then(function() {
+                                                                    location.reload();
+                                                                });
+                                                            } else {
+                                                                swal.fire({
+                                                                    icon: 'error',
+                                                                    title: 'Oops...',
+                                                                    text: 'Something went wrong! Please try again later.'
+                                                                });
+                                                            }
+                                                        }
+                                                    });
                                                 }
                                             });
                                         });

@@ -231,6 +231,12 @@
                 <div class="modal-footer" id="footer">
                     <!-- Request schedule button -->
                     <button type="button" class="btn btn-success" id="request-schedule">Join</button>
+                    <!-- Request has been cancelled or denied -->
+                    <button type="button" class="btn btn-warning" id="request-cancelled" disabled>Request Cancelled / Denied</button>
+                    <!-- Join Request sent button -->
+                    <button type="button" class="btn btn-warning" id="request-sent" disabled>Request Sent</button>
+                    <!-- Enrolled button -->
+                    <button type="button" class="btn btn-success" id="schedule-enrolled" disabled>Enrolled</button>
                     <!-- Cancel request schedule button -->
                     <button type="button" class="btn btn-danger" id="cancel-request">Cancel</button>
                     <!-- schedule full button -->
