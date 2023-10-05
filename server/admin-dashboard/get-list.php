@@ -25,10 +25,15 @@ if (mysqli_num_rows($result) > 0) {
                 // get the tutor's points
                 $sql = "SELECT * FROM tbl_ratings WHERE peer_id = $peer_id";
                 $result4 = mysqli_query($conn, $sql);
-                $points = 0;
 
-                $row = mysqli_fetch_assoc($result4);
-                $points = $row['points'];
+                // check if there is result
+                if (mysqli_num_rows($result4) > 0) {
+                    while ($row4 = mysqli_fetch_assoc($result4)) {
+                        $points = $row4['points'];
+                    }
+                } else {
+                    $points = 0;
+                }
 
                 $response[] = array(
                     'peer_id' => $peer_id,

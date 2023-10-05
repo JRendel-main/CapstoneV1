@@ -16,7 +16,7 @@ $bio = $_POST['bio'];
 $expertise = $_POST['expertise'];
 
 // update the tbl_peerinfo
-$sql = "UPDATE tbl_peerinfo SET firstname = '$firstname', middlename = '$middlename', lastname = '$lastname', email = '$email', contactnum = '$contactnum', course = '$course', year = '$year' WHERE peer_id = '$peer_id'";
+$sql = "UPDATE tbl_peerinfo SET firstname = '$firstname', middlename = '$middlename', lastname = '$lastname', email = '$email', contactnum = '$contactnum', year = '$year' WHERE peer_id = '$peer_id'";
 $result = mysqli_query($conn, $sql);
 
 // check if there is tutor profile
