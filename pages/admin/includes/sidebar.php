@@ -43,25 +43,6 @@
                         </li>
 
                         <li>
-                            <a href="#">
-                                <i class="fe-calendar"></i>
-                                <span> Schedules </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <ul class="nav-second-level nav" aria-expanded="false">
-                                <li>
-                                    <a href="tutor-list.php">Current Schedules</a>
-                                </li>
-                                <li>
-                                    <a href="tutee-list.php">Past Schedules</a>
-                                </li>
-                                <li>
-                                    <a href="moderator-list.php">Upcoming Schedules</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
                             <a href="validation.php">
                                 <i class="fe-user-plus"></i>
                                 <span> Validation </span>
