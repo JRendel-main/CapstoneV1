@@ -30,6 +30,11 @@
             return "Thank you for your assistance!"; // Example message
         }
 
+        $('#qrcode').click(function () {
+            // when clicked, open new window minimized
+            window.open('../../test.php', '_blank', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=500,height=500');
+        });
+
         // get the tutor data from the database
         $.ajax({
             url: '../../server/tutee/get-tutors.php',

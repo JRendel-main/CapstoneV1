@@ -1,0 +1,18 @@
+{
+    "title": "Nexus Link",
+    "description": "",
+    "logo": "images/logo.png",
+    "theme": "dark",
+    "contact": {
+        "email": "contact@mywebsite.com",
+        "phone": "555-555-5555",
+        "address": "123 Main St, Anytown USA"
+    },
+    "social": {
+        "facebook": "https://www.facebook.com/mywebsite",
+        "twitter": "https://twitter.com/mywebsite",
+        "instagram": "https://www.instagram.com/mywebsite"
+    },
+    
+    "maintenance_mode": "false"
+}
