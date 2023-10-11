@@ -102,7 +102,7 @@
                                                     <p class="header-description"><i class="fe-info"></i><i> Set schedules between 8:00am - 5:00pm only</i></p>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="control-label">Duration</label>
+                                                    <label class="control-label">Duration<b>(Hours)</b></label>
                                                     <input class="form-control form-white" placeholder="Duration of Session" type="number" name="duration-f2f">
                                                 </div>
                                             </div>
