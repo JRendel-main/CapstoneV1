@@ -309,19 +309,12 @@
             dataType: "json",
             success: function(data) {
                 $("#user-fullname").text(data.fullname);
+                $("#user-name").text(data.name);
                 $("#user-rank").html(data.rank);
-
-                // upper case the first letter
-                var name = data.name;
-                var firstLetter = name.charAt(0).toUpperCase();
-                var restOfName = name.slice(1);
-                var fullName = firstLetter + restOfName;
-
-
-                $("#user-name").text(fullName);
 
                 // change profile picture
                 $("#profile-picture").attr("src", data.profile);
+                $("#userImage").attr("src", data.profile);
             },
             error: function(data) {
                 console.log(data);

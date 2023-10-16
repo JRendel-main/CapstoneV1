@@ -17,8 +17,29 @@ if(mysqli_num_rows($result) > 0) {
         $date = $row['date'];
         $start = $row['start'];
         $max_tutee = $row['max_tutee'];
-        // get the end time by adding the duration(hours) to the start time
-        $end = date('H:i', strtotime($start . ' + ' . $row['duration'] . ' hours'));
+        $duration = $row['duration'];
+        // Split the start time into hours and minutes
+list($startHours, $startMinutes) = explode(':', $start);
+
+// Convert the hours and minutes to integers
+$startHours = (int)$startHours;
+$startMinutes = (int)$startMinutes;
+
+// Calculate the duration in minutes
+$durationInMinutes = $duration * 60;
+
+// Calculate the total minutes for the start time
+$startTotalMinutes = ($startHours * 60) + $startMinutes;
+
+// Calculate the total minutes for the end time
+$endTotalMinutes = $startTotalMinutes + $durationInMinutes;
+
+// Calculate the hours and minutes for the end time
+$endHours = floor($endTotalMinutes / 60);
+$endMinutes = $endTotalMinutes % 60;
+
+// Format the end time as hh.mm
+$end = sprintf('%02d:%02d', $endHours, $endMinutes);
 
         // BASED ON HOW MANY REQUEST AND MAX TUTEE GET THE AVAILABLE SLOT
         $sql2 = "SELECT * FROM tbl_request WHERE schedule_id = $sched_id AND request_status = 1";
@@ -69,5 +90,3 @@ if(mysqli_num_rows($result) > 0) {
     }
 }
 echo json_encode($data);
-?>
-

@@ -31,6 +31,7 @@
             <p><strong>3. Ensure Good Lighting:</strong> Make sure you have adequate lighting for your tasks.</p>
             <p><strong>4. Stay Organized:</strong> Keep your workspace tidy and organized.</p>
             <p><strong>5. Minimize Noise:</strong> Reduce background noise that may disturb your concentration.</p>
+            <p><strong>6. Keep it Clean:</strong> Clean up after yourself and leave the space as you found it.</p>
         `,
                 icon: 'info',
                 confirmButtonText: 'Got it!',
@@ -371,7 +372,19 @@
                 var platform = $("select[name='platform']").val();
                 var link = $("input[name='link']").val();
                 var start = $("input[name='start-online']").val();
-                var duration = $("input[name='duration-online']").val();
+                // get the hours and minutes on form
+                var hours = $("input[name='duration-online-hours']").val();
+                var minutes = $("input[name='duration-online-minutes']").val();
+
+                // add validation on hours and minutes
+                switch (true) {
+                    case hours === '':
+                        validationMsg('Hours');
+                        return false;
+                    case minutes === '':
+                        validationMsg('Minutes');
+                        return false;
+                }
                 var place = '';
 
                 switch (true) {
@@ -384,14 +397,19 @@
                     case start === '':
                         validationMsg('Start Time');
                         return false;
-                    case duration === '':
-                        validationMsg('Duration');
+                    case hours > 5:
+                        validationDuration('Hours must not be over 5 hours');
                         return false;
+                    case minutes > 59:
+                        validationDuration('Minutes must not be over 59 minutes');
+                    return false;
                 }
             } else {
                 var place = $("input[name='place']").val();
                 var start = $("input[name='start-f2f']").val();
-                var duration = $("input[name='duration-f2f']").val();
+                // get the hours and minutes on form
+                var hours = $("input[name='duration-f2f-hours']").val();
+                var minutes = $("input[name='duration-f2f-minutes']").val();
                 var platform = '';
                 var link = '';
 
@@ -402,17 +420,15 @@
                     case start === '':
                         validationMsg('Start Time');
                         return false;
-                    case duration === '':
-                        validationMsg('Duration');
+                    // check if hours is over 5
+                    case hours > 5:
+                        validationDuration('Hours must not be over 5 hours');
+                        return false;
+                    case minutes > 59:
+                        validationDuration('Minutes must not be over 59 minutes');
                         return false;
                 }
             }
-            // var topic = $("input[name='topic']").val();
-            // var description = $("textarea[name='description']").val();
-            // var place = $("input[name='place']").val();
-            // var start = $("input[name='start']").val();
-            // var duration = $("input[name='duration']").val();
-            // var date = $("input[name='date']").val();
 
             // Create an object with the schedule data
             var eventData = {
@@ -423,7 +439,8 @@
                 platform: platform,
                 link: link,
                 date: date,
-                duration: duration,
+                hours: hours,
+                minutes: minutes,
                 start: start,
                 max_tutee: max
             };
@@ -484,4 +501,13 @@
             confirmButtonClass: 'btn btn-confirm mt-2'
         });
     };
+    function validationDuration(message) {
+        // use swal
+        swal.fire({
+            title: 'Error',
+            text: message,
+            icon: 'error',
+            confirmButtonClass: 'btn btn-confirm mt-2'
+        });
+    }
 </script>

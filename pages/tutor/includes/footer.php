@@ -304,6 +304,7 @@
             dataType: "json",
             success: function(data) {
                 $("#user-fullname").text(data.fullname);
+                $("#user-name").text(data.name);
                 $("#user-rank").html(data.rank);
 
                 // upper case the first letter
@@ -315,10 +316,12 @@
                 $("#user-name").text(fullName);
 
                 // change the profile picture
-                if (data.profile == null) {
+                if (data.profile == '') {
                     $("#profile-picture").attr("src", "../../assets/images/users/user-1.jpg");
+                    $("#userImage").attr("src", "../../assets/images/users/user-1.jpg");
                 } else {
                     $("#profile-picture").attr("src", data.profile);
+                    $("#userImage").attr("src", data.profile);
                 }
             },
             error: function(data) {

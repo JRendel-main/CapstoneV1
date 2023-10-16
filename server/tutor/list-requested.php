@@ -27,7 +27,12 @@ if (mysqli_num_rows($result) > 0) {
         $contact = $row2['contactnum'];
         $course = $row2['course'];
         $year = $row2['year'];
-        $profile_pic = '../../assets/images/users/user-4.jpg';
+        $profile_pic = $row2['profile'];
+
+        $sql3 = "SELECT course_name FROM tbl_course WHERE course_id = $course";
+        $result3 = mysqli_query($conn, $sql3);
+        $row3 = mysqli_fetch_assoc($result3);
+        $course = $row3['course_name'];
 
         $data[] = array(
             'request_id' => $request_id,

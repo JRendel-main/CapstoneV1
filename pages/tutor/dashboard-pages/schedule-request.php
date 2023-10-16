@@ -33,16 +33,6 @@
                                 Approved
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#declined" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
-                                Declined
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#all" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
-                                All
-                            </a>
-                        </li>
                     </ul>
 
                     <!-- For pending tab -->
@@ -83,15 +73,14 @@
                                             <table class="table table-bordered table-centered table-hover mb-0 row-border" id="approved-table">
                                                 <thead>
                                                     <tr>
-                                                        <th>Date of Schedule</th>
-                                                        <th>Fullname</th>
                                                         <th>Topic</th>
-                                                        <th>Time</th>
+                                                        <th>Date</th>
+                                                        <th>Start Time</th>
+                                                        <th>Tutee Name</th>
                                                         <th>Status</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-
                                                 </tbody>
                                             </table>
                                         </div>

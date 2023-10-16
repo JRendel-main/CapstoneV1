@@ -12,11 +12,16 @@ while ($row = mysqli_fetch_assoc($result)) {
     $today = date("Y-m-d");
     $diff = date_diff(date_create($bday), date_create($today));
     $age = $diff->format('%y');
+    $sql = 'SELECT course_name FROM tbl_course WHERE course_id = ' . $row['course'];
+    $result2 = mysqli_query($conn, $sql);
+    $row2 = mysqli_fetch_assoc($result2);
+    $course = $row2['course_name'];
+
     $accounts[] = [
         'peerid' => $row['peer_id'],
         'name' => $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'],
         'age' => $age,
-        'department' => $row['course'],
+        'department' => $course,
         'year' => $row['year'],
         'cor' => $row['cor'],
         'email' => $row['email'],

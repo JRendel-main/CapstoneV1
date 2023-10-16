@@ -96,12 +96,6 @@
                             </li> -->
 
                         <!-- Emails -->
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="fe-mail"></i>
-                                <span> Messages </span>
-                            </a>
-                        </li>
 
                         <li class="menu-title">Account Settings</li>
 

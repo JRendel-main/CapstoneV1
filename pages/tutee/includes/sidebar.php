@@ -94,26 +94,6 @@
                             </ul>
                         </li>
 
-                        <!-- Emails -->
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="fe-mail"></i>
-                                <span> Email </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <ul class="nav-second-level nav" aria-expanded="false">
-                                <li>
-                                    <a href="email-inbox.php">Inbox</a>
-                                </li>
-                                <li>
-                                    <a href="email-read.php">Read Email</a>
-                                </li>
-                                <li>
-                                    <a href="email-compose.php">Compose Email</a>
-                                </li>
-                            </ul>
-                        </li>
-
                         <li class="menu-title">Account Settings</li>
 
                         <li>
@@ -127,15 +107,6 @@
                             <a href="settings.php">
                                 <i class="fe-settings"></i>
                                 <span> Settings </span>
-                            </a>
-                        </li>
-
-                        <li class="menu-title">Others</li>
-                        <!-- History list -->
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="fe-clock"></i>
-                                <span> History </span>
                             </a>
                         </li>
                     </ul>

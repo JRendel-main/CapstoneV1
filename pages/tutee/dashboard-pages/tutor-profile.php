@@ -21,13 +21,10 @@
             <div class="row">
                 <div class="col-lg-4 col-xl-4">
                     <div class="card-box text-center">
-                        <img src="../../assets/images/users/user-3.jpg" class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
+                        <img src="../../assets/images/users/user-3.jpg" class="rounded-circle avatar-lg img-thumbnail" alt="profile-image" id="tutorProfile">
 
                         <h4 class="mb-0" id="tutor-name">[Tutor Name]</h4>
                         <p class="text-muted" id="tutor-department">[Tutor Department]</p>
-
-                        <button type="button" class="btn btn-success btn-xs waves-effect mb-2 waves-light">Follow</button>
-                        <button type="button" class="btn btn-danger btn-xs waves-effect mb-2 waves-light">Message</button>
 
                         <div class="text-left mt-3">
                             <h4 class="font-13 text-uppercase">About Me :</h4>
@@ -40,7 +37,6 @@
 
                             <p class="text-muted mb-2 font-13" id="email"><strong>Email :</strong> <span class="ml-2 "></span></p>
 
-                            <p class="text-muted mb-1 font-13"><strong>Location :</strong> <span class="ml-2"></span></p>
                         </div>
                     </div> <!-- end card-box -->
 
@@ -54,84 +50,17 @@
                     <div class="card-box">
                         <ul class="nav nav-pills navtab-bg nav-justified">
                             <li class="nav-item">
-                                <a href="#history" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                    History
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="#schedule" data-toggle="tab" aria-expanded="true" class="nav-link active">
                                     Schedule List
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#settings" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                    Review & Ratings
+                                <a href="#ratings" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    Tutor Timeline
                                 </a>
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <div class="tab-pane" id="history">
-                                <h5 class="mb-3 mt-4 text-uppercase"><i class="mdi mdi-cards-variant mr-1"></i>
-                                    Projects</h5>
-                                <div class="table-responsive">
-                                    <table class="table table-borderless mb-0">
-                                        <thead class="thead-light">
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Project Name</th>
-                                                <th>Start Date</th>
-                                                <th>Due Date</th>
-                                                <th>Status</th>
-                                                <th>Clients</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>App design and development</td>
-                                                <td>01/01/2015</td>
-                                                <td>10/15/2018</td>
-                                                <td><span class="badge badge-info">Work in Progress</span></td>
-                                                <td>Halette Boivin</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Coffee detail page - Main Page</td>
-                                                <td>21/07/2016</td>
-                                                <td>12/05/2018</td>
-                                                <td><span class="badge badge-success">Pending</span></td>
-                                                <td>Durandana Jolicoeur</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Poster illustation design</td>
-                                                <td>18/03/2018</td>
-                                                <td>28/09/2018</td>
-                                                <td><span class="badge badge-pink">Done</span></td>
-                                                <td>Lucas Sabourin</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Drinking bottle graphics</td>
-                                                <td>02/10/2017</td>
-                                                <td>07/05/2018</td>
-                                                <td><span class="badge badge-blue">Work in Progress</span></td>
-                                                <td>Donatien Brunelle</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Landing page design - Home</td>
-                                                <td>17/01/2017</td>
-                                                <td>25/05/2021</td>
-                                                <td><span class="badge badge-warning">Coming soon</span></td>
-                                                <td>Karel Auberjo</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </div> <!-- end tab-pane -->
-                            <!-- end about me section content -->
 
                             <div class="tab-pane show active" id="schedule">
                                 <div class="row justify-content-center align-items-center">
@@ -146,8 +75,8 @@
                             </div>
                             <!-- end timeline content-->
 
-                            <div class="tab-pane" id="settings">
-
+                            <div class="tab-pane" id="ratings">
+                                
                             </div>
                             <!-- end settings content-->
 
@@ -195,55 +124,55 @@
                                                 <!-- description -->
                                                 <p id="schedule-description">[Schedule Description]</p>
                                             </div>
-                                        <div class="table-responsive">
-                                            <table class="table table-borderless table-nowrap mb-0">
-                                                <tbody>
-                                                    <tr>
-                                                        <th scope="row">Date</th>
-                                                        <td id="schedule-date">[Schedule Date]</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">Time</th>
-                                                        <td id="schedule-time">[Schedule Time]</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">Tutoring Mode</th>
-                                                        <td id="schedule-mode">[Schedule Mode]</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">Capacity</th>
-                                                        <td id="schedule-capacity">[Schedule Capacity]</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div> <!-- end card-box -->
-                                </div> <!-- end col -->
-                            </div> <!-- end row -->
-                        </div>
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless table-nowrap mb-0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">Date</th>
+                                                            <td id="schedule-date">[Schedule Date]</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Time</th>
+                                                            <td id="schedule-time">[Schedule Time]</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Tutoring Mode</th>
+                                                            <td id="schedule-mode">[Schedule Mode]</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Capacity</th>
+                                                            <td id="schedule-capacity">[Schedule Capacity]</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div> <!-- end card-box -->
+                                    </div> <!-- end col -->
+                                </div> <!-- end row -->
+                            </div>
 
-                        <!-- Tutee List Tab -->
-                        <div class="tab-pane fade" id="tutee-list" role="tabpanel" aria-labelledby="tutee-list-tab">
+                            <!-- Tutee List Tab -->
+                            <div class="tab-pane fade" id="tutee-list" role="tabpanel" aria-labelledby="tutee-list-tab">
 
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer" id="footer">
-                    <!-- Request schedule button -->
-                    <button type="button" class="btn btn-success" id="request-schedule">Join</button>
-                    <!-- Request has been cancelled or denied -->
-                    <button type="button" class="btn btn-warning" id="request-cancelled" disabled>Request Cancelled / Denied</button>
-                    <!-- Join Request sent button -->
-                    <button type="button" class="btn btn-warning" id="request-sent" disabled>Request Sent</button>
-                    <!-- Enrolled button -->
-                    <button type="button" class="btn btn-success" id="schedule-enrolled" disabled>Enrolled</button>
-                    <!-- Cancel request schedule button -->
-                    <button type="button" class="btn btn-danger" id="cancel-request">Cancel</button>
-                    <!-- schedule full button -->
-                    <button type="button" class="btn btn-warning" id="schedule-full" disabled>Full</button>
-                    <!-- schedule past button -->
-                    <button type="button" class="btn btn-warning" id="schedule-past" disabled>Schedule Done</button>
+                    <div class="modal-footer" id="footer">
+                        <!-- Request schedule button -->
+                        <button type="button" class="btn btn-success" id="request-schedule">Join</button>
+                        <!-- Request has been cancelled or denied -->
+                        <button type="button" class="btn btn-warning" id="request-cancelled" disabled>Request Cancelled / Denied</button>
+                        <!-- Join Request sent button -->
+                        <button type="button" class="btn btn-warning" id="request-sent" disabled>Request Sent</button>
+                        <!-- Enrolled button -->
+                        <button type="button" class="btn btn-success" id="schedule-enrolled" disabled>Enrolled</button>
+                        <!-- Cancel request schedule button -->
+                        <button type="button" class="btn btn-danger" id="cancel-request">Cancel</button>
+                        <!-- schedule full button -->
+                        <button type="button" class="btn btn-warning" id="schedule-full" disabled>Full</button>
+                        <!-- schedule past button -->
+                        <button type="button" class="btn btn-warning" id="schedule-past" disabled>Schedule Done</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>

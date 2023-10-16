@@ -34,6 +34,7 @@
                 var tutoremail = data.tutor.email;
                 var peer_id = data.tutor.peer_id;
                 var tutorrating = data.tutor.rating;
+                var tutorProfile = data.tutor.profile;
 
                 $('#tutor-name').html(tutorname);
                 $('#tutor-department').html(tutorcourse);
@@ -41,6 +42,7 @@
                 $('#fullname').html('<strong>Full Name :</strong> <span class="ml-2">' + tutorname);
                 $('#contactnum').html('<strong>Contact Number :</strong> <span class="ml-2">' + tutorcontactnum);
                 $('#email').html('<strong>Email :</strong> <span class="ml-2">' + tutoremail);
+                $('#tutorProfile').attr('src', tutorProfile);
 
                 // check if schedules array is empty 
                 if (data.schedules.length == 0) {} else {
@@ -287,6 +289,58 @@
                     });
 
                 }
+            }
+        });
+
+        // when ratings tab clicked get the documentation and ratings
+        $.ajax({
+            url: '../../server/tutee/get-documentation.php',
+            type: 'POST',
+            data: {
+                peer_id: peer_id
+            },
+            success: function(response) {
+                var data = JSON.parse(response);
+                console.log(data);
+
+                // in every documentation get the picture path, feedback, fullname and profile and put to the html
+                for (var i = 0; i < data.length; i++) {
+                    var docu = data[i];
+
+                    var docu_id = docu.docu_id;
+                    var picture_path = docu.picture_path;
+                    var feedback = docu.feedback;
+                    var fullname = docu.fullname;
+                    var profile = docu.profile;
+                    var date = docu.date;
+
+                    // check if the picture_path is empty
+                    if (picture_path == '') {
+                        picture_path = 'default.png';
+                    }
+
+                    $('#ratings').append(`
+                        <div class="border border-light p-2 mb-3">
+                                    <div class="media">
+                                        <img class="mr-2 avatar-sm rounded-circle" src="${profile}" alt="Generic placeholder image">
+                                        <div class="media-body">
+                                            <h5 class="m-0">${fullname}</h5>
+                                            <p class="text-muted"><small>${date}</small></p>
+                                        </div>
+                                    </div>
+                                    <p>${feedback}</p>
+
+                                    <img src="../../server/tutee/${picture_path}" alt="post-img" class="rounded mr-1" height="150" />
+                                </div>
+                    `);
+                }
+            },
+            error: function(err) {
+                swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong! Please try again later.'
+                });
             }
         });
     });

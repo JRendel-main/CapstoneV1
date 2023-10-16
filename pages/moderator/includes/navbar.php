@@ -3,34 +3,6 @@
     <ul class="list-unstyled topnav-menu float-right mb-0">
 
         <li class="dropdown notification-list">
-            <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#" role="button"
-                aria-haspopup="false" aria-expanded="false">
-                <i class="fe-bell noti-icon"></i>
-                <span class="badge rounded-circle noti-icon-badge"></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-                <!-- item-->
-                <div class="dropdown-item noti-title">
-                    <h5 class="m-0">
-                        <span class="float-right">
-                            <a href="" class="text-dark">
-                                <small>Clear All</small>
-                            </a>
-                        </span>Notification
-                    </h5>
-                </div>
-
-                <div class="slimscroll noti-scroll">
-                    <!-- Add the component that informs the user they have no messages -->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item no-messages">
-                        <p class="notify-details">You have no messages yet.</p>
-                    </a>
-                    <!-- Add other notification items here -->
-                </div>
-            </div>
-        </li>
-
-        <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#"
                 role="button" aria-haspopup="false" aria-expanded="false">
                 <img id="userImage" src="../../assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
@@ -72,12 +44,6 @@
             </div>
         </li>
 
-
-        <li class="dropdown notification-list">
-            <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
-                <i class="fe-settings noti-icon"></i>
-            </a>
-        </li>
 
 
     </ul>
