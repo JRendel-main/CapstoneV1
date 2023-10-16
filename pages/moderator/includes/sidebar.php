@@ -51,14 +51,6 @@
                             </a>
                         </li>
 
-                        <!-- Emails -->
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="fe-mail"></i>
-                                <span> Messages </span>
-                            </a>
-                        </li>
-
                         <!-- Testimonials -->
                         <li>
                             <a href="javascript: void(0);">
@@ -78,23 +70,6 @@
 
                         <li class="menu-title">User Settings</li>
 
-                        <!-- User List -->
-                        <li>
-                            <a href="#">
-                                <i class="fe-users"></i>
-                                <span> User List </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <ul class="nav-second-level nav" aria-expanded="false">
-                                <li>
-                                    <a href="tutor-list.php">Tutor List</a>
-                                </li>
-                                <li>
-                                    <a href="tutee-list.php">Tutee List</a>
-                                </li>
-                            </ul>
-                        </li>
-
                         <!-- Location list-->
                         <li>
                             <a href="#">
@@ -108,31 +83,6 @@
                             <a href="schedule-list.php">
                                 <i class="fe-calendar"></i>
                                 <span> Schedule Lists </span>
-                            </a>
-                        </li>
-
-                        <li class="menu-title">Account Settings</li>
-
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="fe-user"></i>
-                                <span> Profile </span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="fe-settings"></i>
-                                <span> Settings </span>
-                            </a>
-                        </li>
-
-                        <li class="menu-title">Others</li>
-                        <!-- History list -->
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="fe-clock"></i>
-                                <span> History </span>
                             </a>
                         </li>
                     </ul>

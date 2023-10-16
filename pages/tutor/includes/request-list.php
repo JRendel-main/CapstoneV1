@@ -77,9 +77,9 @@ $peer_id = $_SESSION['peer_id'];
                         }
                     ],
                     data: data,
-                    // sort by date
+                    // sort by status
                     "order": [
-                        [1, "desc"]
+                        [4, "asc"]
                     ],
 
                 });

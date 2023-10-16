@@ -6,33 +6,26 @@
             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#"
                 role="button" aria-haspopup="false" aria-expanded="false">
                 <img id="userImage" src="../../assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
-                <span class="pro-user-name ml-1">
-                    <p id="user-name"></p>
+                <span class="pro-user-name ml-1" id="user-name">
                 </i>
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                 <!-- item-->
                 <div class="dropdown-header noti-title">
-                    <h6 class="text-overflow m-0" id="sidebar-username"></h6>
+                    <h6 class="text-overflow m-0" id="sidebar-username">Settings</h6>
                 </div>
 
                 <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                <a href="edit-profile.php" class="dropdown-item notify-item">
                     <i class="fe-user"></i>
                     <span>My Account</span>
                 </a>
 
                 <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                <a href="settings.php" class="dropdown-item notify-item">
                     <i class="fe-settings"></i>
                     <span>Settings</span>
-                </a>
-
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <i class="fe-lock"></i>
-                    <span>Lock Screen</span>
                 </a>
 
                 <div class="dropdown-divider"></div>

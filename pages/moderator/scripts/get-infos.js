@@ -5,7 +5,7 @@ $(document).ready(function() {
         type: "POST",
         dataType: "json",
         success: function(data) {
-            $("#user-fullname").text(data.fullname);
+            $("#user-fullname").text(data.name);
             $("#user-rank").html("Bronze");
         },
         error: function(data) {

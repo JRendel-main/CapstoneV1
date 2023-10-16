@@ -1,6 +1,6 @@
 <div class="account-pages mt-5 mb-5">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" id="recoveryCard">
             <div class="col-md-8 col-lg-6 col-xl-5">
                 <div class="card bg-pattern">
 
@@ -21,7 +21,7 @@
                             </div>
 
                             <div class="form-group mb-0 text-center">
-                                <button class="btn btn-outline-blue btn-block" type="button"> Reset Password </button>
+                                <button class="btn btn-outline-blue btn-block" type="button" id="reset"> Reset Password </button>
                             </div>
 
                         </form>
@@ -103,7 +103,7 @@
                             </svg>
 
                             <h3>Success !</h3>
-                            <p class="text-muted font-14 mt-2"> A email has been send to <b>youremail@domain.com</b>.
+                            <p class="text-muted font-14 mt-2"> A email has been send to <b id="userEmail"></b>.
                                 Please check for an email and click on the included link to
                                 reset your password. </p>
 

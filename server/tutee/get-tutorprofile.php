@@ -20,6 +20,7 @@ if (mysqli_num_rows($result) > 0) {
         $tutor['email'] = $row['email'];
         $tutor['contactnum'] = $row['contactnum'];
         $tutor['year'] = $row['year'];
+        $tutor['profile'] = $row['profile'];
         $sql4 = "SELECT course_name FROM tbl_course WHERE course_id = '" . $row['course'] . "'";
         $result4 = $conn->query($sql4);
         if (mysqli_num_rows($result4) > 0) {
@@ -39,7 +40,7 @@ if (mysqli_num_rows($result) > 0) {
             $tutor['bio'] = "Bio has not been setup yet";
             $tutor['about_me'] = "About me has not been setup yet";
         }
-        
+
         $tutor['rating'] = '4.5';
         // store tutor in response
         $response['tutor'] = $tutor;
@@ -52,15 +53,40 @@ if (mysqli_num_rows($result) > 0) {
                 // store every schedule in array schedule
                 $schedule = array();
                 $schedule = $row2;
-                // get the end by adding the start time and duration(hours)
-                $end = date('H:i:s', strtotime($schedule['start'] . ' + ' . $schedule['duration'] . ' hours'));
+
+                $start = $schedule['start'];
+                $duration = $schedule['duration'];
+
+                // Split the start time into hours and minutes
+                list($startHours, $startMinutes) = explode(':', $start);
+
+                // Convert the hours and minutes to integers
+                $startHours = (int)$startHours;
+                $startMinutes = (int)$startMinutes;
+
+                // Calculate the duration in minutes
+                $durationInMinutes = $duration * 60;
+
+                // Calculate the total minutes for the start time
+                $startTotalMinutes = ($startHours * 60) + $startMinutes;
+
+                // Calculate the total minutes for the end time
+                $endTotalMinutes = $startTotalMinutes + $durationInMinutes;
+
+                // Calculate the hours and minutes for the end time
+                $endHours = floor($endTotalMinutes / 60);
+                $endMinutes = $endTotalMinutes % 60;
+
+                // Format the end time as hh:mm
+                $end = sprintf('%02d:%02d', $endHours, $endMinutes);
+
                 // store the end in schedule
                 $schedule['end'] = $end;
                 $schedules[] = $schedule;
 
                 // get the mode
                 $mode = $schedule['mode'];
-                
+
 
                 // store schedules in response
                 $response['schedules'] = $schedules;

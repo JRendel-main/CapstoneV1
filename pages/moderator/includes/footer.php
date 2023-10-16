@@ -124,7 +124,7 @@
                 $("#user-fullname").text(data.fullname);
                 $("#user-rank").html("Bronze");
 
-                $("#user-name").text(data.fullname);
+                $("#user-name").text(data.name);
             },
             error: function(data) {
                 console.log(data);

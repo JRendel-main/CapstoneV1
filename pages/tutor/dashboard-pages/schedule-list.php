@@ -102,8 +102,17 @@
                                                     <p class="header-description"><i class="fe-info"></i><i> Set schedules between 8:00am - 5:00pm only</i></p>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="control-label">Duration<b>(Hours)</b></label>
-                                                    <input class="form-control form-white" placeholder="Duration of Session" type="number" name="duration-f2f">
+                                                    <label class="control-label">Duration</label>
+                                                    <!-- Add two input -->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <input class="form-control form-white" placeholder="Hours" type="number" name="duration-f2f-hours">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <input class="form-control form-white" placeholder="Minutes" type="number" name="duration-f2f-minutes">
+                                                        </div>
+                                                    </div>
+                                                    <p class="header-description"><i class="fe-info"></i><i> Set duration between 1-5 hours only</i></p>
                                                 </div>
                                             </div>
                                             <div class="col-md-6" id="online">
@@ -127,8 +136,18 @@
                                                     <input class="form-control form-white" placeholder="Event start" type="time" name="start-online">
                                                 </div>
                                                 <div class="form-group">
+                                                    <!-- Add hours and minutes inputs to specify the duration side by side-->
                                                     <label class="control-label">Duration</label>
-                                                    <input class="form-control form-white" placeholder="Duration of Session" type="number" name="duration-online">
+                                                    <!-- Add two inputs -->
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <input class="form-control form-white" placeholder="Hours" type="number" name="duration-online-hours" max="5">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <input class="form-control form-white" placeholder="Minutes" type="number" name="duration-online-minutes" max="59" value="00">
+                                                        </div>
+                                                    </div>
+                                                    <p class="header-description"><i class="fe-info"></i><i> Set duration between 1-5 hours only</i></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -220,8 +239,17 @@
                                                 <input class="form-control form-white" readonly placeholder="Event start" type="time" name="edit-start-online">
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label">Duration<b>(Hours)</b></label>
-                                                <input class="form-control form-white" placeholder="Duration of Session" type="number" name="edit-duration-online">
+                                                <!-- Add hours and minutes inputs to specify the duration side by side-->
+                                                <label class="control-label">Duration</label>
+                                                <!-- Add two inputs -->
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input class="form-control form-white" placeholder="Hours" type="number" name="edit-duration-online-hours" max="5">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input class="form-control form-white" placeholder="Minutes" type="number" name="edit-duration-online-minutes" max="59" value="00">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -234,8 +262,6 @@
                         </div> <!-- end modal-content-->
                     </div> <!-- end modal dialog-->
                 </div>
-
-
             </div>
         </div>
     </div>
