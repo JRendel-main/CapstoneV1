@@ -243,9 +243,10 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success!',
-                                text: 'Message sent!',
-                            })
-                            location.reload();
+                                text: data.message,
+                            }).then(function() {
+                                location.reload();
+                            });
                         },
                         error: function(data) {
                             console.log(data);
@@ -311,15 +312,12 @@
                 var firstLetter = name.charAt(0).toUpperCase();
                 var restOfName = name.slice(1);
                 var fullName = firstLetter + restOfName;
-                
-                $("#user-name").text(fullName);
 
-                // change the profile picture
-                if (data.profile == null) {
-                    $("#profile-picture").attr("src", "../../assets/images/users/user-1.jpg");
-                } else {
-                    $("#profile-picture").attr("src", data.profile);
-                }
+                $("#user-name").text(fullName);
+                console.log(fullName);
+
+                $("#profile-picture").attr("src", data.profile);
+                $("#userImage").attr("src", data.profile);
             },
             error: function(data) {
                 console.log(data);

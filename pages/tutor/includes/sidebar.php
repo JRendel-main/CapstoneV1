@@ -95,14 +95,6 @@
                                 </a>
                             </li> -->
 
-                        <!-- Emails -->
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="fe-mail"></i>
-                                <span> Messages </span>
-                            </a>
-                        </li>
-
                         <li class="menu-title">Account Settings</li>
 
                         <li>
@@ -123,15 +115,6 @@
                             <a href="settings.php">
                                 <i class="fe-settings"></i>
                                 <span> Settings </span>
-                            </a>
-                        </li>
-
-                        <li class="menu-title">Others</li>
-                        <!-- History list -->
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="fe-clock"></i>
-                                <span> History </span>
                             </a>
                         </li>
                     </ul>

@@ -63,6 +63,13 @@
                             </a>
                         </li>
 
+                        <li>
+                            <a href="reports.php">
+                                <i class="fe-mail"></i>
+                                <span> Ticket and Reports </span>
+                            </a>
+                        </li>
+
                         <li class="menu-title">Admin Settings</li>
 
                         <!-- Website settings -->
