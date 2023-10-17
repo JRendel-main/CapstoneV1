@@ -13,25 +13,6 @@
                     <div class="widget-rounded-circle card-box">
                         <div class="row">
                             <div class="col-6">
-                                <div class="avatar-lg rounded-circle bg-soft-danger border-danger border">
-                                    <!-- Add icon that indicates pending request -->
-                                    <i class="fe-alert-triangle font-22 avatar-title text-danger"></i>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="text-right">
-                                    <h3 class="text-dark mt-1"><span data-plugin="counterup" id="totalTutor">0</span>
-                                    </h3>
-                                    <p class="text-muted mb-1 text-truncate">Total Tutors</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-4">
-                    <div class="widget-rounded-circle card-box">
-                        <div class="row">
-                            <div class="col-6">
                                 <div class="avatar-lg rounded-circle bg-soft-warning border-warning border">
                                     <i class="fe-user-check font-22 avatar-title text-warning"></i>
                                 </div>

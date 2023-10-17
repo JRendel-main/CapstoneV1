@@ -14,7 +14,7 @@ $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 $total_pending = $row["total"];
 
-$sql1 = "SELECT COUNT(*) AS total FROM tbl_request WHERE tutor_id = '$peer_id' AND request_status = 3";
+$sql1 = "SELECT COUNT(*) AS total FROM tbl_request WHERE tutor_id = '$peer_id' AND request_status != 3";
 $result = mysqli_query($conn, $sql1);
 $row = mysqli_fetch_assoc($result);
 $total_sched = $row["total"];

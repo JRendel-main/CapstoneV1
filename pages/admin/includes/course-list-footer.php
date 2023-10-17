@@ -1,163 +1,184 @@
 <script>
     $(document).ready(function() {
-        $.ajax({
-            url: "../../server/admin-dashboard/get-course-list.php",
-            method: "POST",
-            success: function(data) {
-                console.log(data);
-                $('#course-list').DataTable({
-                    columns: [{
-                            title: "Course ID",
-                            data: "0"
+        loadCourseList();
+        addCourse();
+
+        function makeAjaxRequest(url, method, data, successCallback, errorCallback) {
+            $.ajax({
+                url: url,
+                method: method,
+                data: data,
+                dataType: "json",
+                success: successCallback,
+                error: errorCallback
+            });
+        }
+
+        function showError(message) {
+            swal.fire({
+                title: 'Error!',
+                text: message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
+
+        function showSuccess(message) {
+            swal.fire({
+                title: 'Success!',
+                text: message,
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        }
+
+
+
+        function loadCourseList() {
+            $.ajax({
+                url: "../../server/admin-dashboard/get-course-list.php",
+                method: "POST",
+                success: function(data) {
+                    console.log(data);
+                    for (var i = 0; i < data.data.length; i++) {
+                        data.data[i].push('<button class="btn btn-primary btn-sm edit-course-btn" data-toggle="modal" data-target="#editCourseModal" data-id="' + data.data[i][0] + '" data-name="' + data.data[i][1] + '" data-alias="' + data.data[i][2] + '">Edit</button> <button class="btn btn-danger btn-sm delete-course-btn" data-id="' + data.data[i][0] + '">Delete</button>');
+                    }
+                    $('#course-list').DataTable({
+                        columns: [{
+                                title: "Course ID",
+                                data: "0"
+                            },
+                            {
+                                title: "Course Name",
+                                data: "1"
+                            },
+                            {
+                                title: "Course Code",
+                                data: "2"
+                            },
+                            {
+                                title: "Action",
+                                data: "3"
+                            }
+                        ],
+                        "bLengthChange": false,
+                        "bFilter": false,
+                        "language": {
+                            "emptyTable": "No courses yet."
                         },
-                        {
-                            title: "Course Name",
-                            data: "1"
-                        },
-                        {
-                            title: "Course Code",
-                            data: "2"
-                        },
-                        {
-                            title: "Action",
-                            data: "3"
-                        }
-                    ],
-                    // remove showing entries
-                    "bLengthChange": false,
-                    // remove search
-                    "bFilter": false,
-                    // replace if no data on table yet
-                    "language": {
-                        "emptyTable": "No courses yet."
-                    },
-                    data: data.data,
-                    responsive: true
-                });
-                // edit course
-                $('#edit-course-btn').click(function() {
-                    var course_id = $(this).data('course_id');
-                    var course_name = $(this).data('course_name');
-                    var course_alias = $(this).data('course_alias');
-
-                    $('#editCourseModal').modal('show');
-                    $('#editCourseName').val(course_name);
-                    $('#editCourseAlias').val(course_alias);
-
-                    $('#edit-course-submit').click(function() {
-                        var editCourseName = $('#editCourseName').val();
-                        var editCourseAlias = $('#editCourseAlias').val();
-
-                        if (editCourseName == "" || editCourseAlias == "") {
-                            swal.fire({
-                                title: 'Error!',
-                                text: 'Please fill out all fields.',
-                                icon: 'error',
-                                confirmButtonText: 'OK'
-                            });
-                        } else {
-                            // collect data
-                            var editCourseData = {
-                                course_id: course_id,
-                                course_name: editCourseName,
-                                course_alias: editCourseAlias
-                            };
-
-                            // send data to server
-                            $.ajax({
-                                url: "../../server/admin-dashboard/edit-course.php",
-                                method: "POST",
-                                data: editCourseData,
-                                dataType: "json",
-                                success: function(response) {
-                                    if (response.status == "success") {
-                                        swal.fire({
-                                            title: 'Success!',
-                                            text: 'Course edited successfully.',
-                                            icon: 'success',
-                                            confirmButtonText: 'OK'
-                                        });
-                                        // refresh the page
-                                        location.reload();
-                                    } else {
-                                        swal.fire({
-                                            title: 'Error!',
-                                            text: 'An error occurred while editing course.',
-                                            icon: 'error',
-                                            confirmButtonText: 'OK'
-                                        });
-                                    }
-                                },
-                                error: function() {
-                                    swal.fire({
-                                        title: 'Error!',
-                                        text: 'An error occurred while editing course.',
-                                        icon: 'error',
-                                        confirmButtonText: 'OK'
-                                    });
-                                }
-                            });
-                        }
+                        data: data.data,
+                        responsive: true
                     });
-                });
-            }
-        })
+                }
+            });
+        }
 
-        $('#add-course-btn').click(function() {
-            // add validation
-            var courseName = $('#courseName').val();
-            var courseAlias = $('#courseAlias').val();
+        function addCourse() {
+            $('#add-course-btn').click(function() {
+                var courseName = $('#courseName').val();
+                var courseAlias = $('#courseAlias').val();
 
-            if (courseName == "" || courseAlias == "") {
-                swal.fire({
-                    title: 'Error!',
-                    text: 'Please fill out all fields.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
-            } else {
-                // collect data
+                if (courseName == "" || courseAlias == "") {
+                    showError('Please fill out all fields.');
+                } else {
+                    var courseData = {
+                        courseName: courseName,
+                        courseAlias: courseAlias
+                    };
+
+                    makeAjaxRequest(
+                        "../../server/admin-dashboard/add-course.php",
+                        "POST",
+                        courseData,
+                        function(response) {
+                            if (response.status == "success") {
+                                showSuccess('Course added successfully.');
+                                location.reload();
+                            } else {
+                                showError('An error occurred while adding course.');
+                            }
+                        },
+                        function() {
+                            showError('An error occurred while adding course.');
+                        }
+                    );
+                }
+            });
+        }
+
+        $('#course-list').on('click', '.edit-course-btn', function() {
+            var id = $(this).data('id');
+            var name = $(this).data('name');
+            var alias = $(this).data('alias');
+
+            $('#editCourseName').val(name);
+            $('#editCourseAlias').val(alias);
+
+            $('#saveCourseChanges').click(function() {
+                var newName = $('#editCourseName').val();
+                var newAlias = $('#editCourseAlias').val();
+
                 var courseData = {
-                    courseName: courseName,
-                    courseAlias: courseAlias
+                    id: id,
+                    name: newName,
+                    alias: newAlias
                 };
 
-                // send data to server
-                $.ajax({
-                    url: "../../server/admin-dashboard/add-course.php",
-                    method: "POST",
-                    data: courseData,
-                    dataType: "json",
-                    success: function(response) {
+                makeAjaxRequest(
+                    "../../server/admin-dashboard/edit-course.php",
+                    "POST",
+                    courseData,
+                    function(response) {
                         if (response.status == "success") {
-                            swal.fire({
-                                title: 'Success!',
-                                text: 'Course added successfully.',
-                                icon: 'success',
-                                confirmButtonText: 'OK'
-                            });
-                            // refresh the page
+                            showSuccess('Course edited successfully.');
                             location.reload();
                         } else {
-                            swal.fire({
-                                title: 'Error!',
-                                text: 'An error occurred while adding course.',
-                                icon: 'error',
-                                confirmButtonText: 'OK'
-                            });
+                            showError('An error occurred while editing course.');
                         }
                     },
-                    error: function() {
-                        swal.fire({
-                            title: 'Error!',
-                            text: 'An error occurred while adding course.',
-                            icon: 'error',
-                            confirmButtonText: 'OK'
-                        });
+                    function() {
+                        showError('An error occurred while editing course.');
                     }
-                });
-            }
+                );
+            });
         });
 
+        $('#course-list').on('click', '.delete-course-btn', function() {
+            var id = $(this).data('id');
+
+            swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Cancel',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    var courseData = {
+                        id: id
+                    };
+
+                    makeAjaxRequest(
+                        "../../server/admin-dashboard/delete-course.php",
+                        "POST",
+                        courseData,
+                        function(response) {
+                            if (response.status == "success") {
+                                showSuccess('Course deleted successfully.');
+                                location.reload();
+                            } else {
+                                showError('An error occurred while deleting course.');
+                            }
+                        },
+                        function() {
+                            showError('An error occurred while deleting course.');
+                        }
+                    );
+                }
+            });
+        });
     });
 </script>

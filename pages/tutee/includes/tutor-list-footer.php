@@ -118,6 +118,7 @@
                             <img src="${tutor.profile}" alt="No Profile yet" class="avatar-xl rounded-circle mb-3">
                             <h4 class="mb-1 font-20">${tutor.fullname}</h4>
                             <p class="text-muted font-14">${tutor.department}</p>
+                            ${tutor.rank}
                         </div>
 
                         <p class="font-14 text-center text-muted">

@@ -43,6 +43,31 @@ if(mysqli_num_rows($result) > 0) {
         if (mysqli_num_rows($result4) > 0) {
             $row4 = mysqli_fetch_assoc($result4);
             $rating = $row4['avg_rating'];
+            $rank = $row4['rank'];
+
+            switch($rank) {
+                case "novice":
+                    $rank = "<span class='badge badge-pill badge-secondary'>Novice</span>";
+                    break;
+                case "junior":
+                    $rank = "<span class='badge badge-pill badge-warning'>Junior</span>";
+                    break;
+                case "experienced":
+                    $rank = "<span class='badge badge-pill badge-success'>Experienced</span>";
+                    break;
+                case "senior":
+                    $rank = "<span class='badge badge-pill badge-primary'>Senior</span>";
+                    break;
+                case "master":
+                    $rank = "<span class='badge badge-pill badge-danger'>Master</span>";
+                    break;
+                case "grand_master":
+                    $rank = "<span class='badge badge-pill badge-dark'>Grand Master</span>";
+                    break;
+                default:
+                    $rank = "<span class='badge badge-pill badge-secondary'>Novice</span>";
+                    break;
+            }
         }
         // store data in tutor
         $tutor = array(
@@ -53,7 +78,8 @@ if(mysqli_num_rows($result) > 0) {
             'rating' => $rating,
             'expertise' => $expertise,
             'tutee_count' => $tutee_count,
-            'profile' => $profile
+            'profile' => $profile,
+            'rank' => $rank
         );
         array_push($response['tutors'], $tutor);
     }
