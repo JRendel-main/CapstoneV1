@@ -3,7 +3,7 @@
 date_default_timezone_set('Asia/Manila');
 require_once '../db-connect.php';
 
-$sql = "SELECT * FROM tbl_schedules WHERE sched_status = 1 ORDER BY date ASC";
+$sql = "SELECT * FROM tbl_schedules WHERE sched_status = 1 ORDER BY date DESC";
 $result = mysqli_query($conn, $sql);
 
 $data = array();
