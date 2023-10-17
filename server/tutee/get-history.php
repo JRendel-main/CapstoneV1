@@ -4,7 +4,7 @@ require_once '../db-connect.php';
 session_start();
 $peer_id = $_SESSION['peer_id'];
 
-$sql = "SELECT * FROM tbl_request WHERE tutee_id = '$peer_id' and request_status = 1 OR request_status = 3";
+$sql = "SELECT * FROM tbl_request WHERE tutee_id = '$peer_id' and (request_status = 1 OR request_status = 3)";
 $result = mysqli_query($conn, $sql);
 
 $data = array();

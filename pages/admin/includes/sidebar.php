@@ -36,9 +36,6 @@
                                 <li>
                                     <a href="tutee-list.php">Tutee List</a>
                                 </li>
-                                <li>
-                                    <a href="moderator-list.php">Moderator List</a>
-                                </li>
                             </ul>
                         </li>
 
@@ -71,36 +68,11 @@
                         </li>
 
                         <li class="menu-title">Admin Settings</li>
-
-                        <!-- Website settings -->
-                        <li>
-                            <a href="website-settings.php">
-                                <i class="fe-settings"></i>
-                                <span> Website Settings </span>
-                            </a>
-                        </li>
-
                         <!-- Course settings -->
                         <li>
                             <a href="course-list.php">
                                 <i class="fe-book"></i>
                                 <span> Course Settings </span>
-                            </a>
-                        </li>
-
-                        <!-- Archive list -->
-                        <li>
-                            <a href="{{ route('archive') }}">
-                                <i class="fe-folder"></i>
-                                <span> Archive </span>
-                            </a>
-                        </li>
-
-                        <!-- Generate report -->
-                        <li>
-                            <a href="{{ route('generate') }}">
-                                <i class="fe-file-text"></i>
-                                <span> Generate Report </span>
                             </a>
                         </li>
                     </ul>

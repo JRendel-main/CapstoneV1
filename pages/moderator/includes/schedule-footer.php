@@ -17,10 +17,6 @@
                                 '<i class="mdi mdi-dots-horizontal m-0 text-muted h3"></i>' +
                                 '</a>' +
                                 '<div class="dropdown-menu dropdown-menu-right">' +
-                                '<a class="dropdown-item" href="#">View Schedule</a>' +
-                                '<a href="#" class="dropdown-item view-students-link" data-toggle="modal" data-target="#viewStudentsModal">View Students</a>' +
-                                '<a href="#" class="dropdown-item view-location-link" data-toggle="modal" data-target="#viewLocationLinkModal">View Location/Link</a>' +
-                                '<a class="dropdown-item" href="#">Send Message</a>' +
                                 '<a class="dropdown-item" href="#" id="disable-sched" data-id=' + schedule.sched_id + '><strong>Disable Schedule</strong></a>' +
                                 '</div>' +
                                 '</div>' +

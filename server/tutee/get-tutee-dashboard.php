@@ -18,6 +18,7 @@ if (mysqli_num_rows($result) == 1) {
     $firstname = ucfirst($firstname);
     $lastname = ucfirst($lastname);
     $name = $firstname . " " . $lastname;
+    $profile = $row['profile'];
 
     $sql2 = "SELECT * FROM tbl_request WHERE tutee_id = '$peer_id'";
     $result2 = mysqli_query($conn, $sql2);
@@ -40,6 +41,7 @@ if (mysqli_num_rows($result) == 1) {
     $tuteeInfo['name'] = $name;
     $tuteeInfo['pendingReq'] = $pendingReq;
     $tuteeInfo['upcoming'] = $upcoming;
+    $tuteeInfo['profile'] = $profile;
 
     $data['tuteeInfo'] = $tuteeInfo;
 } else {

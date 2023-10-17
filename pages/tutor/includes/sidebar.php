@@ -49,18 +49,6 @@
                         </li>
                     </ul>
                     <ul class="metismenu" id="side-menu">
-                        
-                        <li class="menu-title">Schedules</li>
-                        <li>
-                            <a href="documentation.php">
-                                <i class="fe-server"></i>
-                                <span>
-                                    Documentation
-                                </span>
-                                <!-- Add alert -->
-                                <span class="badge badge-danger badge-pill float-right">1</span>
-                            </a>
-                        </li>
 
                         <li class="menu-title">Dashboard</li>
 

@@ -53,30 +53,13 @@
 
                         <!-- Testimonials -->
                         <li>
-                            <a href="javascript: void(0);">
+                            <a href="testimonial-request.php">
                                 <i class="fe-star"></i>
                                 <span> Testimonials </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <ul class="nav-second-level nav" aria-expanded="false">
-                                <li>
-                                    <a href="testimonial-list.php">Testimonial List</a>
-                                </li>
-                                <li>
-                                    <a href="testimonial-request.php">Testimonial Requests</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="menu-title">User Settings</li>
-
-                        <!-- Location list-->
-                        <li>
-                            <a href="#">
-                                <i class="fe-map" aria-hidden="true"></i>
-                                <span> Locations </span>
                             </a>
                         </li>
+
+                        <li class="menu-title">Schedule Settings</li>
 
                         <!-- Schedule Settings -->
                         <li>

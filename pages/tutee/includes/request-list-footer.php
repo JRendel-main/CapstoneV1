@@ -40,7 +40,7 @@
                         },
                     ],
                     "order": [
-                        [2, "asc"]
+                        [4, "asc"]
                     ],
                     "columnDefs": [{
                         "targets": [0, 1, 2, 3, 4, 5],

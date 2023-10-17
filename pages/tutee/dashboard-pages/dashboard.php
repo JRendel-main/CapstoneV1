@@ -55,7 +55,7 @@
                 <div class="col-md-6">
                     <div class="card-box">
                         <div class="text-center">
-                            <img src="https://ui-avatars.com/api/?name=John+Rendel" alt="Profile Image" class="rounded-circle avatar-lg img-thumbnail">
+                            <img alt="Profile Image" class="rounded-circle avatar-lg img-thumbnail" id="profilePic">
                             <h4 class="mt-3">Welcome, <b id="name">[Tutee Name]!</b></h4>
                             <p class="text-muted">We're glad to have you here. Start your learning journey today!</p>
                             <div class="row mt-3">

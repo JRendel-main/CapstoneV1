@@ -1,5 +1,12 @@
 <script>
     $(document).ready(function() {
+            // when tas is clicked, a swal will appear explaining the terms and condition of nexus link
+            $('#tac').click(function() {
+                //open the termsModal
+                $('#termsModal').modal('show');
+                //click
+                console.log('hello');
+            });
 
         function switchStep(fstep, lstep) {
             $("#step" + fstep).hide();
@@ -12,6 +19,9 @@
             // Validate form inputs
             var firstName = $("#firstname").val();
             var middleName = $("#middlename").val();
+            if (middleName == "") {
+                middleName = "";
+            }
             var lastName = $("#lastname").val();
             var email = $("#emailaddress").val();
             var contactNumber = $("#contactnumber").val();
@@ -21,7 +31,6 @@
 
             if (
                 firstName === "" ||
-                middleName === "" ||
                 lastName === "" ||
                 email === "" ||
                 contactNumber === "" ||

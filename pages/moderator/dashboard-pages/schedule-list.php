@@ -10,9 +10,8 @@
                     <div class="page-title-box">
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Apps</a></li>
-                                <li class="breadcrumb-item active">Projects</li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Moderator Dashboard</a></li>
+                                <li class="breadcrumb-item active">Schedule List</li>
                             </ol>
                         </div>
                         <h4 class="page-title">Schedule List</h4>
@@ -27,23 +26,6 @@
 
 
                 </div>
-                <div class="col-sm-8">
-                    <div class="text-sm-right">
-                        <div class="btn-group mb-3">
-                            <button type="button" class="btn btn-primary">All</button>
-                        </div>
-                        <div class="btn-group mb-3 ml-1">
-                            <button type="button" class="btn btn-light">Ongoing</button>
-                            <button type="button" class="btn btn-light">Finished</button>
-                        </div>
-                        <div class="btn-group mb-3 ml-2 d-none d-sm-inline-block">
-                            <button type="button" class="btn btn-dark"><i class="mdi mdi-apps"></i></button>
-                        </div>
-                        <div class="btn-group mb-3 d-none d-sm-inline-block">
-                            <button type="button" class="btn btn-link text-dark"><i class="mdi mdi-format-list-bulleted-type"></i></button>
-                        </div>
-                    </div>
-                </div><!-- end col-->
             </div>
             <!-- end row-->
             <div class="row" id="schedule-list">

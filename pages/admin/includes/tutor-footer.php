@@ -84,25 +84,6 @@
 
             }
         });
-        // generate dummy data for c-3 chart
-        var chart = c3.generate({
-            bindto: '#chart',
-            data: {
-                columns: [
-                    ['1', 30],
-                    ['2', 120],
-                ],
-                type: 'pie',
-                colors: {
-                    '1': '#f1b44c',
-                    '2': '#34c38f',
-                },
-                names: {
-                    '1': 'Tutor',
-                    '2': 'Student',
-                }
-            },
-        });
         // if view tutor clicked get the data from the table
         $('#tutor-lists tbody').on('click', '.view-tutor', function() {
             var row = $(this).closest('tr');
@@ -114,6 +95,8 @@
             var tutor_profile = data['tutor_profile'];
             var expertise = data['expertise'];
             var disable = data['disable'];
+            // change the profile
+            $('#profile-image').attr('src', tutor_profile);
 
             // put card to the right side
             $('#alert').hide();
@@ -130,7 +113,6 @@
             $('#expertise').html(expertise_list);
             $('#disable').html(disable);
             // change the profile image
-            $('#profile').attr('src', tutor_profile);
         });
         $('#disable').on('click', '.disable-tutor', function() {
             var tutor_id = $(this).attr('id');

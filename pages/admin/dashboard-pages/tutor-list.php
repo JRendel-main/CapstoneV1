@@ -39,7 +39,7 @@
                         </div>
                         <!-- tutor's profile -->
                         <div class="text-center" id="profile">
-                            <img alt="Profile Image" class="rounded-circle avatar-lg img-thumbnail" id="profile">
+                            <img alt="Profile Image" class="rounded-circle avatar-lg img-thumbnail" id="profile-image">
                             <h4 class="mt-3"><b id="name">[Tutee Name]!</b></h4>
                             <p class="text-muted" id="expertise"></p>
                             <div class="mt-4" id="disable">

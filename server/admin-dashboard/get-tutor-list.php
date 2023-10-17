@@ -20,7 +20,7 @@ if (mysqli_num_rows($result) > 0) {
         $course = $row2['course'];
         $year = $row2['year'];
 
-        $tutor_profile = "https://ui-avatars.com/api/?name=test";
+        $tutor_profile = $row2['profile'];
 
         // get expertise
         $sql4 = 'SELECT expertise_id FROM tbl_tutor_profile WHERE peer_id = ' . $tutor_id;

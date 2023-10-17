@@ -52,7 +52,6 @@
         </div>
     </div>
 </div>
-<!-- now for edit courses use modal -->
 <!-- Add a modal for editing courses -->
 <div class="modal fade" id="editCourseModal" tabindex="-1" role="dialog" aria-labelledby="editCourseModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

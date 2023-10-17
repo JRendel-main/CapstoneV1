@@ -52,8 +52,20 @@ if (mysqli_num_rows($result) > 0) {
             $sql3 = "SELECT * FROM tbl_online WHERE sched_id = " . $row['sched_id'];
             $result3 = mysqli_query($conn, $sql3);
             $row3 = mysqli_fetch_assoc($result3);
-            $platform = $row3['platform'];
-            $link = $row3['link'];
+            if (isset($row3['platform'])) {
+                $platform = $row3['platform'];
+            } else {
+                // Handle the case where 'platform' key doesn't exist
+                $platform = ''; // or some default value
+            }
+            
+            if (isset($row3['link'])) {
+                $link = $row3['link'];
+            } else {
+                // Handle the case where 'link' key doesn't exist
+                $link = ''; // or some default value
+            }
+            
             $mode = 'Online';
             $place = '';
         }

@@ -97,13 +97,6 @@
                         <li class="menu-title">Account Settings</li>
 
                         <li>
-                            <a href="">
-                                <i class="fe-user"></i>
-                                <span> Profile </span>
-                            </a>
-                        </li>
-
-                        <li>
                             <a href="settings.php">
                                 <i class="fe-settings"></i>
                                 <span> Settings </span>

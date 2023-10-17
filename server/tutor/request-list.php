@@ -61,10 +61,10 @@ $end = sprintf('%02d:%02d', $endHours, $endMinutes);
         $current_date = date('Y-m-d');
         $current_time = date('H:i');
         if($date < $current_date) {
-            $status = '<span class="badge badge-danger">Past</span>';
+            $status = '<span class="badge badge-info">Done</span>';
         } else if($date == $current_date) {
             if($start < $current_time) {
-                $status = '<span class="badge badge-danger">Past</span>';
+                $status = '<span class="badge badge-info">Done</span>';
             }
         }
         // check the date to make it more readable to user add month

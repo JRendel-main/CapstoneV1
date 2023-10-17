@@ -39,11 +39,6 @@
 
                         </div>
                     </div> <!-- end card-box -->
-
-                    <div class="card-box">
-
-                    </div> <!-- end card-box-->
-
                 </div> <!-- end col-->
 
                 <div class="col-lg-8 col-xl-8">
@@ -105,11 +100,7 @@
                         <li class="nav-item" role="presentation">
                             <a class="nav-link active" id="schedule-details-tab" data-bs-toggle="tab" href="#schedule-details" role="tab" aria-controls="schedule-details" aria-selected="true">Schedule Details</a>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="tutee-list-tab" data-bs-toggle="tab" href="#tutee-list" role="tab" aria-controls="tutee-list" aria-selected="false">Tutee List</a>
-                        </li>
                     </ul>
-
                     <!-- Tab Content -->
                     <div class="tab-content text-center" id="scheduleTabsContent">
                         <!-- Schedule Details Tab -->
@@ -149,11 +140,6 @@
                                         </div> <!-- end card-box -->
                                     </div> <!-- end col -->
                                 </div> <!-- end row -->
-                            </div>
-
-                            <!-- Tutee List Tab -->
-                            <div class="tab-pane fade" id="tutee-list" role="tabpanel" aria-labelledby="tutee-list-tab">
-
                             </div>
                         </div>
                     </div>

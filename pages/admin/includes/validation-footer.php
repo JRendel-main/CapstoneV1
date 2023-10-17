@@ -6,10 +6,6 @@
     $(document).ready(function() {
         new DataTable('#validation', {
             responsive: true,
-            dom: 'Bfrtip',
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ]
         })
 
         function fetchAccountsData() {
