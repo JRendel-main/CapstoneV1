@@ -47,7 +47,7 @@ if (mysqli_num_rows($result) > 0) {
     $start_time = date("h:i A", strtotime($start_time));
 
     $title = $row["title"];
-    $duration = $row["duration"] . " hour(s)";
+    $duration = $row["duration"];
 
     if ($row['mode'] = 0) {
         $mode = "Online";
@@ -59,6 +59,9 @@ if (mysqli_num_rows($result) > 0) {
     $sched = array();
     $sched["start_time"] = $start_time;
     $sched["title"] = $title;
+    // convert duration from decimal to :
+    $duration = explode(".", $duration);
+    $duration = $duration[0]. "H" . " : " . $duration[1] . "M";
     $sched["duration"] = $duration;
     $sched["mode"] = $mode;
 

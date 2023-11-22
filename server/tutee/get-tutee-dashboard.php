@@ -66,7 +66,9 @@ if (mysqli_num_rows($result4) > 0) {
             $mode = 'Face to Face';
         }
         $duration = $row['duration'];
-        $duration = $duration . ' hour(s)';
+        // convert the decimal to :
+        $duration = explode(".", $duration);
+        $duration = $duration[0] . "H" . " : " . $duration[1] . "M";
         $max_tutee = $row['max_tutee'];
         // get the end time by adding the duration(hours) to the start time
         $end = date('H:i', strtotime($start . ' + ' . $duration . ' hours'));
@@ -111,7 +113,6 @@ if (mysqli_num_rows($result5) > 0) {
             $mode = 'Face to Face';
         }
         $duration = $row['duration'];
-        $duration = $duration . ' hour(s)';
         $max_tutee = $row['max_tutee'];
         // get the end time by adding the duration(hours) to the start time
         $end = date('H:i', strtotime($start . ' + ' . $duration . ' hours'));
@@ -123,6 +124,9 @@ if (mysqli_num_rows($result5) > 0) {
         $weekSched['start'] = $start;
         $weekSched['title'] = $title;
         $weekSched['mode'] = $mode;
+        // convert decimal to :
+        $duration = explode(".", $duration);
+        $duration = $duration[0] . "H" . " : " . $duration[1] . "M";
         $weekSched['duration'] = $duration;
         // check what days of the week the schedule is example if monday or friday
         $day = date('l', strtotime($row['date']));
