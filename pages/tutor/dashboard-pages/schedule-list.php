@@ -213,7 +213,7 @@
                                                 <p class="header-description"><i class="fe-info"></i><i> Set schedules between 8:00 am - 5:00 pm only</i></p>
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label">Duration <b>(Hours)</b></label>
+                                                <label class="control-label">Duration <b>(Hours.Minutes)</b></label>
                                                 <input class="form-control form-white" placeholder="Duration of Session" type="number" name="edit-duration-f2f">
                                             </div>
                                         </div>
@@ -240,16 +240,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <!-- Add hours and minutes inputs to specify the duration side by side-->
-                                                <label class="control-label">Duration</label>
-                                                <!-- Add two inputs -->
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <input class="form-control form-white" placeholder="Hours" type="number" name="edit-duration-online-hours" max="5">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <input class="form-control form-white" placeholder="Minutes" type="number" name="edit-duration-online-minutes" max="59" value="00">
-                                                    </div>
-                                                </div>
+                                                <label class="control-label">Duration <b>(Hours.Minutes)</b></label>
+                                                <input class="form-control form-white" placeholder="Duration of Session" type="number" name="edit-duration-online">
                                             </div>
                                         </div>
                                     </div>

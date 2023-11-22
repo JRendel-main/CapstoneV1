@@ -215,6 +215,18 @@
             // Move to previous step
             $("#step5").hide();
             $("#step4").show();
+
+            // disable submit button 
+            $("#submit").prop("disabled", true);
+
+            // if the checkbox-signup checked, enable the button
+            $("#checkbox-signup").click(function() {
+                if ($(this).is(":checked")) {
+                    $("#submit").prop("disabled", false);
+                } else {
+                    $("#submit").prop("disabled", true);
+                }
+            });
         });
 
         // Submit form
