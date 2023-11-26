@@ -4,7 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-function sendEmail($to, $subject, $type, $message) {
+function sendEmail($to, $subject, $type, $message, $topic, $datetime, $sender) {
     // Create a new PHPMailer instance
     $mail = new PHPMailer(true);
 
@@ -20,9 +20,9 @@ function sendEmail($to, $subject, $type, $message) {
         $mail->isHTML(true);
 
         // Recipients
-        $mail->setFrom('officialnexuslink@gmail.com', 'Nexus Link Official');
+        $mail->setFrom('officialnexuslink@gmail.com', 'Hanap Ka Peer Platform');
         $mail->addAddress($to);
-        $mail->addReplyTo('officialnexuslink@gmail.com', 'John Rendel');
+        $mail->addReplyTo('officialnexuslink@gmail.com', 'HanapKaPeer Team');
 
         // Content
         $mail->Subject = $subject;
@@ -77,6 +77,18 @@ function sendEmail($to, $subject, $type, $message) {
             p {
               margin: 0 0 20px 0;
             }
+
+            /* Card Styles */
+            .card {
+              background-color: #f6f6f6;
+              border-radius: 5px;
+              padding: 15px;
+              margin-top: 20px;
+            }
+
+            .card h4, .card p {
+              margin: 0;
+            }
         
             /* Button Styles */
             .btn {
@@ -114,19 +126,30 @@ function sendEmail($to, $subject, $type, $message) {
                   <!-- Notification Details -->
                   <h2>'.$type.':</h2>
                   <p>'.$message.'</p>
+
+                  <!-- Topic Details and sender use card -->
+                  <div class="card">
+                    <h4><b>Topic:</b> '.$topic.'</h4>
+                    <p><b>Date and Time:</b> '.$datetime.'</p>
+                    <p><b>Sender:</b> '.$sender.'</p>
+                  </div>
+                  
         
                   <!-- Call-to-Action Button -->
                   <a class="btn" href="localhost/CapstoneV1/login.php" target="_blank">View for more information</a>
         
                   <!-- Closing Message -->
-                  <p>If you have any questions or need further assistance, please dont hesitate to contact us.</p>
+                  <p>If you have any questions or need further assistance, please don\'t hesitate to contact us.</p>
                   <p>Thank you,</p>
                   <p>The HanapKaPeer Team</p>
                 </div>
                 <!-- End Main Content -->
         
                 <!-- Footer -->
-
+                <div class="footer">
+                  <p>Official Address, City, Country<br>For any concerns, <a href="[Your Contact Page Link]">contact us</a>.</p>
+                  <p>Sent by Hanap Ka Peer Platform. Please do not reply to this email.</p>
+                </div>
                 <!-- End Footer -->
         
               </td>
@@ -140,5 +163,7 @@ function sendEmail($to, $subject, $type, $message) {
 
         $mail->send();
     } catch (Exception $e) {
+        // Handle exceptions
     }
 }
+?>

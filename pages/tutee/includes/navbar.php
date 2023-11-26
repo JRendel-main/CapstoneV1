@@ -37,7 +37,7 @@
     <div class="logo-box">
         <a href="../../index.html" class="logo text-center">
             <span class="logo-lg">
-                <img src="../../assets/images/nexus-logo.png" alt="" height="26">
+                <img src="../../assets/images/logo-no-background.png" alt="" height="62">
                 <!-- <span class="logo-lg-text-dark"></span> -->
             </span>
             <span class="logo-sm">

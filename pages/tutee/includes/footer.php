@@ -2,7 +2,7 @@
     <div id="floating-button">
         <p class="plus" id="messageModalBtn">
             <!-- Alert triangle -->
-            <i class="fas fa-triangle-exclamation fa-2xs"></i>
+            <i class="fa fa-exclamation-triangle"></i>
         </p>
     </div>
 </div>

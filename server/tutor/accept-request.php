@@ -1,6 +1,8 @@
 <?php 
+// timezone manila
+
 require_once '../db-connect.php'; 
-require_once '../../send-email.php';
+require_once '../../send-email-sched.php';
 
 $request_id = $_POST['request_id'];
 $max_tutee = $_POST['max_tutee'];
@@ -21,6 +23,14 @@ if($max_tutee > $avail){
 
         $tutee_id = $row2['tutee_id'];
         $schedule_id = $row2['schedule_id'];
+        $tutor_id = $row2['tutor_id'];
+
+        $sql5 = "SELECT * FROM tbl_peerinfo WHERE peer_id = $tutor_id";
+        $result5 = mysqli_query($conn, $sql5);
+        $row5 = mysqli_fetch_assoc($result5);
+
+        $tutor_name = $row5['firstname'] . $row5['lastname'];
+        $sender = $tutor_name;
 
         $sql3 = "SELECT * FROM tbl_peerinfo WHERE peer_id = $tutee_id";
         $result3 = mysqli_query($conn, $sql3);
@@ -48,11 +58,17 @@ if($max_tutee > $avail){
             $place = $row5['place'];
             $message = "Your request has been accepted. Please go to the place below to join the session. <br><br> <b>Place:</b> $place";
         }
+
+        $topic = $row4['title'];
         $to = $tutee_email;
         $subject = "Request Accepted";
         $type = "Schedule Request <strong>Accepted</strong>";
+        // get the date time now
+        $datetime = date("Y-m-d H:i:s");
+        // make it readable to users
+        $datetime = date("F j, Y, g:i a", strtotime($datetime));
 
-        sendEmail($to, $subject, $message, $type);
+        sendEmail($to, $subject, $message, $type, $topic, $datetime, $sender);
     } else {
         echo json_encode(array('status' => 'error'));
     }
