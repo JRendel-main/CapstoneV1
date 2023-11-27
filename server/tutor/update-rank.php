@@ -1,5 +1,6 @@
 <?php 
 require_once '../db-connect.php';
+include_once '../../certificate/generate-certificate.php';
 
 session_start();
 $peer_id = $_SESSION['peer_id'];
@@ -15,18 +16,49 @@ if(mysqli_num_rows($result) > 0) {
     $points = $row['points'];
     $avg_rating = $row['avg_rating'];
 
+    $sql1 = "SELECT * FROM tbl_peerinfo WHERE peer_id = $peer_id";
+    $result1 = mysqli_query($conn, $sql1);
+    $row1 = mysqli_fetch_assoc($result1);
+    $firstname = $row1['firstname'];
+    $lastname = $row1['lastname'];
+    $email = $row1['email'];
+
+    $fullnamefolder = $firstname . ' ' . $lastname;
+    // capitalize it for the certificate
+    $fullname = strtoupper($fullnamefolder);
+    $type = 'Certificate of Achievement';
+    $message = "This certificate is presented as a token of appreciation for their hard work and dedication.";
+    $certificateBackground = '../../certificate/background.jpg';
+    $logo = '../../certificate/logo.png';
+    $neust = '../../certificate/neust.png';
+    $signature = '../../certificate/signature.png';
+
+    // for testing purposes
+    $rank = 'Novice';
+
     // update the rank based on points
     if ($points < 100) {
         $rank = 'Novice';
-    } else if ($points >= 100 && $points < 200) {
+    } else if ($points >= 100 && $points < 200 && $rank != 'Junior') {
+        // generate achivement based on rank
+        $achievement = 'Junior Tutor';
+        generateCertificate($type, $fullname, $achievement, $message, $certificateBackground, $logo, $neust, $signature, $email);
         $rank = 'Junior';
-    } else if ($points >= 200 && $points < 300) {
+    } else if ($points >= 200 && $points < 300 && $rank != 'Experienced') {
+        $achievement = 'Experienced Tutor';
+        generateCertificate($type, $fullname, $achievement, $message, $certificateBackground, $logo, $neust , $signature, $email);
         $rank = 'Experienced';
-    } else if ($points >= 300 && $points < 400) {
+    } else if ($points >= 300 && $points < 400 && $rank != 'Senior') {
+        $achievement = 'Senior Tutor';
+        generateCertificate($type, $fullname, $achievement, $message, $certificateBackground, $logo, $neust , $signature, $email);
         $rank = 'Senior';
-    } else if ($points >= 400 && $points < 500) {
+    } else if ($points >= 400 && $points < 500 && $rank != 'Master') {
+        $achievement = 'Master Tutor';
+        generateCertificate($type, $fullname, $achievement, $message, $certificateBackground, $logo, $neust , $signature, $email);
         $rank = 'Master';
-    } else if ($points >= 500) {
+    } else if ($points >= 500 && $rank != 'Grandmaster') {
+        $achievement = 'Grandmaster Tutor';
+        generateCertificate($type, $fullname, $achievement, $message, $certificateBackground, $logo, $neust, $signature, $email);
         $rank = 'Grandmaster';
     }
 

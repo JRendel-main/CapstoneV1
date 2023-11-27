@@ -58,32 +58,52 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>6</td>
+                                        <td>
+                                            <!-- Add the trophy png -->
+                                            <img src="../../assets/images/trophy.png" alt="" height="24">
+                                        </td>
                                         <td>0 - 100</td>
                                         <td><span class="badge badge-info">Novice Tutor</span></td>
                                     </tr>
                                     <tr>
-                                        <td>5</td>
+                                        <td>
+                                            <!-- Add the trophy png -->
+                                            <img src="../../assets/images/trophy.png" alt="" height="24">
+                                            <img src="../../assets/images/trophy.png" alt="" height="24">
+                                        </td>
                                         <td>101 - 200</td>
                                         <td><span class="badge badge-warning">Junior Tutor</span></td>
                                     </tr>
                                     <tr>
-                                        <td>4</td>
+                                        <td>
+                                            <img src="../../assets/images/trophy.png" alt="" height="24">
+                                            <img src="../../assets/images/trophy.png" alt="" height="24">
+                                            <img src="../../assets/images/trophy.png" alt="" height="24">
+                                        </td>
                                         <td>201 - 300</td>
                                         <td><span class="badge badge-success">Experienced Tutor</span></td>
                                     </tr>
                                     <tr>
-                                        <td>3</td>
+                                        <td>
+                                            <img src="../../assets/images/trophy (1).png" alt="" height="24">
+                                        </td>
                                         <td>301 - 400</td>
                                         <td><span class="badge badge-primary">Senior Tutor</span></td>
                                     </tr>
                                     <tr>
-                                        <td>2</td>
+                                        <td>
+                                            <img src="../../assets/images/trophy (1).png" alt="" height="24">
+                                            <img src="../../assets/images/trophy (1).png" alt="" height="24">
+                                        </td>
                                         <td>401 - 500</td>
                                         <td><span class="badge badge-danger">Master Tutor</span></td>
                                     </tr>
                                     <tr>
-                                        <td>1</td>
+                                        <td>
+                                            <img src="../../assets/images/trophy (1).png" alt="" height="24">
+                                            <img src="../../assets/images/trophy (1).png" alt="" height="24">
+                                            <img src="../../assets/images/trophy (1).png" alt="" height="24">
+                                        </td>
                                         <td>501+</td>
                                         <td><span class="badge badge-dark">Grand Master Tutor</span></td>
                                     </tr>

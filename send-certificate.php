@@ -22,9 +22,9 @@ function sendEmail($to, $subject, $body, $attachment)
         $mail->isHTML(true);
 
         // Recipients
-        $mail->setFrom('officialnexuslink@gmail.com', 'Nexus Link Official');
+        $mail->setFrom('officialnexuslink@gmail.com', 'Hanap Ka Peer Official');
         $mail->addAddress($to);
-        $mail->addReplyTo('officialnexuslink@gmail.com', 'John Rendel');
+        $mail->addReplyTo('officialnexuslink@gmail.com', 'Hanap Ka Peer');
 
         // Content
         $mail->Subject = $subject;

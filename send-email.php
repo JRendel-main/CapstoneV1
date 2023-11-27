@@ -20,9 +20,9 @@ function sendEmail($to, $subject, $type, $message) {
         $mail->isHTML(true);
 
         // Recipients
-        $mail->setFrom('officialnexuslink@gmail.com', 'Nexus Link Official');
+        $mail->setFrom('officialnexuslink@gmail.com', 'Hanap Ka Peer Official');
         $mail->addAddress($to);
-        $mail->addReplyTo('officialnexuslink@gmail.com', 'John Rendel');
+        $mail->addReplyTo('officialnexuslink@gmail.com', 'Hanap Ka Peer');
 
         // Content
         $mail->Subject = $subject;
@@ -108,11 +108,11 @@ function sendEmail($to, $subject, $type, $message) {
         
                   <!-- Notification Message -->
                   <h1>Notification from Hanap Ka Peer Platform</h1>
-                  <p>Dear [Recipient Name],</p>
+                  <p>Dear Peer,</p>
                   <p>This is to inform you about the following notification from HanapKaPeer Platform:</p>
         
                   <!-- Notification Details -->
-                  <h2>'.$type.':</h2>
+                  <h2>'.$type.'</h2>
                   <p>'.$message.'</p>
         
                   <!-- Call-to-Action Button -->

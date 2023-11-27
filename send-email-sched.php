@@ -129,6 +129,7 @@ function sendEmail($to, $subject, $type, $message, $topic, $datetime, $sender) {
 
                   <!-- Topic Details and sender use card -->
                   <div class="card">
+                    <p class="card-text">Schedule Details:</p>
                     <h4><b>Topic:</b> '.$topic.'</h4>
                     <p><b>Date and Time:</b> '.$datetime.'</p>
                     <p><b>Sender:</b> '.$sender.'</p>

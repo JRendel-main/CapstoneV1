@@ -37,12 +37,12 @@
     <div class="logo-box">
         <a href="../../index.html" class="logo text-center">
             <span class="logo-lg">
-                <img src="../../assets/images/logo-no-background.png" alt="" height="62">
-                <!-- <span class="logo-lg-text-dark"></span> -->
+                <!-- <img src="../../assets/images/logo-no-background.png" alt="" height="62"> -->
+                <span class="logo-lg-text-dark">HanapKaPeer</span>
             </span>
             <span class="logo-sm">
-                <!-- <span class="logo-sm-text-dark">U</span> -->
-                <img src="../../assets/images/new-logo-sm.png" alt="" height="38">
+                <span class="logo-sm-text-dark">H</span>
+                <!-- <img src="../../assets/images/new-logo-sm.png" alt="" height="38"> -->
             </span>
         </a>
     </div>

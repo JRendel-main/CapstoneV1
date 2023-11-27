@@ -52,6 +52,13 @@ if (empty($username) || empty($password)) {
                     );
                     break;
                 case '2':
+                    // get the peer_id = tutor_id
+                    $peer_id = $row['peer_id'];
+                    $sql = "SELECT * FROM tbl_ratings WHERE peer_id = '$peer_id'";
+                    $result = mysqli_query($conn, $sql);
+                    $count = mysqli_num_rows($result);
+
+                    $points = 0;
                     $response = array(
                         'status' => 'success',
                         'message' => 'Login successful.',

@@ -201,6 +201,21 @@
 <script>
     // get the fullname from php using ajax
     $(document).ready(function() {
+        // check if tutor has milestone
+        $.ajax({
+            url: "../../server/check-milestone.php",
+            type: "POST",
+            dataType: "json",
+            success: function(data) {
+                if (data.success === true) {
+                    $('#milestone-sidebar').hide();
+                }
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+
         // check if user already have testimonial
         $.ajax({
             url: "../../server/check-testimonial.php",
