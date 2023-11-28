@@ -45,10 +45,10 @@
         <a href="../../index.html" class="logo text-center">
             <span class="logo-lg">
                 <!-- <img src="../../assets/images/nexus-logo.png" alt="" height="26"> -->
-                <span class="logo-lg-text-dark">HanapKaPeer</span>
+                <span class="logo-lg-text-dark">PeerTutor Hub</span>
             </span>
             <span class="logo-sm">
-                <span class="logo-sm-text-dark">H</span>
+                <span class="logo-sm-text-dark">PTH</span>
                 <!-- <img src="../../assets/images/new-logo-sm.png" alt="" height="38"> -->
             </span>
         </a>

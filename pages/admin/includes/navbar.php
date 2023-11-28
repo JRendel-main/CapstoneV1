@@ -79,8 +79,8 @@
     <div class="logo-box">
         <a href="../../index.html" class="logo text-center">
             <span class="logo-lg">
-                <img src="../../assets/images/new-logo.png" alt="" height="48">
-                <!-- <span class="logo-lg-text-light">UBold</span> -->
+                <!-- <img src="../../assets/images/new-logo.png" alt="" height="48"> -->
+                <span class="logo-lg-text-light">PeerTutor Hub</span>
             </span>
             <span class="logo-sm">
                 <!-- <span class="logo-sm-text-dark">U</span> -->
