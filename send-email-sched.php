@@ -20,9 +20,9 @@ function sendEmail($to, $subject, $type, $message, $topic, $datetime, $sender) {
         $mail->isHTML(true);
 
         // Recipients
-        $mail->setFrom('officialnexuslink@gmail.com', 'Hanap Ka Peer Platform');
+        $mail->setFrom('officialnexuslink@gmail.com', 'PeerTutor Hub Platform');
         $mail->addAddress($to);
-        $mail->addReplyTo('officialnexuslink@gmail.com', 'HanapKaPeer Team');
+        $mail->addReplyTo('officialnexuslink@gmail.com', 'PeerTutor Hub Team');
 
         // Content
         $mail->Subject = $subject;
@@ -119,9 +119,9 @@ function sendEmail($to, $subject, $type, $message, $topic, $datetime, $sender) {
                 <div class="content">
         
                   <!-- Notification Message -->
-                  <h1>Notification from Hanap Ka Peer Platform</h1>
-                  <p>Dear [Recipient Name],</p>
-                  <p>This is to inform you about the following notification from HanapKaPeer Platform:</p>
+                  <h1>Notification from PeerTutor Hub Platform</h1>
+                  <p>Dear Peer,</p>
+                  <p>This is to inform you about the following notification from PeerTutor Hub Platform:</p>
         
                   <!-- Notification Details -->
                   <h2>'.$type.':</h2>
@@ -129,10 +129,13 @@ function sendEmail($to, $subject, $type, $message, $topic, $datetime, $sender) {
 
                   <!-- Topic Details and sender use card -->
                   <div class="card">
-                    <p class="card-text">Schedule Details:</p>
-                    <h4><b>Topic:</b> '.$topic.'</h4>
-                    <p><b>Date and Time:</b> '.$datetime.'</p>
-                    <p><b>Sender:</b> '.$sender.'</p>
+                    <div class="card-header">
+                      <h4>'.$topic.' Schedule</h4>
+                    </div>
+                    <div class="card-body">
+                      <p><strong>Date and Time:</strong> '.$datetime.'</p>
+                      <p><strong>Sender:</strong> '.$sender.'</p>
+                    </div>
                   </div>
                   
         
@@ -142,15 +145,11 @@ function sendEmail($to, $subject, $type, $message, $topic, $datetime, $sender) {
                   <!-- Closing Message -->
                   <p>If you have any questions or need further assistance, please don\'t hesitate to contact us.</p>
                   <p>Thank you,</p>
-                  <p>The HanapKaPeer Team</p>
+                  <p>The PeerTutor Hub Team</p>
                 </div>
                 <!-- End Main Content -->
         
                 <!-- Footer -->
-                <div class="footer">
-                  <p>Official Address, City, Country<br>For any concerns, <a href="[Your Contact Page Link]">contact us</a>.</p>
-                  <p>Sent by Hanap Ka Peer Platform. Please do not reply to this email.</p>
-                </div>
                 <!-- End Footer -->
         
               </td>
@@ -165,6 +164,7 @@ function sendEmail($to, $subject, $type, $message, $topic, $datetime, $sender) {
         $mail->send();
     } catch (Exception $e) {
         // Handle exceptions
+        
     }
 }
 ?>
