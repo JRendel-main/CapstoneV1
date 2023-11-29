@@ -34,7 +34,7 @@ if(mysqli_num_rows($result) > 0) {
     $signature = '../../certificate/signature.png';
 
     // for testing purposes
-    $rank = 'Novice';
+    // $rank = 'Novice';
 
     // update the rank based on points
     if ($points < 100) {
@@ -43,22 +43,28 @@ if(mysqli_num_rows($result) > 0) {
         // generate achivement based on rank
         $achievement = 'Junior Tutor';
         generateCertificate($type, $fullname, $achievement, $message, $certificateBackground, $logo, $neust, $signature, $email);
+        // add confetti contents
+        $confetti = '';
         $rank = 'Junior';
     } else if ($points >= 200 && $points < 300 && $rank != 'Experienced') {
         $achievement = 'Experienced Tutor';
         generateCertificate($type, $fullname, $achievement, $message, $certificateBackground, $logo, $neust , $signature, $email);
+        $confetti = '';
         $rank = 'Experienced';
     } else if ($points >= 300 && $points < 400 && $rank != 'Senior') {
         $achievement = 'Senior Tutor';
         generateCertificate($type, $fullname, $achievement, $message, $certificateBackground, $logo, $neust , $signature, $email);
+        $confetti = '';
         $rank = 'Senior';
     } else if ($points >= 400 && $points < 500 && $rank != 'Master') {
         $achievement = 'Master Tutor';
         generateCertificate($type, $fullname, $achievement, $message, $certificateBackground, $logo, $neust , $signature, $email);
+        $confetti = '';
         $rank = 'Master';
     } else if ($points >= 500 && $rank != 'Grandmaster') {
         $achievement = 'Grandmaster Tutor';
         generateCertificate($type, $fullname, $achievement, $message, $certificateBackground, $logo, $neust, $signature, $email);
+        $confetti = '';
         $rank = 'Grandmaster';
     }
 
@@ -93,7 +99,8 @@ if(mysqli_num_rows($result) > 0) {
         'rank' => $rank,
         'points' => $points,
         'avg_rating' => $avg_rating,
-        'profile' => $profile
+        'profile' => $profile,
+        'confetti' => $confetti
     );
 } else {
     // insert rank
