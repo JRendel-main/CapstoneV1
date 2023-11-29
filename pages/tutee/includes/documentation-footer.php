@@ -62,7 +62,7 @@
                         $("#btn-submit").click(function() {
                             // Get form data
                             var feedback = $("#product-meta-title").val();
-                            var rating = $("select[name='rating']").val();
+                            var rating = $("input[name='rating']:checked").val();
                             var fileInput = document.getElementById("uploadDocu");
                             var file = fileInput.files[0];
                             var filename = file.name;

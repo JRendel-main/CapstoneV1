@@ -38,7 +38,7 @@
         <a href="../../index.html" class="logo text-center">
             <span class="logo-lg">
                 <!-- <img src="../../assets/images/logo-no-background.png" alt="" height="62"> -->
-                <span class="logo-lg-text-dark">HanapKaPeer</span>
+                <span class="logo-lg-text-dark">PeerTutor Hub</span>
             </span>
             <span class="logo-sm">
                 <span class="logo-sm-text-dark">H</span>
